@@ -77,7 +77,7 @@ export default {
     left: 0;
     width: 100%;
     h4 {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 500;
       margin: .3rem 0;
     }
