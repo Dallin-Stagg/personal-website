@@ -37,6 +37,10 @@ html {
   line-height: 2.5rem;
   margin: .75rem 0;
   padding: 0 1rem;
+  @include mobile {
+    font-size: 1.3rem;
+    line-height: 3.5rem;
+  }
 }
 .ds_section_header {
   color: $gray-dk;

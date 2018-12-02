@@ -2,13 +2,15 @@
   <div class="my-navigation">
     <div class="white_bar" :class="{ 'dropped': scrollPosition > flipPoint }"></div>
     <nav class="desktop" :class="{ 'dropped': scrollPosition > flipPoint }">
-      <div class="left nav_btn" @click="go('Home')" :class="{ 'active_route': activeRoute === 'Home' }">Home<i class="fa fa-circle"></i></div>
-      <div class="left nav_btn" @click="go('Experience')" :class="{ 'active_route': activeRoute === 'Experience' }">Experience<i class="fa fa-circle"></i></div>
-      <div class="left nav_btn" @click="go('Portfolio')" :class="{ 'active_route': activeRoute === 'Portfolio' }">Portfolio<i class="fa fa-circle"></i></div>
-      <div class="right btn">Résumé &nbsp;<i class="fa fa-file-download"></i></div>
+      <div class="left nav_btn" v-for="(route, i) in routes" :key="i" @click="go(route)" :class="{ 'active_route': activeRoute === route }">{{ route }}<i class="fa fa-circle"></i></div>
+      <a href="Footer.vue" download="dallin-stagg-resume1"><div class="right btn">Résumé &nbsp;<i class="fa fa-file-download"></i></div></a>
     </nav>
-    <nav class="mobile" :class="{ 'dropped': scrollPosition > flipPoint }">
+    <div class="mobile_bar" :class="{ 'dropped': scrollPosition > flipPoint }" @click="mobileMenuOpen = !mobileMenuOpen">
       <i class="fa fa-bars"></i>
+    </div>
+    <nav class="mobile_nav" :class="{ 'dropped': scrollPosition > flipPoint, 'opened': mobileMenuOpen }">
+      <div class="link" v-for="(route, i) in routes" :key="i" @click="go(route)" :class="{ 'active_route': activeRoute === route }">{{ route }}<i class="fa fa-circle"></i></div>
+      <div class="btn mobile_nav_btn">Résumé &nbsp;<i class="fa fa-file-download"></i></div>
     </nav>
   </div>
 </template>
@@ -18,8 +20,12 @@ export default {
   name: 'Header',
   data() {
     return {
+      routes: ['Home', 'Experience', 'Portfolio'],
+      //
       scrollPosition: null,
-      viewpointHeight: window.innerHeight
+      viewpointHeight: window.innerHeight,
+      //
+      mobileMenuOpen: false
     }
   },
   created: function () {
@@ -41,6 +47,7 @@ export default {
       this.scrollPosition = window.scrollY
     },
     go(routeName) {
+      this.mobileMenuOpen = false
       this.$router.push({ name: routeName })
     }
   }
@@ -133,13 +140,13 @@ export default {
         }
     }
 }
-.mobile {
+.mobile_bar {
   display: none;
   @include mobile {
     display: block;
   }
   //
-  background-color: rgba($white, .8);
+  background-color: rgba($white, .95);
   border-radius: 1.5rem;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
@@ -161,6 +168,67 @@ export default {
   i {
     color: $gray-dk;
     line-height: 3rem;
+  }
+}
+.mobile_nav {
+  display: none;
+  @include mobile {
+    display: block;
+  }
+  //
+  background-color: rgba($white, .95);
+  border-radius: 1.5rem;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  transform: scale(.8);
+  overflow: visible;
+  opacity: 0;
+  position: fixed;
+  top: -15rem;
+  left: 1rem;
+  width: calc(100% - 2rem);
+  z-index: 5;
+  transition: top .2s ease-out, transform .2s ease-out, opacity .2s ease-out;
+  .link:not(:last-child) {
+    border-bottom: 2px solid $gray-border;
+  }
+  .link {
+    color: $gray-dk;
+    font-size: 1.2rem;
+    font-weight: 500;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    padding: 0 1.5rem;
+    position: relative;
+    transition: padding .2s ease-out;
+    i {
+      color: $blue;
+      font-size: .8rem;
+      opacity: 0;
+      position: absolute;
+      left: 0rem;
+      top: 1.4rem;
+      text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+      transition: left .2s ease-out, opacity .2s ease-out;
+    }
+    &.active_route {
+      padding-left: 3rem;
+      i {
+        left: 1.5rem;
+        top: 1.4rem;
+        opacity: 1;
+      }
+    }
+  }
+  .mobile_nav_btn {
+    margin: 1rem auto;
+    text-align: center;
+    width: 8rem;
+  }
+  &.opened {
+    opacity: 1;
+    top: 5rem;
+    transform: scale(1);
   }
 }
 </style>
