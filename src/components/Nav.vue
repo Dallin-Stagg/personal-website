@@ -184,7 +184,7 @@ export default {
   overflow: visible;
   opacity: 0;
   position: fixed;
-  top: -15rem;
+  top: 1rem;
   left: 1rem;
   width: calc(100% - 2rem);
   z-index: 5;
