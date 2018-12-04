@@ -12,8 +12,7 @@
       <div class="overlay"></div>
     </div>
     <div class="about_me">
-      <h2>About me.</h2>
-      <p>I am currently a student at BYU studying Accounting and Computer Science. Throughout my studies and professional work experience I've found a passion for using my skillset to engage in analytical thinking to problem solve, project business insights, and communicating clearly with my team.</p>
+      <p>I am currently a student at BYU studying Accounting and Computer Science. Throughout my studies and professional work experience I've found a passion for using my skillset to engage in data-driven thinking to solve problems, project business insights, and clear communication with my team.</p>
     </div>
   </div>
 </template>
@@ -103,12 +102,7 @@ export default {
   }
 }
 .about_me {
-  padding: 3rem 0 5rem;
-  h2 {
-    color: $gray-dk;
-    font-size: 1.5rem;
-    text-align: center;
-  }
+  padding: 4rem 0;
   p {
     color: $gray-dk;
     font-size: 1rem;

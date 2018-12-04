@@ -33,14 +33,21 @@ export default {
                 title: 'Brigham Young University',
                 position_and_time: 'Accounting, August 2017 -',
                 area: 'Provo, UT',
-                description: 'During my time at Room Choice, I went from having a minimal coding background, to mastery in several programming languages. As part of a small and elite team of developers, I had a lot of responsibility placed squarely on my shoulders including solving specific and technical issues for clients.'
+                description: 'BYU IS THE SHIZ'
+            },
+            {
+                image_class: 'mil',
+                title: 'Millenium Auto Network',
+                position_and_time: 'Software Developer, October 2017 - November 2017',
+                area: 'Provo, UT',
+                description: 'After gaining valuable experience in the industry, I was hired as a temporary developer, directly in charge of optimizing the company website for mobile devices.'
             },
             {
                 image_class: 'rc',
                 title: 'Room Choice',
                 position_and_time: 'Software Developer, March 2017 - November 2018',
                 area: 'Provo, UT',
-                description: 'During my time at Room Choice, I went from having a minimal coding background, to mastery in several programming languages. As part of a small and elite team of developers, I had a lot of responsibility placed squarely on my shoulders including solving specific and technical issues for clients.'
+                description: 'During my time at Room Choice, I progressed from having a minimal coding background, to a mastery in several high-demand programming languages. As part of a small and elite team of developers, I had a lot of responsibility placed on my shoulders and was assigned to head up projects or the creation of new functionality to suit the needs of numerous clients. During my time, Room Choice underwent a company rebranding, which included a redesign of the software and fundamental changes to the way we did business.'
             }
         ]
       }
@@ -102,6 +109,15 @@ export default {
     grid-template-columns: 1fr 2fr;
     align-items: start;
     justify-content: center;
+    @include mobile {
+        border: 1px solid $gray-border;
+        border-radius: .5rem;
+        box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.2);
+        box-sizing: border-box;
+        display: block;
+        padding: 1rem;
+        width: calc(100% - 3rem);
+    }
     .item_image {
         box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.25);
         border-radius: 1rem;
@@ -110,11 +126,20 @@ export default {
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        @include mobile {
+            border-radius: .5rem;
+            box-shadow: 0 3px 8px 0 rgba(24, 55, 69, 0.25);
+            margin: .5rem auto 1.5rem;
+            width: calc(100% - 1rem);
+        }
         &.rc {
             background-image: url('../assets/images/room-choice-logo.png');
         }
         &.byu {
             background-image: url('../assets/images/byu-campus.jpg');
+        }
+        &.mil {
+            background-image: url('../assets/images/millenium-logo.png');
         }
     }
     .information {
@@ -122,23 +147,36 @@ export default {
             color: $gray-dk;
             font-size: 1.5rem;
             margin: 1rem 0 .3rem;
+            @include mobile {
+                font-size: 1.6rem;
+                margin-bottom: .5rem;
+            }
         }
         h4 {
             color: $green;
             font-size: 1rem;
             font-weight: 500;
             margin: 0;
+            @include mobile {
+                font-size: 1.1rem;
+            }
         }
         h5 {
             color: $blue;
             font-size: .95rem;
             font-weight: 500;
             margin: 0;
+            @include mobile {
+                font-size: 1.1rem;
+            }
         }
         p {
             color: $gray-med;
             font-size: .95rem;
             margin: .5rem 0;
+            @include mobile {
+                font-size: 1.1rem;
+            }
         }
     }
   }

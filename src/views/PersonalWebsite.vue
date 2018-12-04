@@ -1,6 +1,7 @@
 <template>
   <div id="my-website">
     <myNav></myNav>
+    <myResume v-if="showResume"></myResume>
     <div class="view">
       <router-view/>
     </div>
@@ -10,13 +11,20 @@
 
 <script>
 import MyNav from '../components/Nav.vue'
+import MyResume from '../components/Resume.vue'
 import MyFooter from '../components/Footer.vue'
 
 export default {
   name: 'app',
   components: {
     myNav: MyNav,
+    myResume: MyResume,
     myFooter: MyFooter
+  },
+  computed: {
+    showResume() {
+      return false
+    }
   },
   mounted() {
       if (this.$route.name === 'Personal Website') {

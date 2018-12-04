@@ -2,13 +2,14 @@
   <div class="my-footer">
         <div class="footer_data">
             <div class="info_section">
-                <h4>Let's connect.</h4>
+                <nav>
+                    <div class="link" v-for="(route, i) in routes" :key="i" :class="{ 'active': activeRoute === route }" @click="$router.push({ name: route })">{{ route }}</div>
+                </nav>
                 <p>Email: <a href="mailto:dallin.stagg@gmail.com">dallin.stagg@gmail.com</a></p>
-                <p>Call: <a href="tel:3854340401">(385)-434-0401</a></p>
+                <p>Phone: <a href="tel:3854340401">(385)-434-0401</a></p>
                 <div class="social_buttons">
                     <i class="fab fa-facebook-f" @click="open('https://www.facebook.com/dallin.stagg')"></i>
                     <i class="fab fa-linkedin-in" @click="open('https://www.linkedin.com/in/dallin-stagg')"></i>
-                    <i class="fab fa-instagram" @click="open('https://www.instagram.com/dallinstagg/')"></i>
                 </div>
             </div>
         </div>
@@ -21,6 +22,16 @@
 <script>
 export default {
   name: 'Footer',
+  data() {
+      return {
+          routes: ['Home', 'Experience', 'Portfolio']
+      }
+  },
+  computed: {
+      activeRoute() {
+          return this.$route.name
+      }
+  },
   methods: {
       open(link) {
           window.open(link);
@@ -42,66 +53,90 @@ export default {
 }
 
 .my-footer {
+    background-image: linear-gradient(10deg,$gray-border,$gray-lt);
     background-color: $gray-lt;
     border-top: 1px solid $gray-border;
     box-sizing: border-box;
     width: 100%;
     .footer_data {
-        align-content: center;
-        display: grid;
-        justify-content: center;
         padding: 3rem 0;
         .info_section {
-            h4 {
-                color: $gray-dk;
-                font-size: 1.3rem;
-                font-weight: 700;
+            text-align: center;
+            nav {
                 margin: 1rem 0;
-                text-align: center;
+                @include mobile {
+                    margin: 2rem 0;
+                }
+                .link {
+                    color: $gray-dk;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-size: .9rem;
+                    font-weight: 700;
+                    margin: 0 .3rem;
+                    text-transform: uppercase;
+                    &:hover {
+                        color: rgba($gray-dk, .8);
+                    }
+                    &.active {
+                        color: rgba($gray-dk, .8);
+                    }
+                    @include mobile {
+                        display: block;
+                        font-size: 1.2rem;
+                        margin: 1rem 0;
+                    }
+                }
             }
             p {
                 color: $gray-dk;
-                font-size: 1rem;
+                font-size: .9rem;
                 font-weight: 600;
-                line-height: 2rem;
+                line-height: 1.5rem;
                 margin: 0;
-                text-align: center;
                 a {
                     color: $blue;
                 }
+                @include mobile {
+                    font-size: 1.15rem;
+                    line-height: 1.8rem;
+                }
             }
             .social_buttons {
-                align-content: center;
-                display: grid;
-                justify-content: center;
-                grid-template-columns: 1fr 1fr 1fr;
-                margin: 1.5rem auto;
-                width: 10rem;
+                margin: 1rem 0;
+                @include mobile {
+                    margin: 1.5rem 0;
+                }
                 i {
                     background-color: $blue;
-                    border-radius: 50%;
+                    border-radius: 4px;
                     color: $white;
                     cursor: pointer;
                     font-size: 1.1rem;
                     line-height: 2.5rem;
-                    margin: 0 auto;
+                    margin: 0 .5rem;
                     text-align: center;
-                    width: 2.5rem;
+                    width: 4rem;
                     transition: .2s box-shadow ease-out;
                     &:hover {
                         box-shadow: 0 3px 10px 0 rgba(34,77,97,.25);
+                    }
+                    @include mobile {
+                        font-size: 1.5rem;
+                        line-height: 3.5rem;
+                        width: 6rem;
                     }
                 }
                 .fa-facebook-f {
                     background-color: #3b5998;
                 }
                 .fa-linkedin-in {
-                    background-color: 0077B5;
+                    background-color: #0077B5;
                 }
-                .fa-instagram {
+                /* .fa-instagram {
                     background: radial-gradient(circle at 30% 107%,#fdf497 0,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%);
                     font-size: 1.2rem;
-                }
+                } */
             }
         }
         

@@ -180,15 +180,15 @@ export default {
   border-radius: 1.5rem;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
-  transform: scale(.8);
+  transform: scale(.9);
   overflow: visible;
   opacity: 0;
   position: fixed;
-  top: 1rem;
+  top: -3rem;
   left: 1rem;
   width: calc(100% - 2rem);
-  z-index: 5;
-  transition: top .2s ease-out, transform .2s ease-out, opacity .2s ease-out;
+  z-index: 4;
+  transition: top .2s ease-out, transform .2s ease-out, opacity .2s ease-out, width .2s ease-out, border-radius .2s ease-out, left .2s ease-out;
   .link:not(:last-child) {
     border-bottom: 2px solid $gray-border;
   }
@@ -229,6 +229,15 @@ export default {
     opacity: 1;
     top: 5rem;
     transform: scale(1);
+  }
+  &.dropped {
+    border-radius: 0;
+    left: 0;
+    transform: scale(1);
+    width: 100%;
+    &.opened {
+      top: 3rem;
+    }
   }
 }
 </style>
