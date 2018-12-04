@@ -3,7 +3,7 @@
     <div class="header_section">
       <div class="text">
         <h4>Hey, I'm</h4>
-        <h1>DALLIN STAGG</h1>
+        <h1>DALLIN STAGGs</h1>
       </div>
       <div class="overlay"></div>
     </div>
