@@ -38,7 +38,7 @@ export default {
   position: relative;
   z-index: 1;
   .text {
-    animation: 1s ease-out 0s 1 headerSlideIn;
+    animation: 1.25s ease-out 0s 1 headerSlideIn;
     color: $white;
     position: relative;
     z-index: 3;
@@ -59,7 +59,7 @@ export default {
   @keyframes headerSlideIn {
     0% {
       opacity: 0;
-      bottom: 1rem;
+      bottom: .5rem;
     }
     100% {
       opacity: 1;
@@ -67,8 +67,8 @@ export default {
     }
   }
   .scroll_prompt {
-    animation: .5s ease-out 0s 1 scrollSlideIn;
-    color: $white;
+    animation: 1s ease-out 0s 1 scrollSlideIn;
+    color: rgba($white, .6);
     position: absolute;
     text-align: center;
     z-index: 3;
@@ -77,8 +77,9 @@ export default {
     width: 100%;
     h4 {
       font-size: 1.1rem;
-      font-weight: 500;
+      font-weight: 400;
       margin: .3rem 0;
+      text-shadow: 0px 2px 6px rgba(34, 77, 97, 0.7);
     }
   }
   @keyframes scrollSlideIn {

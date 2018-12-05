@@ -8,8 +8,9 @@
                 <p>Email: <a href="mailto:dallin.stagg@gmail.com">dallin.stagg@gmail.com</a></p>
                 <p>Phone: <a href="tel:3854340401">(385)-434-0401</a></p>
                 <div class="social_buttons">
-                    <i class="fab fa-facebook-f" @click="open('https://www.facebook.com/dallin.stagg')"></i>
+                    <!--<i class="fab fa-facebook-f" @click="open('https://www.facebook.com/dallin.stagg')"></i>-->
                     <i class="fab fa-linkedin-in" @click="open('https://www.linkedin.com/in/dallin-stagg')"></i>
+                    <i class="fab fa-github" @click="open('https://github.com/Dallin-Stagg')"></i>
                 </div>
             </div>
         </div>
@@ -132,6 +133,9 @@ export default {
                 }
                 .fa-linkedin-in {
                     background-color: #0077B5;
+                }
+                .fa-github {
+                    background-color: #333;
                 }
                 /* .fa-instagram {
                     background: radial-gradient(circle at 30% 107%,#fdf497 0,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%);

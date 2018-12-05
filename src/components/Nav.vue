@@ -3,7 +3,7 @@
     <div class="white_bar" :class="{ 'dropped': scrollPosition > flipPoint }"></div>
     <nav class="desktop" :class="{ 'dropped': scrollPosition > flipPoint }">
       <div class="left nav_btn" v-for="(route, i) in routes" :key="i" @click="go(route)" :class="{ 'active_route': activeRoute === route }">{{ route }}<i class="fa fa-circle"></i></div>
-      <a href="Footer.vue" download="dallin-stagg-resume1"><div class="right btn">Résumé &nbsp;<i class="fa fa-file-download"></i></div></a>
+      <a><div class="right btn">Résumé &nbsp;<i class="fa fa-file-download"></i></div></a>
     </nav>
     <div class="mobile_bar" :class="{ 'dropped': scrollPosition > flipPoint }" @click="mobileMenuOpen = !mobileMenuOpen">
       <i class="fa fa-bars"></i>
