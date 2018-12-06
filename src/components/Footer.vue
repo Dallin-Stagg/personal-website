@@ -54,7 +54,7 @@ export default {
 }
 
 .my-footer {
-    background-image: linear-gradient(10deg,$gray-border,$gray-lt);
+    background: linear-gradient(10deg,$gray-border,$gray-lt);
     background-color: $gray-lt;
     border-top: 1px solid $gray-border;
     box-sizing: border-box;

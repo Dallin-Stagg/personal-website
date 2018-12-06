@@ -5,16 +5,20 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    headerIsCompressed: false
+		showResume: false,
+		menuOpen: false
   },
   mutations: {
-    setUser: state => {
-        state.headerIsCompressed = !state.headerIsCompressed
-      }
+		toggleModal: state => {
+			state.showResume = !state.showResume
+		},
+		toggleMenu: state => {
+			state.menuOpen = !state.menuOpen
+    }
   },
   actions: {
-        /* testThat ({ commit }) {
-            console.log('hello hello hello')
-        } */
+			/* testThat ({ commit }) {
+					console.log('hello hello hello')
+			} */
     }
 })

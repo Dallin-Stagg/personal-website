@@ -2,10 +2,10 @@
   <div id="my-website">
     <myNav></myNav>
     <myResume v-if="showResume"></myResume>
-    <div class="view">
+    <div id="view" :class="{ 'menu_open': menuOpen }">
       <router-view/>
+      <myFooter></myFooter>
     </div>
-    <myFooter></myFooter>
   </div>
 </template>
 
@@ -23,7 +23,10 @@ export default {
   },
   computed: {
     showResume() {
-      return false
+      return this.$store.state.showResume
+    },
+    menuOpen() {
+      return this.$store.state.menuOpen
     }
   },
   mounted() {
@@ -34,6 +37,32 @@ export default {
 }
 </script>
 <style lang="scss">
+@import '../assets/styles/global-styles.scss';
 /* eslint-disable */
+#my-website {
+  background: linear-gradient(10deg, #C06C84, #6C5B7B, #355C7D);
+  overflow: hidden;
+  perspective: 1000px;
+  width: 100%;
+}
+#view {
+  background-color: $white;
+  height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+  left: 0;
+  transition: .2s ease-out left, .2s ease-out transform, .2s ease-out filter;
+  &.menu_open {
+    border-radius: .5rem;
+    left: 10rem;
+    transform: rotateY(-20deg) scale(.7);
+    
+  }
+  @include mobile {
+    &.menu_open {
+      transform: rotateY(-50deg) scale(.8);
+    }
+  }
+}
 
 </style>

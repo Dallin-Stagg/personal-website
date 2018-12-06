@@ -26,29 +26,28 @@ export default {
   name: 'Experience',
   data() {
       return {
-          imageConfig: '/img/',
-          items: [
-              {
-                image_class: 'byu',
-                title: 'Brigham Young University',
-                position_and_time: 'Accounting, August 2017 -',
-                area: 'Provo, UT',
-                description: 'BYU IS THE SHIZ'
-            },
-            {
-                image_class: 'mil',
-                title: 'Millenium Auto Network',
-                position_and_time: 'Software Developer, October 2017 - November 2017',
-                area: 'Provo, UT',
-                description: 'After gaining valuable experience in the industry, I was hired as a temporary developer, directly in charge of optimizing the company website for mobile devices.'
-            },
-            {
-                image_class: 'rc',
-                title: 'Room Choice',
-                position_and_time: 'Software Developer, March 2017 - November 2018',
-                area: 'Provo, UT',
-                description: 'During my time at Room Choice, I progressed from having a minimal coding background, to a mastery in several high-demand programming languages. As part of a small and elite team of developers, I had a lot of responsibility placed on my shoulders and was assigned to head up projects or the creation of new functionality to suit the needs of numerous clients. During my time, Room Choice underwent a company rebranding, which included a redesign of the software and fundamental changes to the way we did business.'
-            }
+				items: [
+						{
+							image_class: 'byu',
+							title: 'Brigham Young University',
+							position_and_time: 'Accounting, August 2017 -',
+							area: 'Provo, UT',
+							description: 'BYU IS THE SHIZ'
+					},
+					{
+							image_class: 'mil',
+							title: 'Millenium Auto Network',
+							position_and_time: 'Software Developer, October 2017 - November 2017',
+							area: 'Provo, UT',
+							description: 'After gaining valuable experience in the industry, I was hired as a temporary developer, directly in charge of optimizing the company website for mobile devices.'
+					},
+					{
+							image_class: 'rc',
+							title: 'Room Choice',
+							position_and_time: 'Software Developer, March 2017 - November 2018',
+							area: 'Provo, UT',
+							description: 'During my time at Room Choice, I progressed from having a minimal coding background, to a mastery in several high-demand programming languages. As part of a small and elite team of developers, I had a lot of responsibility placed on my shoulders and was assigned to head up projects or the creation of new functionality to suit the needs of numerous clients. During my time, Room Choice underwent a company rebranding, which included a redesign of the software and fundamental changes to the way we did business.'
+					}
         ]
       }
   },
