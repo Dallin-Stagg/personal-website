@@ -49,18 +49,13 @@ export default {
   background-color: $white;
   height: 100vh;
   overflow-y: scroll;
-  position: relative;
-  left: 0;
-  transition: .2s ease-out left, .2s ease-out transform, .2s ease-out filter;
+  transition: .25s ease-out transform;
+  z-index: 2;
+  will-change: transform;
   &.menu_open {
-    border-radius: .5rem;
-    left: 10rem;
-    transform: rotateY(-20deg) scale(.7);
-    
-  }
-  @include mobile {
-    &.menu_open {
-      transform: rotateY(-50deg) scale(.8);
+    transform: rotateY(-10deg) scale(.8) translateX(10rem);
+    @include mobile {
+      transform: rotateY(-40deg) scale(.7) translateX(20rem);
     }
   }
 }

@@ -50,7 +50,7 @@ export default {
   background: url('../assets/images/desk-shot.jpg') no-repeat -9999px -9999px;
 }
 #preload-03 {
-  background: url('../assets/images/close-up-code.jpg') no-repeat -9999px -9999px;
+  background: url('../assets/images/material-blue.jpg') no-repeat -9999px -9999px;
 }
 
 .my-footer {

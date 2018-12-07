@@ -36,12 +36,12 @@ export default {
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   .text {
     animation: 1.25s ease-out 0s 1 headerSlideIn;
     color: $white;
     position: relative;
-    z-index: 3;
+    z-index: 4;
     text-align: center;
     h4 {
       font-size: 2rem;
@@ -71,7 +71,7 @@ export default {
     color: rgba($white, .6);
     position: absolute;
     text-align: center;
-    z-index: 3;
+    z-index: 4;
     bottom: 2rem;
     left: 0;
     width: 100%;
@@ -99,7 +99,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 3;
   }
 }
 .about_me {
