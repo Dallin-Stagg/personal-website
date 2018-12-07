@@ -2,7 +2,7 @@
   <div id="my-website">
     <myNav></myNav>
     <myResume v-if="showResume"></myResume>
-    <div id="view" :class="{ 'menu_open': menuOpen }">
+    <div id="view" :class="{ 'menu_open': menuOpen }" @click="closeMenu()">
       <router-view/>
       <myFooter></myFooter>
     </div>
@@ -15,7 +15,7 @@ import MyResume from '../components/Resume.vue'
 import MyFooter from '../components/Footer.vue'
 
 export default {
-  name: 'app',
+  name: 'Website',
   components: {
     myNav: MyNav,
     myResume: MyResume,
@@ -27,12 +27,28 @@ export default {
     },
     menuOpen() {
       return this.$store.state.menuOpen
+    },
+    routeName() {
+      return this.$route.name
+    }
+  },
+  watch: {
+    routeName() { // creates desired scroll behavior work around
+      var viewDiv = document.getElementById('view');
+      viewDiv.scrollTop = 0;
     }
   },
   mounted() {
-      if (this.$route.name === 'Personal Website') {
-          this.$router.push({ name: 'Home' })
+    if (this.$route.name === 'Personal Website') {
+        this.$router.push({ name: 'Home' })
+    }
+  },
+  methods: {
+    closeMenu() {
+      if (this.$store.state.menuOpen) {
+        this.$store.commit('toggleMenu')
       }
+    }
   }
 }
 </script>
@@ -40,7 +56,9 @@ export default {
 @import '../assets/styles/global-styles.scss';
 /* eslint-disable */
 #my-website {
-  background: linear-gradient(10deg, #C06C84, #6C5B7B, #355C7D);
+  // background: linear-gradient(10deg, #C06C84, #6C5B7B, #355C7D);
+  // background: linear-gradient(10deg, #cbb4d4, #20002c);
+  background: linear-gradient(10deg, #cbb4d4, $blue-dk);
   overflow: hidden;
   perspective: 1000px;
   width: 100%;

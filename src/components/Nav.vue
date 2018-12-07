@@ -7,42 +7,36 @@
     <nav class="nav_section">
       <div class="item" v-for="(route, i) in routes" :key="i" @click="go(route)" :class="{ 'active': activeRoute === route }">{{ route }}</div>
       <br>
-      <div class="icon_item"><i class="fa fa-file"></i></div>
-      <div class="icon_item"><i class="fab fa-linkedin-in"></i></div>
-      <div class="icon_item"><i class="fab fa-github"></i></div>
+      <div class="icon_item" @click="toggleModal()"><i class="fa fa-file"></i></div>
+      <div class="icon_item" @click="openLink('https://www.linkedin.com/in/dallin-stagg')"><i class="fab fa-linkedin-in"></i></div>
+      <div class="icon_item" @click="openLink('https://github.com/Dallin-Stagg')"><i class="fab fa-github"></i></div>
     </nav>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Header',
+  name: 'Navigation',
   data() {
     return {
-      routes: ['Home', 'Experience', 'Portfolio'],
-      //
-      scrollPosition: null,
-      viewpointHeight: window.innerHeight
+      routes: ['Home', 'Experience', 'Portfolio']
     }
   },
   computed: {
     activeRoute() {
       return this.$route.name
     },
-    flipPoint() {
-      return this.viewpointHeight * (.6)
-    },
     menuOpen() {
       return this.$store.state.menuOpen
     }
   },
   methods: {
-    handleScroll: function () {
-      this.scrollPosition = window.scrollY
-    },
     go(routeName) {
       this.toggleMenu()
       this.$router.push({ name: routeName })
+    },
+    openLink(link) {
+      window.open(link)
     },
     toggleModal() {
       this.toggleMenu()

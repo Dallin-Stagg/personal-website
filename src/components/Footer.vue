@@ -1,42 +1,41 @@
 <template>
   <div class="my-footer">
-        <div class="footer_data">
-            <div class="info_section">
-                <nav>
-                    <div class="link" v-for="(route, i) in routes" :key="i" :class="{ 'active': activeRoute === route }" @click="$router.push({ name: route })">{{ route }}</div>
-                </nav>
-                <p>Email: <a href="mailto:dallin.stagg@gmail.com">dallin.stagg@gmail.com</a></p>
-                <p>Phone: <a href="tel:3854340401">(385)-434-0401</a></p>
-                <div class="social_buttons">
-                    <!--<i class="fab fa-facebook-f" @click="open('https://www.facebook.com/dallin.stagg')"></i>-->
-                    <i class="fab fa-linkedin-in" @click="open('https://www.linkedin.com/in/dallin-stagg')"></i>
-                    <i class="fab fa-github" @click="open('https://github.com/Dallin-Stagg')"></i>
-                </div>
-            </div>
-        </div>
-        <!-- IMAGE PRELOADING -->
-        <div id="preload-01"></div>
-        <div id="preload-02"></div>
-        <div id="preload-03"></div>
-    </div>
+		<div class="footer_data">
+			<div class="info_section">
+				<nav>
+					<div class="link" v-for="(route, i) in routes" :key="i" :class="{ 'active': activeRoute === route }" @click="$router.push({ name: route })">{{ route }}</div>
+				</nav>
+				<p>Email: <a href="mailto:dallin.stagg@gmail.com">dallin.stagg@gmail.com</a></p>
+				<p>Phone: <a href="tel:3854340401">(385)-434-0401</a></p>
+				<div class="social_buttons">
+					<i class="fab fa-linkedin-in" @click="open('https://www.linkedin.com/in/dallin-stagg')"></i>
+					<i class="fab fa-github" @click="open('https://github.com/Dallin-Stagg')"></i>
+				</div>
+			</div>
+		</div>
+		<!-- IMAGE PRELOADING -->
+		<div id="preload-01"></div>
+		<div id="preload-02"></div>
+		<div id="preload-03"></div>
+	</div>
 </template>
 <script>
 export default {
   name: 'Footer',
   data() {
-      return {
-          routes: ['Home', 'Experience', 'Portfolio']
-      }
+    return {
+			routes: ['Home', 'Experience', 'Portfolio']
+		}
   },
   computed: {
-      activeRoute() {
-          return this.$route.name
-      }
+    activeRoute() {
+      return this.$route.name
+    }
   },
   methods: {
-      open(link) {
-          window.open(link);
-      }
+    open(link) {
+      window.open(link);
+    }
   }
 }
 </script>
