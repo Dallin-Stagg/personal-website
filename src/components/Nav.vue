@@ -5,6 +5,7 @@
       <span>Menu</span>
     </div>
     <nav class="nav_section">
+      <div class="personal_logo"></div>
       <div class="item" v-for="(route, i) in routes" :key="i" @click="go(route)" :class="{ 'active': activeRoute === route }">{{ route }}</div>
       <br>
       <div class="icon_item" @click="toggleModal()"><i class="fa fa-file"></i></div>
@@ -88,7 +89,16 @@ export default {
 .nav_section {
   position: absolute;
   left: 0;
-  top: 7rem;
+  top: 5rem;
+  .personal_logo {
+    background-image: url('../assets/images/logo-white.png');
+    background-size: 190%;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: drop-shadow(0px 2px 5px rgba(0,0,0,0.5));
+    height: 8rem;
+    width: 12rem;
+  }
   .item {
     border: 1px solid $white;
     border-radius: 3.1rem;
@@ -98,6 +108,7 @@ export default {
     margin: 1rem;
     padding: 0 1rem;
     text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
+    width: 6rem;
     @include mobile {
       font-size: 1.1rem;
       line-height: 3rem;
