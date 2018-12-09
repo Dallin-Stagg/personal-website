@@ -104,8 +104,9 @@ export default {
     border-radius: 3.1rem;
     color: $white;
     cursor: pointer;
+    font-size: 1rem;
     line-height: 2.5rem;
-    margin: 1rem;
+    margin: .75rem 1rem;
     padding: 0 1rem;
     text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
     width: 6rem;
@@ -118,7 +119,7 @@ export default {
       background-color: rgba($white, .05);
     }
     &.active {
-      background-color: rgba($white, .1);
+      background-color: rgba($white, .2);
     }
   }
   .icon_item {
@@ -127,7 +128,7 @@ export default {
     color: $white;
     cursor: pointer;
     line-height: 2.5rem;
-    margin: 1rem;
+    margin: .75rem 1rem;
     text-align: center;
     width: 2.5rem;
     text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);

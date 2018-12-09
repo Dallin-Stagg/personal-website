@@ -27,7 +27,7 @@ export default {
 							title: 'Brigham Young University',
 							position_and_time: 'Accounting, August 2017 -',
 							area: 'Provo, UT',
-							description: 'BYU IS THE SHIZ'
+							description: 'Duke presented unprecedented scale and diversity of opportunity. My four years of phenomenal professors across the disciplines pushed me to expand, challenge, and adjust my worldview. My experience dancing with DefMo showed me the power of empathetic leadership and expanded my artistic comfort zone. My tenure throwing major, campus-wide events validated that quality stems from attention to detail. My junior fall semester abroad at Londons UCL humbled me to explore my place in the world. My engagement in Dukes tech & innovation initiatives exercised my creative muscle, sparked my obsession with design, and strengthened my tolerance to adversity. Duke showed me what I love to do, gifted me with a love for learning, and surrounded me with a wealth of inspiring peers.',
 					},
 					{
 							image_class: 'mil',
@@ -54,9 +54,7 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/styles/global-styles.scss';
 .experience {
-	background: linear-gradient(45deg, rgba($blue, .8) 15%, rgba($blue-dk, .8) 85%),url('../assets/images/material-blue.jpg');
-  background: linear-gradient(20deg, rgba($blue, .7) 15%, rgba($blue-dk, .7) 85%),linear-gradient(40deg, rgba($mint, .7) 15%, rgba($blue-dk, .7) 85%);
-  background-image: url('../assets/images/overlay-striped.svg'), linear-gradient(10deg, #C06C84, #6C5B7B, #355C7D);
+	background-image: url('../assets/images/overlay-grid.svg'), linear-gradient(10deg, #1f4037, #00bf8f);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -70,7 +68,7 @@ export default {
 	margin: 0 auto 1rem;
 	width: 54rem;
 	display: grid;
-	grid-template-columns: 1fr 2fr;
+	grid-template-columns: 2fr 5fr;
 	align-items: center;
 	justify-content: center;
 	padding: 1rem;
@@ -85,9 +83,9 @@ export default {
 	}
 	.item_image {
 			box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.25);
-			border-radius: 1rem;
-			height: 14rem;
-			width: 15rem;
+			border-radius: .5rem;
+			height: 12rem;
+			width: 13rem;
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: cover;
@@ -136,7 +134,7 @@ export default {
 					}
 			}
 			p {
-					color: $gray-med;
+					color: $text-secondary;
 					font-size: .95rem;
 					margin: .5rem 0;
 					@include mobile {

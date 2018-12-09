@@ -56,8 +56,6 @@ export default {
 @import '../assets/styles/global-styles.scss';
 /* eslint-disable */
 #my-website {
-  // background: linear-gradient(10deg, #C06C84, #6C5B7B, #355C7D);
-  // background: linear-gradient(10deg, #cbb4d4, #20002c);
   background: linear-gradient(10deg, #cbb4d4, $blue-dk);
   overflow: hidden;
   perspective: 1000px;

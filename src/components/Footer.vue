@@ -15,8 +15,6 @@
 		</div>
 		<!-- IMAGE PRELOADING -->
 		<div id="preload-01"></div>
-		<div id="preload-02"></div>
-		<div id="preload-03"></div>
 	</div>
 </template>
 <script>
@@ -44,12 +42,6 @@ export default {
 
 #preload-01 {
   background: url('../assets/images/mountain-and-lake.jpg') no-repeat -9999px -9999px;
-}
-#preload-02 {
-  background: url('../assets/images/desk-shot.jpg') no-repeat -9999px -9999px;
-}
-#preload-03 {
-  background: url('../assets/images/material-blue.jpg') no-repeat -9999px -9999px;
 }
 
 .my-footer {
