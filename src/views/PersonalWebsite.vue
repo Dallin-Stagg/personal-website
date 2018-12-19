@@ -1,7 +1,8 @@
 <template>
   <div id="my-website">
     <myNav></myNav>
-    <myResume v-if="showResume"></myResume>
+    <contactMe v-if="showContact"></contactMe>
+    <alert></alert>
     <div id="view" :class="{ 'menu_open': menuOpen }" @click="closeMenu()">
       <router-view/>
       <myFooter></myFooter>
@@ -11,29 +12,34 @@
 
 <script>
 import MyNav from '../components/Nav.vue'
-import MyResume from '../components/Resume.vue'
+import ContactMe from '../components/Contact.vue'
+import Alert from '../components/Alert.vue'
 import MyFooter from '../components/Footer.vue'
 
 export default {
   name: 'Website',
   components: {
     myNav: MyNav,
-    myResume: MyResume,
+    contactMe: ContactMe,
+    alert: Alert,
     myFooter: MyFooter
   },
   computed: {
-    showResume() {
-      return this.$store.state.showResume
+    showContact() {
+      return this.$store.state.showContact
     },
     menuOpen() {
       return this.$store.state.menuOpen
+    },
+    showAlert() {
+      return this.$store.state.alertInfo.show
     },
     routeName() {
       return this.$route.name
     }
   },
   watch: {
-    routeName() { // creates desired scroll behavior work around
+    routeName() { // creates desired scroll behavior work around (scrolls to top on page change)
       var viewDiv = document.getElementById('view');
       viewDiv.scrollTop = 0;
     }
@@ -56,7 +62,10 @@ export default {
 @import '../assets/styles/global-styles.scss';
 /* eslint-disable */
 #my-website {
-  background: linear-gradient(10deg, #cbb4d4, $blue-dk);
+  background-image: url('../assets/images/overlay-striped.svg'), linear-gradient(10deg, #6C5B7B, #355C7D);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   overflow: hidden;
   perspective: 1000px;
   width: 100%;

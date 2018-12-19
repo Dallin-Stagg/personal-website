@@ -2,7 +2,6 @@
   <div class="my-navigation">
     <div class="nav_bar" @click="$store.commit('toggleMenu')">
       <i class="fa fa-bars"></i>
-      <span>Menu</span>
     </div>
     <nav class="nav_section">
       <div class="personal_logo"></div>
@@ -75,15 +74,6 @@ export default {
   i {
     color: $gray-dk;
     line-height: 3rem;
-  }
-  span {
-    display: none;
-    color: $gray-dk;
-    font-weight: 600;
-    padding-left: .5rem;
-    @include mobile {
-      display: none;
-    }
   }
 }
 .nav_section {

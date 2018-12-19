@@ -71,7 +71,8 @@ export default {
 @import '../assets/styles/global-styles.scss';
 
 .portfolio {
-  background-image: url('../assets/images/overlay-striped.svg'), linear-gradient(10deg, #6C5B7B, #355C7D, $blue-dk);
+  // background-image: linear-gradient(10deg, #6C5B7B, #355C7D, $blue-dk);
+  background-image: linear-gradient(315deg, #b1bfd8 0%, #6782b4 74%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -90,7 +91,7 @@ export default {
   .white_box {
     background-color: $white;
     border-radius: 4px;
-    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.4);
     margin: 0 auto 1.5rem;
     padding-top: 1rem;
     position: relative;

@@ -5,20 +5,33 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-		showResume: false,
-		menuOpen: false
+		showContact: false,
+		menuOpen: false,
+		alertInfo: {
+			type: '',
+			text: '',
+			show: false
+		}
   },
   mutations: {
 		toggleModal: state => {
-			state.showResume = !state.showResume
+			state.showContact = !state.showContact
 		},
 		toggleMenu: state => {
 			state.menuOpen = !state.menuOpen
-    }
+		},
+		toggleAlert: (state, info) => {
+			state.alertInfo.type = info.type
+			state.alertInfo.text = info.text
+			state.alertInfo.show = true
+		},
+		clearAlert: state => {
+			state.alertInfo.show = false
+		}
   },
   actions: {
 			/* testThat ({ commit }) {
-					console.log('hello hello hello')
+				console.log('hello hello hello')
 			} */
     }
 })
