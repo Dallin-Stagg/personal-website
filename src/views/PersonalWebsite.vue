@@ -1,11 +1,17 @@
 <template>
   <div id="my-website">
     <myNav></myNav>
-    <contactMe v-if="showContact"></contactMe>
-    <alert></alert>
+    <transition name="fade">
+      <contactMe v-if="showContact"></contactMe>
+    </transition>
+    <transition name="alert_slide">
+      <alert v-if="showAlert"></alert>
+    </transition>
+      
+    
     <div id="view" :class="{ 'menu_open': menuOpen }" @click="closeMenu()">
       <router-view/>
-      <myFooter></myFooter>
+      <!--<myFooter></myFooter>-->
     </div>
   </div>
 </template>
@@ -28,11 +34,11 @@ export default {
     showContact() {
       return this.$store.state.showContact
     },
-    menuOpen() {
-      return this.$store.state.menuOpen
-    },
     showAlert() {
       return this.$store.state.alertInfo.show
+    },
+    menuOpen() {
+      return this.$store.state.menuOpen
     },
     routeName() {
       return this.$route.name
@@ -46,7 +52,7 @@ export default {
   },
   mounted() {
     if (this.$route.name === 'Personal Website') {
-        this.$router.push({ name: 'Home' })
+      this.$router.push({ name: 'Home' })
     }
   },
   methods: {
@@ -61,8 +67,16 @@ export default {
 <style lang="scss">
 @import '../assets/styles/global-styles.scss';
 /* eslint-disable */
+.alert_slide-enter-active, .alert_slide-leave-active {
+  transition: opacity .5s, transform .5s;
+}
+.alert_slide-enter, .alert_slide-leave-to {
+  opacity: 0;
+  transform: translateX(30rem);
+}
+
 #my-website {
-  background-image: url('../assets/images/overlay-striped.svg'), linear-gradient(10deg, #6C5B7B, #355C7D);
+  background-image: url('../assets/images/overlay-striped.svg'), linear-gradient(10deg, #434343, $gray-dk);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -71,9 +85,10 @@ export default {
   width: 100%;
 }
 #view {
-  background-color: $white;
+  background-color: transparent;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.4);
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   transition: .25s ease-out transform;
   z-index: 2;
   will-change: transform;

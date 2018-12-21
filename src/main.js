@@ -4,8 +4,13 @@ import App from './App'
 import router from './router'
 import store from './store/index'
 // import "./../node_modules/bulma/css/bulma.css";
-
+//
+import VueParticles from 'vue-particles'
+import VueConfetti from 'vue-confetti'
+ 
 Vue.use(Vuex)
+Vue.use(VueParticles)
+Vue.use(VueConfetti)
 
 Vue.config.productionTip = false
 

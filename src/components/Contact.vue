@@ -1,8 +1,7 @@
 <template>
   <div class="contact_me">
 		<div class="modal">
-			<h4>Let's Connect</h4>
-			<i class="fa fa-times close_btn" @click="$store.commit('toggleModal')"></i>
+			<i class="fa fa-times close_btn" @click="close()"></i>
 			<div class="input_item">
 				<p :class="{ 'shift': name }">NAME</p>
 				<input
@@ -29,7 +28,12 @@
 				<div class="ds_toggle left" @click="request_resume = !request_resume"><div class="dot" :class="{ 'toggled': request_resume }"></div></div>
 				<p>REQUEST RESUME</p>
 			</div>
-			<div class="ds_btn" :class="{ 'disabled': !inputReady }" @click="go()">Send<span v-if="!inputReady">&nbsp;<i class="fa fa-exclamation-circle"></i></span></div>
+			<div class="ds_btn_modal" :class="{ 'disabled': !inputReady }" @click="go()">Send</div>
+			<transition name="fade">
+				<div class="success_prompt" v-if="messageSent">
+					<h4>Thanks for contacting me! I'll be sure to contact you as soon as I am able! In the meantime, enjoy the confetti. :)</h4>
+				</div>
+			</transition>
 		</div>
 	</div>
 </template>
@@ -40,6 +44,7 @@ export default {
 	name: 'Contact',
 	data() {
 		return {
+			messageSent: false,
 			name: '',
 			email: '',
 			message: '',
@@ -50,18 +55,15 @@ export default {
 		this.$refs.autofocus.focus()
 	},
   computed: {
-		activeRoute() {
-			return this.$route.name
-		},
 		inputReady() {
 			return this.name && this.email && this.message
 		}
   },
   methods: {
-	  go() {
-		  this.toggleAlert(this.inputReady)
-		  if (this.inputReady) {
-			  /*	// https://script.google.com/macros/s/AKfycbwS78apLRhuzlmigzzMCZH_2Y6opmpWeCqfbc1_unWqEevmsUI/exec
+		go() {
+			this.toggleAlert(this.inputReady)
+			if (this.inputReady) {
+				/*	// https://script.google.com/macros/s/AKfycbwS78apLRhuzlmigzzMCZH_2Y6opmpWeCqfbc1_unWqEevmsUI/exec
 				var contact_url =
 					'https://script.google.com/macros/s/AKfycbwS78apLRhuzlmigzzMCZH_2Y6opmpWeCqfbc1_unWqEevmsUI/exec'
 				var date = new Date()
@@ -80,32 +82,60 @@ export default {
 				)
 				this.$store.commit('toggleModal')
 				*/
+				this.$confetti.start({
+					shape: 'rect'
+				})
+				this.messageSent = true
 			}
-	  },
-	  toggleAlert(ready) {
-		  if (ready) {
-			  var alertInfo = {
-					text: 'Message sent. We will be in touch shortly.',
-					type: 'success'
-				}
-		  } else {
-			  var alertInfo = {
-					text: 'Please fill out all fields before sending.',
-					type: 'warning'
-				}
+		},
+		toggleAlert(ready) {
+			var alertInfo = {
+				text: '',
+				type: ''
+			}
+			if (ready) {
+				alertInfo.text = 'Message sent successfully!'
+				alertInfo.type = 'success'
+			} else {
+				alertInfo.text = 'Please fill out all fields before sending.'
+				alertInfo.type = 'warning'
 			}
 			this.$store.commit('toggleAlert', alertInfo)
-	  }
+		},
+		close() {
+			this.$confetti.stop()
+			this.$store.commit('toggleModal')
+		}
   }
 }
 </script>
 <style scoped lang="scss">
 @import '../assets/styles/global-styles.scss';
 
-
+.ds_btn_modal {
+	background-color: $green;
+	border-radius: 1.5rem;
+	box-shadow: 0 3px 7px 0 rgba(24, 55, 69, 0.1);
+	color: $white;
+	cursor: pointer;
+	font-size: .8rem;
+	font-weight: 600;
+	letter-spacing: .5px;
+	line-height: 2.3rem;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 1rem auto;
+	width: 8rem;
+	transition: background-color .2s ease-out;
+	&.disabled {
+		background-color: rgba($green, .4);
+		box-shadow: none;
+		cursor: not-allowed;
+	}
+}
 .contact_me {
-	animation: .5s ease-out 0s 1 backgroundFadeIn;
 	background-color: rgba(0,0,0,0.5);
+	backdrop-filter: blur(2px);
 	display: flex;
 	align-items: center;
   justify-content: center;
@@ -114,43 +144,33 @@ export default {
 	width: 100%;
 	z-index: 10;
 	.modal {
-		animation: .5s ease-out 0s 1 modalAnimation;
 		background-color: $white;
 		border-radius: .5rem;
+		box-sizing: border-box;
 		box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.25);
-		padding: 0 .8rem;
+		padding: 3rem 1rem 0;
 		position: relative;
-		width: 18rem;
+		width: 20rem;
 		@include mobile {
 			width: calc(100% - 1rem);
 		}
-		h4 {
-			color: rgba($gray-dk, .8);
-			font-size: 1.5rem;
-			font-weight: 700;
-			line-height: 3rem; 
-			margin: 0;
-			padding: 1.5rem 0 .5rem;
-			text-align: center;
-			text-indent: .5rem;
-			text-transform: uppercase;
-		}
 		.close_btn {
 			border-radius: 50%;
-			color: rgba($gray-dk, .8);
+			color: rgba($gray-dk, .6);
 			cursor: pointer;
 			line-height: 1.8rem;
 			position: absolute;
 			text-align: center;
-			top: .5rem;
-			right: .5rem;
+			top: .3rem;
+			right: .3rem;
 			width: 1.8rem;
+			z-index: 20;
 			transition: background-color .2s ease-out;
 			&:hover {
 				background-color: rgba($gray, .4);
 			}
 			@include mobile {
-				background-color: rgba($gray, .9);
+				background-color: rgba($gray, .3);
 				border-radius: 1.75rem;
 				box-shadow: inset 0 1px 3px 0 rgba(24, 55, 69, 0.25);
 				font-size: 1.2rem;
@@ -183,8 +203,9 @@ export default {
 				}
 			}
 			input {
-				border: 1.5px solid $gray-border;
+				border: 1px solid $gray-border;
 				border-radius: .5rem;
+				box-shadow: inset 0 2px 5px 0 rgba(24, 55, 69, 0.1);
 				box-sizing: border-box;
 				color: $gray-dk;
 				height: 2.5rem;
@@ -194,16 +215,15 @@ export default {
 				outline: none;
 				text-indent: .8rem;
 				width: 100%;
-				transition: border .1s ease-out, box-shadow .1s ease-out;
 				&:focus {
-					border: 1.5px solid $blue;
-					box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+					border: 1px solid $blue;
 				}
 			}
 			textarea {
-				border: 1.5px solid $gray-border;
+				border: 1px solid $gray-border;
 				border-radius: .5rem;
 				box-sizing: border-box;
+				box-shadow: inset 0 2px 5px 0 rgba(24, 55, 69, 0.1);
 				color: $gray-dk;
 				height: 10rem;
 				font-family: system-ui;
@@ -213,17 +233,14 @@ export default {
 				outline: none;
 				padding: .7rem .8rem;
 				width: 100%;
-				transition: border .1s ease-out, box-shadow .1s ease-out;
 				&:focus {
-					border: 1.5px solid $blue;
-					box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.1);
+					border: 1px solid $blue;
 				}
 			}
 		}
 		.toggle_item {
-			border-bottom: 1px solid $gray-border;
 			overflow: auto;
-			padding-bottom: 1.5rem;
+			padding: 0 0 1.5rem 3rem;
 			.left {
 				float: left;
 			}
@@ -237,26 +254,26 @@ export default {
 				text-indent: .8rem;
 			}
 		}
-	}
-	@keyframes modalAnimation {
-    0% {
-      opacity: 0;
-      bottom: 10rem;
-			transform: scale(.5);
-    }
-    100% {
-      opacity: 1;
-      bottom: 0;
-			transform: scale(1);
-    }
-  }
-}
-@keyframes backgroundFadeIn {
-	0% {
-		background-color: rgba(0,0,0,0.0);
-	}
-	100% {
-		background-color: rgba(0,0,0,0.5);
+		.success_prompt {
+			border-radius: .5rem;
+			box-sizing: border-box;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0 1.5rem;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: $white;
+			width: 100%;
+			height: 100%;
+			z-index: 15;
+			h4 {
+				color: rgba($gray-dk, .8);
+				font-size: 1.3rem;
+				text-align: center;
+			}
+		}
 	}
 }
 </style>

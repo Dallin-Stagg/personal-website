@@ -26,7 +26,13 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+// vue transition tag stylings
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 // PERSONAL WEBSITE STYLES
 
 .ds_btn {
@@ -53,7 +59,8 @@ html {
     background: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.1)), linear-gradient(255deg,$mint,$blue);
   }
   &.disabled {
-    background: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15));
+    background: white;
+    color: $gray-med;
     cursor: not-allowed;
   }
   &.invert {
@@ -87,7 +94,7 @@ html {
     width: 1.3rem;
     transition: transform .2s ease-out, background-color .2s ease-out;
     &.toggled {
-      background-color: $blue;
+      background-color: $green;
       transform: translateX(1.2rem);
     }
   }

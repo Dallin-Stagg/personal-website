@@ -1,5 +1,5 @@
 <template>
-  <div class="my-alert" :class="{ 'show': showAlert }">
+  <div class="my-alert">
 		<div class="type" :class="alertType"></div>
 		<div class="text_wrapper">
 			<h4>{{ alertText }}</h4>
@@ -16,9 +16,6 @@ export default {
 		}
   },
   computed: {
-    activeRoute() {
-      return this.$route.name
-		},
 		alertType() {
 			return this.$store.state.alertInfo.type
 		},
@@ -48,13 +45,6 @@ export default {
 	top: 1rem;
 	right: 1rem;
 	z-index: 20;
-	transform: translateX(30rem);
-	opacity: 0;
-	transition: transform .4s ease-out, opacity .4s ease-out;
-	&.show {
-		transform: translateX(0);
-		opacity: 1;
-	}
 	.type {
 		border-radius: 3px;
 		float: left;
@@ -88,7 +78,7 @@ export default {
 	}
 	i {
 		border-radius: 1rem;
-		color: rgba($gray-dk, .8);
+		color: rgba($gray-dk, .6);
 		cursor: pointer;
 		float: left;
 		font-size: .9rem;

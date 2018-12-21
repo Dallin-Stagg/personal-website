@@ -7,7 +7,7 @@
       <div class="personal_logo"></div>
       <div class="item" v-for="(route, i) in routes" :key="i" @click="go(route)" :class="{ 'active': activeRoute === route }">{{ route }}</div>
       <br>
-      <div class="icon_item" @click="toggleModal()"><i class="fa fa-file"></i></div>
+      <div class="icon_item" @click="toggleModal()"><i class="fa fa-envelope"></i></div>
       <div class="icon_item" @click="openLink('https://www.linkedin.com/in/dallin-stagg')"><i class="fab fa-linkedin-in"></i></div>
       <div class="icon_item" @click="openLink('https://github.com/Dallin-Stagg')"><i class="fab fa-github"></i></div>
     </nav>
