@@ -63,7 +63,7 @@ export default {
 		go() {
 			this.toggleAlert(this.inputReady)
 			if (this.inputReady) {
-				/*	// https://script.google.com/macros/s/AKfycbwS78apLRhuzlmigzzMCZH_2Y6opmpWeCqfbc1_unWqEevmsUI/exec
+				// https://script.google.com/macros/s/AKfycbwS78apLRhuzlmigzzMCZH_2Y6opmpWeCqfbc1_unWqEevmsUI/exec
 				var contact_url =
 					'https://script.google.com/macros/s/AKfycbwS78apLRhuzlmigzzMCZH_2Y6opmpWeCqfbc1_unWqEevmsUI/exec'
 				var date = new Date()
@@ -80,8 +80,6 @@ export default {
 					'&request_resume=' +
 					this.request_resume
 				)
-				this.$store.commit('toggleModal')
-				*/
 				this.$confetti.start({
 					shape: 'rect'
 				})

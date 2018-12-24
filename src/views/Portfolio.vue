@@ -147,7 +147,7 @@ export default {
       background-image: url('../assets/images/millenium-mobile.png');
     }
     &.rc_student {
-      background-image: url('../assets/images/millenium-mobile.png');
+      background-image: url('../assets/images/student-mockup.png');
     }
     &.mil {
       background-image: url('../assets/images/millenium-mobile.png');

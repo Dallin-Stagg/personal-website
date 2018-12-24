@@ -5,13 +5,20 @@
 			<h2>See what I'm up to</h2>
 		</div>
 		<div class="experience_item" v-for="(item, i) in items" :key="i">
-			<div class="item_image" :class="item.image_class"></div>
-			<div class="information">
-				<h3>{{ item.title }}</h3>
-				<h4>{{ item.position_and_time }}</h4>
-				<h5>{{ item.area }}</h5>
-				<p>{{ item.description }}</p>
+			<div class="upper_section">
+				<div class="image" :class="item.image_class"></div>
+				<div class="title">
+					<h3>{{ item.title }}</h3>
+					<h4>{{ item.position_and_time }}</h4>
+					<!--<h5>{{ item.area }}</h5>-->
+				</div>
 			</div>
+			<p>{{ item.description }}</p>
+			<ul>
+				<li>Touched toes on the way to work.</li>
+				<li>Got my drip on.</li>
+			</ul>
+			<p>{{ item.description }}</p>
 		</div>
   </div>
 </template>
@@ -54,7 +61,8 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/styles/global-styles.scss';
 .experience {
-	background-image: url('../assets/images/overlay-grid.svg'), linear-gradient(10deg, #1f4037, #00bf8f);
+	background: #c31432;
+	background: url('../assets/images/overlay-grid.svg'), linear-gradient(45deg, #240b36, $red);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -67,80 +75,83 @@ export default {
 	box-sizing: border-box;
 	margin: 0 auto 1rem;
 	width: 54rem;
-	display: grid;
-	grid-template-columns: 2fr 5fr;
-	align-items: center;
-	justify-content: center;
-	padding: 1rem;
+	padding: 2rem;
 	@include mobile {
-			border: 1px solid $gray-border;
-			border-radius: .5rem;
-			box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.2);
-			box-sizing: border-box;
-			display: block;
-			padding: 1rem;
-			width: calc(100% - 3rem);
+		border: 1px solid $gray-border;
+		border-radius: .5rem;
+		box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.2);
+		padding: 1rem;
+		width: calc(100% - 3rem);
 	}
-	.item_image {
-			box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.25);
-			border-radius: .5rem;
-			height: 12rem;
-			width: 13rem;
+	.upper_section {
+		overflow: auto;
+		.image {
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: cover;
-			@include mobile {
-					border-radius: .5rem;
-					box-shadow: 0 3px 8px 0 rgba(24, 55, 69, 0.25);
-					margin: .5rem auto 1.5rem;
-					width: calc(100% - 1rem);
+			box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.25);
+			border-radius: 2rem;
+			float: left;
+			margin: 0 1rem;
+			height: 4rem;
+			width: 4rem;
+			&.byu {
+				background-image: url('../assets/images/byu-logo.jpg');
 			}
 			&.rc {
-					background-image: url('../assets/images/room-choice-logo.png');
-			}
-			&.byu {
-					background-image: url('../assets/images/byu-campus.jpg');
+				background-image: url('../assets/images/room-choice-logo.png');
 			}
 			&.mil {
-					background-image: url('../assets/images/millenium-logo.png');
+				background-image: url('../assets/images/millenium-logo.png');
 			}
+		}
+		.title {
+			float: left;
+		}
 	}
-	.information {
-			h3 {
-					color: $gray-dk;
-					font-size: 1.5rem;
-					margin: 1rem 0 .3rem;
-					@include mobile {
-							font-size: 1.6rem;
-							margin-bottom: .5rem;
-					}
+	h3 {
+		color: $gray-dk;
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin: 0 0 .2rem;
+		@include mobile {
+			font-size: 1.6rem;
+			margin-bottom: .5rem;
+		}
+	}
+	h4 {
+		color: $red;
+		font-size: .95rem;
+		font-weight: 500;
+		margin: 0 0 1rem;
+		@include mobile {
+			font-size: 1.1rem;
+		}
+	}
+	h5 {
+		color: $blue;
+		font-size: .9rem;
+		font-weight: 400;
+		@include mobile {
+			font-size: 1.1rem;
+		}
+	}
+	p {
+		color: $text-secondary;
+		font-size: .95rem;
+		margin: .5rem 0;
+		@include mobile {
+			font-size: 1.1rem;
+		}
+	}
+	ul {
+		li {
+			color: $text-secondary;
+			font-size: .95rem;
+			@include mobile {
+				font-size: 1.1rem;
 			}
-			h4 {
-					color: $green;
-					font-size: 1rem;
-					font-weight: 500;
-					margin: 0;
-					@include mobile {
-							font-size: 1.1rem;
-					}
-			}
-			h5 {
-					color: $blue;
-					font-size: .95rem;
-					font-weight: 500;
-					margin: 0;
-					@include mobile {
-							font-size: 1.1rem;
-					}
-			}
-			p {
-					color: $text-secondary;
-					font-size: .95rem;
-					margin: .5rem 0;
-					@include mobile {
-							font-size: 1.1rem;
-					}
-			}
+		}
 	}
 }
 </style>
