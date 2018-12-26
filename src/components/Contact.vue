@@ -64,7 +64,7 @@ export default {
 			this.toggleAlert(this.inputReady)
 			if (this.inputReady) {
 				// https://script.google.com/macros/s/AKfycbwS78apLRhuzlmigzzMCZH_2Y6opmpWeCqfbc1_unWqEevmsUI/exec
-				var contact_url =
+				/* var contact_url =
 					'https://script.google.com/macros/s/AKfycbwS78apLRhuzlmigzzMCZH_2Y6opmpWeCqfbc1_unWqEevmsUI/exec'
 				var date = new Date()
 				fetch(
@@ -79,7 +79,7 @@ export default {
 					date +
 					'&request_resume=' +
 					this.request_resume
-				)
+				) */
 				this.$confetti.start({
 					shape: 'rect'
 				})
@@ -150,6 +150,8 @@ export default {
 		position: relative;
 		width: 20rem;
 		@include mobile {
+			max-height: calc(100vh - 5rem);
+			overflow: auto;
 			width: calc(100% - 1rem);
 		}
 		.close_btn {

@@ -3,9 +3,9 @@
     <div class="header_section">
       <div class="page_header">
         <h2>Hey, I'm</h2>
-        <h1>DALLIN STAGG</h1>
+        <h1 class="website_title">&#8203;{{ displayText }}</h1>
       </div>
-      <div class="overlay"></div>
+      <!--<div class="overlay"></div>-->
     </div>
     <div class="about_me">
       <p>I am currently a student at BYU studying Accounting and Computer Science. Throughout my studies and professional work experience I've found a passion for using my skillset to engage in data-driven thinking to solve problems, project business insights, and clear communication with my team.</p>
@@ -15,14 +15,57 @@
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+  data() {
+    return {
+      titles: ['A student', 'A developer', 'A musician', 'Dallin Stagg'],
+      displayedTitleLength: 0,
+      typing: true,
+      titleIndex: 0
+    }
+  },
+  computed: {
+    displayText() {
+      if (this.displayedTitleLength) {
+        return this.titles[this.titleIndex].substring(0, this.displayedTitleLength)
+      }
+      return ''
+    }
+  },
+  mounted() {
+    setTimeout(this.updateTitle, 400)
+  },
+  methods: {
+    updateTitle() {
+      if (this.typing && this.displayedTitleLength < this.titles[this.titleIndex].length) {
+        this.displayedTitleLength += 1
+        if (this.titles[this.titleIndex][this.displayedTitleLength] === ' ') {
+          this.displayedTitleLength += 1
+        }
+        setTimeout(this.updateTitle, 130)
+      } else if (this.typing && this.displayedTitleLength === this.titles[this.titleIndex].length) {
+        this.typing = false
+        setTimeout(this.updateTitle, 800)
+      } else if (!this.typing && this.displayedTitleLength > 0 && this.titleIndex !== this.titles.length - 1) {
+        this.displayedTitleLength -= 1
+        if (this.titles[this.titleIndex][this.displayedTitleLength] === ' ') {
+          this.displayedTitleLength -= 1
+        }
+        setTimeout(this.updateTitle, 170)
+      } else if (!this.typing && !this.displayedTitleLength) {
+        this.titleIndex += 1
+        this.typing = true
+        setTimeout(this.updateTitle, 800)
+      }
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
 @import '../assets/styles/global-styles.scss';
 
 .header_section {
-  background-image: url('../assets/images/mountain-and-lake.jpg');
+  // background-image: url('../assets/images/mountain-and-lake.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -41,6 +84,20 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 3;
+  }
+}
+.website_title {
+  animation: blink 1s linear 0s infinite;
+  border-right: 2px solid rgba($white, .8);
+  display: inline;
+  text-transform: uppercase;
+}
+@keyframes blink {
+  40% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: transparent;
   }
 }
 .about_me {

@@ -7,9 +7,18 @@
       <div class="personal_logo"></div>
       <div class="item" v-for="(route, i) in routes" :key="i" @click="go(route)" :class="{ 'active': activeRoute === route }">{{ route }}</div>
       <br>
-      <div class="icon_item" @click="toggleModal()"><i class="fa fa-envelope"></i></div>
-      <div class="icon_item" @click="openLink('https://www.linkedin.com/in/dallin-stagg')"><i class="fab fa-linkedin-in"></i></div>
-      <div class="icon_item" @click="openLink('https://github.com/Dallin-Stagg')"><i class="fab fa-github"></i></div>
+      <div class="icon_item" @click="toggleModal()">
+        <div class="tooltip">Contact me</div>
+        <i class="fa fa-envelope"></i>
+      </div>
+      <div class="icon_item" @click="openLink('https://www.linkedin.com/in/dallin-stagg')">
+        <div class="tooltip">LinkedIn</div>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+      <div class="icon_item" @click="openLink('https://github.com/Dallin-Stagg')">  
+        <div class="tooltip">Github</div>
+        <i class="fab fa-github"></i>
+      </div>
     </nav>
   </div>
 </template>
@@ -94,22 +103,23 @@ export default {
     border-radius: 3.1rem;
     color: $white;
     cursor: pointer;
-    font-size: 1rem;
-    line-height: 2.5rem;
-    margin: .75rem 1rem;
+    font-size: .95rem;
+    line-height: 2.3rem;
+    margin: .6rem 1rem;
     padding: 0 1rem;
     text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
-    width: 6rem;
+    width: 7.5rem;
     @include mobile {
       font-size: 1.1rem;
       line-height: 3rem;
       padding: 0 1.5rem;
+      width: 6.5rem;
     }
     &:hover {
       background-color: rgba($white, .05);
     }
     &.active {
-      background-color: rgba($white, .2);
+      background-color: rgba($white, .3);
     }
   }
   .icon_item {
@@ -119,6 +129,7 @@ export default {
     cursor: pointer;
     line-height: 2.5rem;
     margin: .75rem 1rem;
+    position: relative;
     text-align: center;
     width: 2.5rem;
     text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
@@ -129,6 +140,26 @@ export default {
     }
     &:hover {
       background-color: rgba($white, .1);
+      .tooltip {
+        display: block;
+        @include mobile {
+          display: none;
+        }
+      }
+    }
+    .tooltip {
+      background-color: rgba($white, .5);
+      border-radius: 1rem;
+      color: $text-primary;
+      display: none;
+      font-size: .9rem;
+      font-weight: 500;
+      line-height: 2rem;
+      position: absolute;
+      top: .3rem;
+      left: 3rem;
+      text-shadow: none;
+      width: 8rem;
     }
   }
 }
