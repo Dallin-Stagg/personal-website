@@ -8,7 +8,7 @@
       <!--<div class="overlay"></div>-->
     </div>
     <div class="about_me">
-      <p>I am currently a student at BYU studying Accounting and Computer Science. Throughout my studies and professional work experience I've found a passion for using my skillset to engage in data-driven thinking to solve problems, project business insights, and clear communication with my team.</p>
+      <p>I am currently a ballin' student at BYU studying Accounting and Computer Science. Throughout my studies and professional work experience I've found a passion for using my skillset to engage in data-driven thinking to solve problems, project business insights, and clear communication with my team.</p>
     </div>
   </div>
 </template>
@@ -42,7 +42,7 @@ export default {
         if (this.titles[this.titleIndex][this.displayedTitleLength] === ' ') {
           this.displayedTitleLength += 1
         }
-        setTimeout(this.updateTitle, 130)
+        setTimeout(this.updateTitle, 125)
       } else if (this.typing && this.displayedTitleLength === this.titles[this.titleIndex].length) {
         this.typing = false
         setTimeout(this.updateTitle, 800)
