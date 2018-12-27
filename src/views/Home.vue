@@ -5,10 +5,7 @@
         <h2>Hey, I'm</h2>
         <h1 class="website_title">&#8203;{{ displayText }}</h1>
       </div>
-      <!--<div class="overlay"></div>-->
-    </div>
-    <div class="about_me">
-      <p>I am currently a ballin' student at BYU studying Accounting and Computer Science. Throughout my studies and professional work experience I've found a passion for using my skillset to engage in data-driven thinking to solve problems, project business insights, and clear communication with my team.</p>
+      <div class="overlay"></div>
     </div>
   </div>
 </template>
@@ -65,7 +62,7 @@ export default {
 @import '../assets/styles/global-styles.scss';
 
 .header_section {
-  // background-image: url('../assets/images/mountain-and-lake.jpg');
+  background-image: url('../assets/images/mountain-and-lake.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -77,7 +74,7 @@ export default {
   position: relative;
   z-index: 2;
   .overlay {
-    background-color: rgba(0, 0, 0, .4);
+    background-color: rgba(0, 0, 0, .5);
     position: absolute;
     top: 0;
     left: 0;
@@ -85,6 +82,10 @@ export default {
     height: 100%;
     z-index: 3;
   }
+}
+.page_header {
+  position: relative;
+  z-index: 4;
 }
 .website_title {
   animation: blink 1s linear 0s infinite;
@@ -98,18 +99,6 @@ export default {
   }
   50% {
     border-color: transparent;
-  }
-}
-.about_me {
-  padding: 4rem 0;
-  p {
-    color: $gray-dk;
-    font-size: 1rem;
-    margin: 0 auto;
-    width: 45rem;
-    @include mobile {
-      width: calc(100% - 2rem);
-    }
   }
 }
 </style>

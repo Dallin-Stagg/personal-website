@@ -76,7 +76,7 @@ export default {
 		border-radius: .5rem;
 		box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.2);
 		padding: 1.5rem 1.3rem;
-		width: calc(100% - 3rem);
+		width: calc(100% - 2rem);
 	}
 	.upper_section {
 		overflow: auto;
