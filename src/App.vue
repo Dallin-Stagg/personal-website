@@ -25,6 +25,7 @@ html {
   font-family: system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
 }
 // vue transition tag stylings
 .fade-enter-active, .fade-leave-active {
