@@ -42,7 +42,7 @@ export default {
         if (this.titles[this.titleIndex][this.displayedTitleLength] === ' ') {
           this.displayedTitleLength += 1
         }
-        setTimeout(this.updateTitle, 130)
+        setTimeout(this.updateTitle, 120)
       } else if (this.typing && this.displayedTitleLength === this.titles[this.titleIndex].length) {
         this.typing = false
         setTimeout(this.updateTitle, 800)
