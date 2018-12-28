@@ -87,7 +87,7 @@ export default {
   }
 }
 .portfolio_background {
-  background-image: linear-gradient(10deg, #6C5B7B, $blue-dk);
+  background: linear-gradient(50deg, #1CB5E0, #000046);
   position: fixed;
   overflow: hidden;
   top: 0;
@@ -106,7 +106,7 @@ export default {
   margin: 0 auto;
   width: 65rem;
   @include mobile {
-    grid-template-columns: 1fr;
+    display: block;
     width: 100%;
   }
 }
@@ -116,18 +116,25 @@ export default {
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   margin: 0 auto 1.5rem;
-  padding-top: 1rem;
+  padding: 1rem 0 .1rem;
   position: relative;
   width: 20rem;
   transition: transform .2s ease-out;
   @include mobile {
-    width: calc(100% - 3rem);
+    width: calc(100% - 2rem);
   }
   &:hover {
     transform: scale(1.03);
     .info_cover {
       height: 100%;
       opacity: 1;
+    }
+    @include mobile {
+      transform: scale(1);
+      .info_cover {
+        height: 0;
+        opacity: 0;
+      }
     }
   }
   .image {

@@ -56,8 +56,8 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/styles/global-styles.scss';
 .experience {
-	background: #c31432;
-	background: url('../assets/images/overlay-grid.svg'), linear-gradient(45deg, #240b36, $red);
+	background: url('../assets/images/overlay-grid.svg'), linear-gradient(50deg, #1CB5E0, #000046);
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -148,7 +148,7 @@ export default {
 		margin: .5rem 0;
 		text-align: justify;
 		@include mobile {
-			font-size: 1.1rem;
+			font-size: 1rem;
 			text-align: left;
 		}
 	}
