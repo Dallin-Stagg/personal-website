@@ -78,17 +78,12 @@ export default {
   @include mobile {
     text-align: left;
     padding: 0 1.5rem;
-    width: calc(100% - 1.5rem);
-    left: .75rem;
+    width: calc(100% - 2rem);
     top: .75rem;
-    height: 2.8rem;
   }
   i {
     color: $gray-dk;
     line-height: 3rem;
-    @include mobile {
-      line-height: 2.8rem;
-    }
   }
 }
 .nav_section {

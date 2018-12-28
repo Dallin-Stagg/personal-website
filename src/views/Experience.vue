@@ -126,7 +126,7 @@ export default {
 		}
 	}
 	h4 {
-		color: $red;
+		color: $blue;
 		font-size: .95rem;
 		font-weight: 500;
 		margin: 0 0 1rem;
