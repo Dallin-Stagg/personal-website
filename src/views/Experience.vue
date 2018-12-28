@@ -66,7 +66,7 @@ export default {
 .experience_item {
 	background-color: $white;
 	border-radius: 4px;
-	box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.3);
 	box-sizing: border-box;
 	margin: 0 auto 1rem;
 	width: 52rem;
@@ -74,7 +74,6 @@ export default {
 	@include mobile {
 		border: 1px solid $gray-border;
 		border-radius: .5rem;
-		box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.2);
 		padding: 1.5rem 1.3rem;
 		width: calc(100% - 2rem);
 	}
@@ -85,7 +84,6 @@ export default {
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: cover;
-			box-shadow: 0 1px 7px 0 rgba(24, 55, 69, 0.5);
 			border-radius: 50%;
 			float: left;
 			margin: 0 1rem 0 .3rem;

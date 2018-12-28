@@ -76,7 +76,7 @@ export default {
   overflow: hidden;
 }
 .portfolio_wrapper {
-  position: fixed;
+  position: absolute;
   overflow-y: auto;
   top: 0;
   left: 0;
@@ -88,10 +88,7 @@ export default {
 }
 .portfolio_background {
   background: linear-gradient(50deg, #1CB5E0, #000046);
-  position: fixed;
-  overflow: hidden;
-  top: 0;
-  left: 0;
+ 
   height: 100%;
   width: 100%;
   #particles-js {
@@ -113,7 +110,7 @@ export default {
 .white_box {
   background-color: $white;
   border-radius: 4px;
-  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.3);
   cursor: pointer;
   margin: 0 auto 1.5rem;
   padding: 1rem 0 .1rem;

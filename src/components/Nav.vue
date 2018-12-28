@@ -70,7 +70,7 @@ export default {
   height: 3rem;
   width: 3rem;
   text-align: center;
-  position: fixed;
+  position: absolute;
   top: 1rem;
   left: 1rem;
   user-select: none;
