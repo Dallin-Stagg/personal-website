@@ -37,46 +37,32 @@ html {
 // PERSONAL WEBSITE STYLES
 
 .ds_btn {
-  background: linear-gradient(255deg,$mint,$blue);
-  border-radius: 4px;
-  box-shadow: 0 3px 15px 0 rgba(34,77,97,.4);
-  color: $white;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 2.5rem;
-  margin: .75rem 0;
-  padding: 0 1rem;
-  text-align: center;
-  user-select: none;
-  @include mobile {
-    font-size: 1.3rem;
-    line-height: 3.5rem;
-  }
+	border-radius: 1.5rem;
+	box-shadow: 0 3px 7px 0 rgba(24, 55, 69, 0.1);
+	color: $white;
+	cursor: pointer;
+  display: inline-block;
+	font-size: .8rem;
+	font-weight: 600;
+	letter-spacing: .5px;
+	line-height: 2.3rem;
+  padding: 0 1.5rem;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 1rem auto;
+  transition: background-color .2s ease-out, transform .2s ease-out;
   &:hover {
-    background: linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,.05)), linear-gradient(255deg,$mint,$blue);
+    transform: scale(1.03);
   }
-  &:active {
-    background: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.1)), linear-gradient(255deg,$mint,$blue);
-  }
-  &.disabled {
-    background: white;
-    color: $gray-med;
-    cursor: not-allowed;
-  }
-  &.invert {
-    background-color: $white;
-    background: none;
-    border: 1px solid $gray-border;
-    box-shadow: 0 3px 10px 0 rgba(34,77,97,.2);
-    box-sizing: border-box;
-    color: $gray-med;
-    line-height: calc(2.5rem - 2px);
+  &.green {
+    background-color: $green;
     &:hover {
-      background-color: $gray-lt;
+      background-color: $green-hover;
     }
-    &:active {
-      filter: brightness(95%);
+    &.disabled {
+      background-color: rgba($green, .4);
+      box-shadow: none;
+      cursor: not-allowed;
     }
   }
 }
@@ -100,9 +86,34 @@ html {
     }
   }
 }
+.ds_close_btn {
+  border-radius: 50%;
+  color: rgba($gray-dk, .6);
+  cursor: pointer;
+  line-height: 1.8rem;
+  position: absolute;
+  text-align: center;
+  top: .4rem;
+  right: .4rem;
+  width: 1.8rem;
+  z-index: 20;
+  transition: background-color .2s ease-out;
+  &:hover {
+    background-color: rgba($gray, .4);
+  }
+  @include mobile {
+    background-color: rgba($gray, .3);
+    border-radius: 1.75rem;
+    box-shadow: inset 0 1px 3px 0 rgba(24, 55, 69, 0.25);
+    font-size: 1.2rem;
+    line-height: 2.5rem;
+    margin: .25rem;
+    width: 3.5rem;
+  }
+}
 .page_header {
   animation: 1.25s ease-out 0s 1 headerSlideIn;
-  padding: 8rem 0;
+  padding: 5rem 0;
   position: relative;
   text-align: center;
   h1 {

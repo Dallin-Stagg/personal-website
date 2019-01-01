@@ -1,5 +1,5 @@
 <template>
-  <div class="my-navigation">
+  <div class="my-navigation" :style="{ backgroundPosition: '0px -' + this.scrollPosition / 10 + 'px' }">
     <div class="nav_bar" @click="$store.commit('toggleMenu')">
       <i class="fa fa-bars"></i>
     </div>
@@ -28,8 +28,12 @@ export default {
   name: 'Navigation',
   data() {
     return {
-      routes: ['Home', 'Experience', 'Portfolio']
+      routes: ['Home', 'Resume', 'Portfolio'],
+      scrollPosition: null
     }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.distanceFromTop)
   },
   computed: {
     activeRoute() {
@@ -55,12 +59,27 @@ export default {
       if (this.menuOpen) {
         this.$store.commit('toggleMenu')
       }
+    },
+    distanceFromTop() {
+      this.scrollPosition = window.scrollY
+      console.log(this.scrollPosition)
     }
   }
 }
 </script>
 <style scoped lang="scss">
 @import '../assets/styles/global-styles.scss';
+.my-navigation {
+  background-image: url('../assets/images/overlay-striped.svg'), linear-gradient(10deg, #434343, $gray-dk);
+  background-size: auto 140%;
+  background-repeat: no-repeat;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 11rem;
+  will-change: background-position;
+  height: 100vh;
+}
 .nav_bar {
   background-color: rgba($white, .95);
   border-radius: 1.5rem;
@@ -70,12 +89,10 @@ export default {
   height: 3rem;
   width: 3rem;
   text-align: center;
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
   user-select: none;
-  z-index: 5;
+  display: none;
   @include mobile {
+    display: block;
     text-align: left;
     padding: 0 1.5rem;
     width: calc(100% - 2rem);
@@ -87,29 +104,25 @@ export default {
   }
 }
 .nav_section {
-  position: absolute;
-  left: 0;
-  top: 5rem;
+  
   .personal_logo {
     background-image: url('../assets/images/logo-white.png');
     background-size: 190%;
     background-repeat: no-repeat;
     background-position: center;
     filter: drop-shadow(0px 2px 5px rgba(0,0,0,0.5));
-    height: 8rem;
-    width: 12rem;
+    height: 7rem;
+    margin: 1rem 0;
+    width: 11rem;
   }
   .item {
-    border: 1px solid $white;
-    border-radius: 3.1rem;
     color: $white;
     cursor: pointer;
     font-size: .95rem;
-    line-height: 2.3rem;
-    margin: .6rem 1rem;
-    padding: 0 1rem;
+    line-height: 2.7rem;
+    text-indent: 1rem;
     text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
-    width: 7.5rem;
+    width: 11rem;
     @include mobile {
       font-size: 1rem;
       line-height: 2.5rem;
@@ -160,7 +173,7 @@ export default {
       top: .3rem;
       left: 3rem;
       text-shadow: none;
-      width: 8rem;
+      width: 7rem;
     }
   }
 }

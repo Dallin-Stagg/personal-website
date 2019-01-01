@@ -1,7 +1,7 @@
 <template>
   <div class="contact_me">
 		<div class="modal">
-			<i class="fa fa-times close_btn" @click="close()"></i>
+			<i class="fa fa-times ds_close_btn" @click="close()"></i>
 			<div class="input_item">
 				<p :class="{ 'shift': name }">NAME</p>
 				<input
@@ -16,6 +16,12 @@
 					type="email"
 					v-model="email"
 					required>
+					<!-- FIX FOR MOBILE
+						
+						 <input type='text'
+        :value='message1'
+        @input='evt=>message1=evt.target.value'
+        > -->
 			</div>
 			<div class="input_item">
 				<p :class="{ 'shift': message }">MESSAGE</p>
@@ -153,31 +159,6 @@ export default {
 			max-height: calc(100vh - 5rem);
 			overflow: auto;
 			width: calc(100% - 1rem);
-		}
-		.close_btn {
-			border-radius: 50%;
-			color: rgba($gray-dk, .6);
-			cursor: pointer;
-			line-height: 1.8rem;
-			position: absolute;
-			text-align: center;
-			top: .3rem;
-			right: .3rem;
-			width: 1.8rem;
-			z-index: 20;
-			transition: background-color .2s ease-out;
-			&:hover {
-				background-color: rgba($gray, .4);
-			}
-			@include mobile {
-				background-color: rgba($gray, .3);
-				border-radius: 1.75rem;
-				box-shadow: inset 0 1px 3px 0 rgba(24, 55, 69, 0.25);
-				font-size: 1.2rem;
-				line-height: 2.5rem;
-				margin: .25rem;
-				width: 3.5rem;
-			}
 		}
 		.input_item {
 			margin: 1rem 0;

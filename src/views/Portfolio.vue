@@ -79,9 +79,9 @@ export default {
   position: absolute;
   overflow-y: auto;
   top: 0;
-  left: 0;
+  left: 11rem;
   height: 100%;
-  width: 100%;
+  width: calc(100% - 11rem);
   .portfolio_content {
     padding: 3rem 0 5rem;
   }

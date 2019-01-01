@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import PersonalWebsite from './views/PersonalWebsite.vue'
 import Home from './views/Home.vue'
-import Experience from './views/Experience.vue'
+import Resume from './views/Resume.vue'
 import Portfolio from './views/Portfolio.vue'
 
 
@@ -26,9 +26,9 @@ export default new Router({
           component: Home
         },
         {
-          path: 'experience',
-          name: 'Experience',
-          component: Experience
+          path: 'resume',
+          name: 'Resume',
+          component: Resume
         },
         {
           path: 'portfolio',
