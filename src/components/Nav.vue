@@ -119,6 +119,7 @@ export default {
     color: $white;
     cursor: pointer;
     font-size: .95rem;
+    font-weight: 500;
     line-height: 2.7rem;
     text-indent: 1rem;
     text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);

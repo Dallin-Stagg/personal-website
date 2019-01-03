@@ -22,7 +22,7 @@ html {
   font-size: 16px;
 }
 #app {
-  font-family: system-ui, sans-serif;
+  font-family: 'Quicksand', sans-serif, system-ui;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
@@ -38,7 +38,6 @@ html {
 
 .ds_btn {
 	border-radius: 1.5rem;
-	box-shadow: 0 3px 7px 0 rgba(24, 55, 69, 0.1);
 	color: $white;
 	cursor: pointer;
   display: inline-block;
@@ -52,10 +51,14 @@ html {
 	margin: 1rem auto;
   transition: background-color .2s ease-out, transform .2s ease-out;
   &:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
+    &.disabled {
+      transform: scale(1);
+    }
   }
   &.green {
     background-color: $green;
+    box-shadow: 0 2px 4px 2px rgba($green, 0.25);
     &:hover {
       background-color: $green-hover;
     }
@@ -67,39 +70,69 @@ html {
   }
 }
 .ds_toggle {
-  background-color: $gray-lt;
-  border: 1.5px solid $gray-border;
+  background-color: $gray-med;
   border-radius: 1rem;
   cursor: pointer;
-  padding: .15rem;
-  width: 2.5rem;
-  .dot {
-    background-color: $gray;
-    border-radius: 50%;
-    box-shadow:  0 1px 3px 0 rgba(24, 55, 69, 0.4);
-    height: 1.3rem;
-    width: 1.3rem;
-    transition: transform .2s ease-out, background-color .2s ease-out;
-    &.toggled {
-      background-color: $green;
-      transform: translateX(1.2rem);
+  margin: .4rem .2rem;
+  padding: .1rem;
+  width: 1.4rem;
+  transition: background-color .2s ease-out;
+  &.toggled {
+    .dot {
+      transform: translateX(.9rem) scale(2.1);
+    }
+    &.blue {
+      background-color: rgba($blue, .4);
+      .dot {
+        background-color: $blue;
+      }
+    }
+    &.purple {
+      background-color: rgba($purple, .4);
+      .dot {
+        background-color: $purple;
+      }
     }
   }
+  .dot {
+    background-color: $white;
+    border-radius: 50%;
+    box-shadow:  0 2px 4px 1px rgba($purple, 0.2);
+    height: .5rem;
+    width: .5rem;
+    transition: transform .2s ease-out, background-color .2s ease-out;
+    transform: scale(2.1);
+  }
 }
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(20deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-20deg); }
+    100% { transform: rotate(0deg); }
+  }
 .ds_close_btn {
+  background-color: $white;
   border-radius: 50%;
-  color: rgba($gray-dk, .6);
+  box-shadow: 0 2px 4px 2px rgba($purple, 0.2);
+  color: $purple;
   cursor: pointer;
   line-height: 1.8rem;
   position: absolute;
   text-align: center;
   top: .4rem;
-  right: .4rem;
   width: 1.8rem;
   z-index: 20;
   transition: background-color .2s ease-out;
   &:hover {
-    background-color: rgba($gray, .4);
+    animation: 0.3s linear 0s 1 shake;
+  }
+  
+  &.left {
+    left: .4rem;
+  }
+  &.right {
+    right: .4rem;
   }
   @include mobile {
     background-color: rgba($gray, .3);
@@ -140,12 +173,5 @@ html {
     opacity: 1;
     bottom: 0;
   }
-}
-.breaker {
-  background-image: linear-gradient(190deg,$gray,$blue-dk);
-  border-radius: .15rem;
-  height: .3rem;
-  margin: .7rem 0;
-  width: 6rem;
 }
 </style>

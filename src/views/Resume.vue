@@ -1,24 +1,31 @@
 <template>
   <div class="resume">
 		<transition name="filter_slide">
-      <div class="ds_filter" v-if="showFilter">
-				<i class="fa fa-times ds_close_btn" @click="closeFilter()"></i>
-				<h3>Filters</h3>
-				<div class="filter_section" @click="toggleFilterSection(i)" v-for="(item, i) in filters">
-					<div class="filter_item" :class="{ 'opened': openedFilterSection === i }">
+      		<div class="ds_filter" v-if="showFilter">
+				<i class="fa fa-long-arrow-alt-right ds_close_btn left" @click="closeFilter()"></i>
+				<div class="filter_section" v-for="(item, i) in filters" :key="i">
+					<div class="filter_item" :class="{ 'opened': openedFilterSection === i }" @click="toggleFilterSection(i)">
 						<h4>{{ item.title }}</h4>
 						<i class="fa fa-chevron-down"></i>
 					</div>
+					<transition name="subsection_stretch">
+						<div class="filter_subsection" v-if="openedFilterSection === i">
+							<div class="filter_sub_item" @click="item.display = !item.display" v-for="thing in 5">
+								<h5>Display {{ item.title }}</h5>
+								<div class="ds_toggle purple" :class="{ 'toggled': item.display }"><div class="dot"></div></div>
+							</div>
+						</div>
+					</transition>
 				</div>
 			</div>
-    </transition>
+    	</transition>
 		<div class="page_header">    
 			<h1>Resume</h1>
 			<h2>See what I've been up to</h2>
 		</div>
 		<div class="download_btn_wrapper">
 			<a :href="downloadLink">
-				<div class="ds_btn green"><i class="fa fa-file-download"></i> Download Resume</div>
+				<div class="ds_btn green"><i class="fa fa-file-download"></i>&nbsp; Download Resume</div>
 			</a>
 		</div>
 		<div class="resume_outer_wrapper">
@@ -125,8 +132,9 @@ export default {
   opacity: 0;
   transform: translateX(24rem);
 }
+
 .resume {
-	background: linear-gradient(50deg, #1CB5E0, #000046);
+	background-color: $gray;
 	padding: 3rem 0 5rem;
 }
 .ds_filter {
@@ -134,29 +142,22 @@ export default {
 	border-left: 1px solid $gray-border;
 	box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.3);
 	box-sizing: border-box;
-  width: 18rem;
+	width: 18rem;
 	height: 100vh;
+	padding-top: 4rem;
 	position: fixed;
 	top: 0;
 	right: 0;
 	z-index: 2;
-	h3 {
-		color: $text-secondary;
-		font-size: 1rem;
-		font-weight: 500;
-		line-height: 1.5rem;
-		margin: 0;
-		padding: .5rem 0;
-		text-indent: 1rem;
-	}
+	
 	.filter_section {
 		user-select: none;
 		.filter_item {
 			border-radius: 4px;
-			box-shadow: 0 1px 3px 0 rgba(24, 55, 69, 0.3);
+			// box-shadow: 0 1px 3px 0 rgba(24, 55, 69, 0.3);
 			color: $text-secondary;
 			cursor: pointer;
-			margin: .4rem .6rem;
+			
 			position: relative;
 			transition: margin .15s linear;
 			&:hover {
@@ -165,15 +166,9 @@ export default {
 				}
 			}
 			&.opened {
-				background: linear-gradient(50deg, rgba(#1CB5E0, .8), rgba(#000046, .8));
-				border-radius: 0;
-				color: $white;
-				margin: .4rem 0;
 				h4 {
-					text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
 				}
 				i {
-					text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
 					transform: rotate(180deg);
 				}
 			}
@@ -194,6 +189,44 @@ export default {
 				transition: transform .2s linear;
 			}
 		}
+		.filter_subsection {
+			background-color: $gray-lt;
+			border-top: 1px solid $gray-border;
+			border-bottom: 1px solid $gray-border;
+			box-shadow: inset 0 1px 10px 0 rgba(24, 55, 69, 0.1);
+			box-sizing: border-box;
+			max-height: 100vh; // must be bigger than ever achieved
+			overflow: hidden;
+			padding: 1rem 0;
+			will-change: max-height;
+			&.subsection_stretch-enter-active, &.subsection_stretch-leave-active {
+				transition: opacity .3s, max-height .3s, padding .3s;
+			}
+			&.subsection_stretch-enter, &.subsection_stretch-leave-to {
+				opacity: 0;
+				max-height: 1px;
+				padding: 0;
+			}
+			.filter_sub_item {
+				margin: 0 1rem;
+				overflow: auto;
+				padding: .4rem .3rem;
+				h5 {
+					color: $text-secondary;
+					float: left;
+					font-size: .8rem;
+					font-weight: 500;
+					line-height: 1.5rem;
+					margin: 0;
+				}
+				.ds_toggle {
+					float: right;
+				}
+			}
+			.filter_sub_item:not(:last-child) {
+				border-bottom: 1px solid $gray-border;
+			}
+		}
 	}
 }
 .download_btn_wrapper {
@@ -210,20 +243,18 @@ export default {
 	margin: 0 auto;
 	position: relative;
 	width: 56rem;
-	filter: drop-shadow( 0 5px 15px rgba(24, 55, 69, .3));
+	filter: drop-shadow(13px -10px 0px rgba($white, .7)) drop-shadow(3px -1px 10px rgba($gray-dk, .07));
 	svg {
 		display: block;
 		margin: 0 auto;
 		width: 100%;
 	}
 	.filter_toggle {
-		background-color: $gray-lt;
-		border: 1px solid $gray-border;
 		border-radius: 1.5rem;
-		box-shadow: inset 0 1px 3px 0 rgba(24, 55, 69, 0.2);
-		color: $text-secondary;
+		box-shadow: 0 2px 6px 2px rgba($purple, 0.15);
+		color: $purple;
 		cursor: pointer;
-		font-size: .8rem;
+		font-size: .75rem;
 		line-height: 2rem;
 		position: absolute;
 		right: 1rem;
@@ -232,7 +263,6 @@ export default {
 		width: 2rem;
 	}
 	.content {
-		box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.3);
 		background-color: $white;
 	}
 }

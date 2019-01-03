@@ -34,7 +34,7 @@
 				<div class="ds_toggle left" @click="request_resume = !request_resume"><div class="dot" :class="{ 'toggled': request_resume }"></div></div>
 				<p>REQUEST RESUME</p>
 			</div>
-			<div class="ds_btn_modal" :class="{ 'disabled': !inputReady }" @click="go()">Send</div>
+			<div class="ds_btn green" :class="{ 'disabled': !inputReady }" @click="go()">Send</div>
 			<transition name="fade">
 				<div class="success_prompt" v-if="messageSent">
 					<h4>Thanks for contacting me! I'll be sure to contact you as soon as I am able! In the meantime, enjoy the confetti. :)</h4>
@@ -116,27 +116,6 @@ export default {
 <style scoped lang="scss">
 @import '../assets/styles/global-styles.scss';
 
-.ds_btn_modal {
-	background-color: $green;
-	border-radius: 1.5rem;
-	box-shadow: 0 3px 7px 0 rgba(24, 55, 69, 0.1);
-	color: $white;
-	cursor: pointer;
-	font-size: .8rem;
-	font-weight: 600;
-	letter-spacing: .5px;
-	line-height: 2.3rem;
-	text-align: center;
-	text-transform: uppercase;
-	margin: 1rem auto;
-	width: 8rem;
-	transition: background-color .2s ease-out;
-	&.disabled {
-		background-color: rgba($green, .4);
-		box-shadow: none;
-		cursor: not-allowed;
-	}
-}
 .contact_me {
 	background-color: rgba(0,0,0,0.5);
 	backdrop-filter: blur(2px);
