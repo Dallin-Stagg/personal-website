@@ -99,7 +99,11 @@ export default {
   padding: 1rem 0;
   position: fixed;
   left: 1rem;
-  top: 5rem;
+  top: 6rem;
+  @include mobile {
+    min-height: none;
+    height: calc(100vh - 15rem);
+  }
   .personal_logo {
     background-image: url("../assets/images/logo-black.png");
     background-size: 190%;
@@ -140,7 +144,6 @@ export default {
   }
 
   .icon_item {
-    border: 1px solid $white;
     border-radius: 3rem;
     box-shadow: 0 2px 6px 2px rgba($purple, 0.2);
     color: $purple;

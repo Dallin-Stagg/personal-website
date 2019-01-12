@@ -3,7 +3,7 @@ import Router from "vue-router";
 import PersonalWebsite from "./views/PersonalWebsite.vue";
 import Home from "./views/Home.vue";
 import Resume from "./views/Resume.vue";
-import Portfolio from "./views/Portfolio.vue";
+import Portfolio from "./views/portfolio.vue";
 import Contact from "./views/Contact.vue";
 
 Vue.use(Router);
