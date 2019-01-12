@@ -1,21 +1,16 @@
 <template>
   <div class="portfolio">
-    <div class="portfolio_background">
-      <vue-particles color="#dedede"></vue-particles>
-    </div>
     <div class="portfolio_wrapper">
-      <div class="portfolio_content">
-        <div class="page_header">    
-          <h1>Portfolio</h1>
-          <h2>Check out my latest work</h2>
-        </div>
-        <div class="box_wrapper">
-          <div class="white_box" v-for="(item, i) in items" :key="i">
-            <div class="image" :class="item.image_class"></div>
-            <h1 class="project_title">{{ item.title }}</h1>
-            <div class="info_cover">
-              <h4>{{ item.description }}</h4>
-            </div>
+      <div class="page_header background">
+        <h1>Portfolio</h1>
+        <h2>Check out my latest work</h2>
+      </div>
+      <div class="box_wrapper">
+        <div class="white_box" v-for="(item, i) in items" :key="i">
+          <div class="image" :class="item.image_class"></div>
+          <h1 class="project_title">{{ item.title }}</h1>
+          <div class="info_cover">
+            <h4>{{ item.description }}</h4>
           </div>
         </div>
       </div>
@@ -25,75 +20,62 @@
 
 <script>
 export default {
-  name: 'Portfolio',
+  name: "Portfolio",
   data() {
-      return {
-        items: [
-          {
-            image_class: 'rc_accounting',
-            title: 'Room Choice - Accounting',
-            description: "A powerful accounting software with all the features you'd expect from scheduled journal entry creation to intelligent financial statement projections.",
-            link: ''
-          },
-          {
-            image_class: 'rc_com',
-            title: 'Room Choice - Company Website',
-            description: 'The company website. Linked in all marketing campaigns and ads.',
-            link: 'roomchoice.com'
-          },
-          {
-            image_class: 'rc_manager',
-            title: 'Room Choice - Manager Portal',
-            description: 'The feature-rich student housing management system used for everything from controlling the leasing process to viewing and exporting customizable and powerful financial reports.',
-            link: ''
-          },
-          {
-            image_class: 'mil',
-            title: 'Millenium Auto Network',
-            description: 'The company website for Millenium Auto Network.',
-            link: 'milleniumauto.net'
-					},
-          {
-            image_class: 'rc_student',
-            title: 'Room Choice - Student Portal',
-            description: 'A portal to the tenant-side Room Choice experience. Complete with application, contract signing, schedulable payments, maintenance requests, social media functionality and much more!',
-            link: ''
-					}
-        ],
-        infoToShow: ''
-      }
+    return {
+      items: [
+        {
+          image_class: "rc_accounting",
+          title: "Room Choice - Accounting",
+          description:
+            "A powerful accounting software with all the features you'd expect from scheduled journal entry creation to intelligent financial statement projections.",
+          link: ""
+        },
+        {
+          image_class: "rc_com",
+          title: "Room Choice - Company Website",
+          description:
+            "The company website. Linked in all marketing campaigns and ads.",
+          link: "roomchoice.com"
+        },
+        {
+          image_class: "rc_manager",
+          title: "Room Choice - Manager Portal",
+          description:
+            "The feature-rich student housing management system used for everything from controlling the leasing process to viewing and exporting customizable and powerful financial reports.",
+          link: ""
+        },
+        {
+          image_class: "mil",
+          title: "Millenium Auto Network",
+          description: "The company website for Millenium Auto Network.",
+          link: "milleniumauto.net"
+        },
+        {
+          image_class: "rc_student",
+          title: "Room Choice - Student Portal",
+          description:
+            "A portal to the tenant-side Room Choice experience. Complete with application, contract signing, schedulable payments, maintenance requests, social media functionality and much more!",
+          link: ""
+        }
+      ],
+      infoToShow: ""
+    };
   },
   methods: {
     openLink(link) {
-      window.open('https://' + link, '_blank')
+      window.open("https://" + link, "_blank");
     }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
-@import '../assets/styles/global-styles.scss';
+@import "../assets/styles/global-styles.scss";
 .portfolio {
   overflow: hidden;
 }
 .portfolio_wrapper {
-  position: absolute;
-  overflow-y: auto;
-  top: 0;
-  left: 11rem;
-  height: 100%;
-  width: calc(100% - 11rem);
-  .portfolio_content {
-    padding: 3rem 0 5rem;
-  }
-}
-.portfolio_background {
-  background: linear-gradient(50deg, #1CB5E0, #000046);
- 
-  height: 100%;
-  width: 100%;
-  #particles-js {
-    height: 100vh;
-  }
+  padding: 0 0 5rem;
 }
 
 .box_wrapper {
@@ -113,10 +95,10 @@ export default {
   box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.3);
   cursor: pointer;
   margin: 0 auto 1.5rem;
-  padding: 1rem 0 .1rem;
+  padding: 1rem 0 0.1rem;
   position: relative;
   width: 20rem;
-  transition: transform .2s ease-out;
+  transition: transform 0.2s ease-out;
   @include mobile {
     width: calc(100% - 2rem);
   }
@@ -142,19 +124,19 @@ export default {
     margin: 0 auto;
     width: 100%;
     &.rc_accounting {
-      background-image: url('../assets/images/millenium-mobile.png');
+      background-image: url("../assets/images/millenium-mobile.png");
     }
     &.rc_com {
-      background-image: url('../assets/images/millenium-mobile.png');
+      background-image: url("../assets/images/millenium-mobile.png");
     }
     &.rc_manager {
-      background-image: url('../assets/images/millenium-mobile.png');
+      background-image: url("../assets/images/millenium-mobile.png");
     }
     &.rc_student {
-      background-image: url('../assets/images/student-mockup.png');
+      background-image: url("../assets/images/student-mockup.png");
     }
     &.mil {
-      background-image: url('../assets/images/millenium-mobile.png');
+      background-image: url("../assets/images/millenium-mobile.png");
     }
   }
   .project_title {
@@ -173,21 +155,20 @@ export default {
     align-items: center;
     justify-content: center;
     height: 0;
-    opacity: .7;
+    opacity: 0.7;
     overflow: hidden;
     position: absolute;
     text-align: center;
     bottom: 0;
     left: 0;
     width: 100%;
-    transition: height .2s ease-out, opacity .2s ease-out;
+    transition: height 0.2s ease-out, opacity 0.2s ease-out;
     h4 {
       color: $text-primary;
-      font-size: .95rem;
+      font-size: 0.95rem;
       font-weight: 400;
       margin: 0 1.5rem;
     }
   }
 }
-
 </style>

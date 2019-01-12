@@ -1,45 +1,37 @@
 <template>
   <div class="resume">
+    <!--  -->
     <transition name="filter_slide">
       <div class="ds_filter" v-if="showFilter">
-        <i class="fa fa-long-arrow-alt-right ds_close_btn left" @click="closeFilter()"></i>
-        <div class="filter_section" v-for="(item, i) in filters" :key="i">
+        <i class="fa fa-long-arrow-alt-right ds_close_btn left" @click="showFilter = false"></i>
+        <div class="filter_section">
           <div
             class="filter_item"
-            :class="{ 'opened': openedFilterSection === i }"
-            @click="toggleFilterSection(i)"
+            @click="filter.display = !filter.display"
+            v-for="(filter, i) in filters"
+            :key="i"
           >
-            <h4>{{ item.title }}</h4>
-            <i class="fa fa-chevron-down"></i>
-          </div>
-          <transition name="subsection_stretch">
-            <div class="filter_subsection" v-if="openedFilterSection === i">
-              <div class="filter_sub_item" @click="item.display = !item.display" v-for="thing in 5">
-                <h5>Display {{ item.title }}</h5>
-                <div class="ds_toggle purple" :class="{ 'toggled': item.display }">
-                  <div class="dot"></div>
-                </div>
-              </div>
+            <h4>{{ filter.title }}</h4>
+            <div class="ds_toggle purple" :class="{ 'toggled': filter.display }">
+              <div class="dot"></div>
             </div>
-          </transition>
+          </div>
         </div>
       </div>
     </transition>
-    <div class="page_header">
+    <!-- -->
+    <div class="page_header background">
       <h1>Resume</h1>
       <h2>See what I've been up to</h2>
-    </div>
-    <div class="download_btn_wrapper">
-      <a :href="downloadLink">
-        <div class="ds_btn green">
-          <i class="fa fa-file-download"></i>&nbsp; Download Resume
-        </div>
-      </a>
+      <!--<div class="download_btn_wrapper">
+        <a :href="downloadLink">
+          <div class="ds_btn green">
+            <i class="fa fa-file-download"></i>&nbsp; Download Resume
+          </div>
+        </a>
+      </div>-->
     </div>
     <div class="resume_outer_wrapper">
-      <svg height="40">
-        <polygon fill="white" points="0,40 896,0 896,40"></polygon>
-      </svg>
       <i class="fa fa-filter filter_toggle" @click="showFilter = !showFilter"></i>
       <div class="content">
         <h3>EXPERIENCE</h3>
@@ -48,15 +40,15 @@
           <p>{{ item.description }}</p>
         </div>
         <h3>EDUCATION</h3>
-        <div class="resume_item" v-for="(item, i) in educationItems" :key="i">
+        <div class="resume_item" v-for="(item, i) in educationItems" :key="i + 50">
+          <!-- fix for annoying vue key system -->
           <h4>{{ item.title }}</h4>
           <p>{{ item.description }}</p>
         </div>
         <h3>SKILLS</h3>
+        <h3>SERVICE</h3>
+        <h3>PERSONAL</h3>
       </div>
-      <svg height="40">
-        <polygon fill="white" points="0,0 0,40 896,0"></polygon>
-      </svg>
     </div>
   </div>
 </template>
@@ -97,8 +89,15 @@ export default {
             "BYU presented unprecedented scale and diversity of opportunity. My professors constantly pushed me to expand and adjust the way I think in a pursuit to constantly improve who I am as a creator. My experience performming with BYU Synthesis and other top ensembles enstilled in me a passion for music and creating a unique identity. My engagement in the Tech, Private Equity and Venture Capital, and Corporate Finance clubs helped advance my learning and introduced me to a wealth of extremely intelligent peers. BYU taught me to love learning, serve without restraint, and to push my boundaries as far as they will go for the betterment of all those I come in contact with."
         }
       ],
-      hardSkills: [],
-      softSkills: [],
+      hardSkills: [
+        "Vue JS",
+        "HTML",
+        "CSS (SCSS)",
+        "SQL",
+        "Microsoft Excel",
+        "Product Management"
+      ],
+      softSkills: ["Spanish", "Client Communication"],
       showFilter: false,
       filters: [
         {
@@ -112,6 +111,14 @@ export default {
         {
           title: "Skills",
           display: true
+        },
+        {
+          title: "Service",
+          display: false
+        },
+        {
+          title: "Personal",
+          display: true
         }
       ],
       openedFilterSection: ""
@@ -123,17 +130,7 @@ export default {
     }
   },
   methods: {
-    toggleFilterSection(filter) {
-      if (this.openedFilterSection !== filter) {
-        this.openedFilterSection = filter;
-      } else {
-        this.openedFilterSection = "";
-      }
-    },
-    closeFilter() {
-      this.showFilter = false;
-      this.openedFilterSection = "";
-    }
+    //
   },
   mounted() {
     this.experienceItems.reverse();
@@ -154,8 +151,7 @@ export default {
 }
 
 .resume {
-  background-color: $gray;
-  padding: 3rem 0 5rem;
+  padding: 0 0 5rem;
 }
 .ds_filter {
   background-color: $white;
@@ -172,79 +168,26 @@ export default {
   .filter_section {
     user-select: none;
     .filter_item {
-      border-radius: 4px;
       color: $text-secondary;
       cursor: pointer;
-
-      position: relative;
-      transition: margin 0.15s linear;
+      overflow: auto;
+      padding: 0.5rem 1rem;
       &:hover {
+        box-shadow: 0 0 3px 0 rgba($gray-dk, 0.2);
         h4 {
-          text-indent: 1.2rem;
-        }
-      }
-      &.opened {
-        h4 {
-        }
-        i {
-          transform: rotate(180deg);
+          text-indent: 0.3rem;
         }
       }
       h4 {
+        float: left;
         font-size: 0.9rem;
         font-weight: 500;
-        line-height: 2.5rem;
+        line-height: 1.5rem;
         margin: 0;
-        text-indent: 1rem;
         transition: text-indent 0.1s linear;
       }
-      i {
-        font-size: 0.7rem;
-        line-height: 2.5rem;
-        position: absolute;
-        top: 0;
-        right: 1rem;
-        transition: transform 0.2s linear;
-      }
-    }
-    .filter_subsection {
-      background-color: $gray-lt;
-      border-top: 1px solid $gray-border;
-      border-bottom: 1px solid $gray-border;
-      box-shadow: inset 0 1px 10px 0 rgba(24, 55, 69, 0.1);
-      box-sizing: border-box;
-      max-height: 100vh; // must be bigger than ever achieved
-      overflow: hidden;
-      padding: 1rem 0;
-      will-change: max-height;
-      &.subsection_stretch-enter-active,
-      &.subsection_stretch-leave-active {
-        transition: opacity 0.3s, max-height 0.3s, padding 0.3s;
-      }
-      &.subsection_stretch-enter,
-      &.subsection_stretch-leave-to {
-        opacity: 0;
-        max-height: 1px;
-        padding: 0;
-      }
-      .filter_sub_item {
-        margin: 0 1rem;
-        overflow: auto;
-        padding: 0.4rem 0.3rem;
-        h5 {
-          color: $text-secondary;
-          float: left;
-          font-size: 0.8rem;
-          font-weight: 500;
-          line-height: 1.5rem;
-          margin: 0;
-        }
-        .ds_toggle {
-          float: right;
-        }
-      }
-      .filter_sub_item:not(:last-child) {
-        border-bottom: 1px solid $gray-border;
+      .ds_toggle {
+        float: right;
       }
     }
   }
@@ -262,13 +205,10 @@ export default {
 .resume_outer_wrapper {
   margin: 0 auto;
   position: relative;
+  max-width: calc(100% - 10rem);
   width: 56rem;
-  filter: drop-shadow(13px -10px 0px rgba($white, 0.75))
-    drop-shadow(1px -1px 4px rgba($gray-dk, 0.2));
-  svg {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
+  @include mobile {
+    max-width: calc(100% - 2rem);
   }
   .filter_toggle {
     border-radius: 1.5rem;
@@ -285,14 +225,21 @@ export default {
   }
   .content {
     background-color: $white;
+    box-shadow: 0 1px 6px 0px rgba($gray-dk, 0.25),
+      0 -18px 0px -8px rgba($white, 0.25), 0 -34px 0px -16px rgba($white, 0.2),
+      0 -50px 0px -24px rgba($white, 0.15);
     padding: 3rem;
+    transition: box-shadow 0.3s ease-out;
+    @include mobile {
+      padding: 3rem 1.5rem;
+    }
     h3 {
       color: $purple;
       font-size: 1rem;
       font-weight: 600;
       margin: 0;
       @include mobile {
-        font-size: 1.6rem;
+        font-size: 1.2rem;
         margin-bottom: 0.5rem;
       }
     }
@@ -302,7 +249,7 @@ export default {
       font-weight: 600;
       margin: 0;
       @include mobile {
-        font-size: 1.6rem;
+        font-size: 1.2rem;
         margin-bottom: 0.5rem;
       }
     }
@@ -313,10 +260,8 @@ export default {
       margin: 1rem 0 1rem 6rem;
       width: calc(100% - 6rem);
       @include mobile {
-        border: 1px solid $gray-border;
-        border-radius: 0.5rem;
-        padding: 1.5rem 1.3rem;
-        width: calc(100% - 2rem);
+        margin: 0;
+        width: 100%;
       }
       p {
         color: $text-secondary;

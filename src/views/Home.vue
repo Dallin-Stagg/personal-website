@@ -12,57 +12,70 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: "Home",
   data() {
     return {
-      titles: ['A student', 'A developer', 'A musician', 'Dallin Stagg'],
+      titles: ["A student", "A developer", "A musician", "Dallin Stagg"],
       displayedTitleLength: 0,
       typing: true,
       titleIndex: 0
-    }
+    };
   },
   computed: {
     displayText() {
       if (this.displayedTitleLength) {
-        return this.titles[this.titleIndex].substring(0, this.displayedTitleLength)
+        return this.titles[this.titleIndex].substring(
+          0,
+          this.displayedTitleLength
+        );
       }
-      return ''
+      return "";
     }
   },
   mounted() {
-    setTimeout(this.updateTitle, 400)
+    setTimeout(this.updateTitle, 400);
   },
   methods: {
     updateTitle() {
-      if (this.typing && this.displayedTitleLength < this.titles[this.titleIndex].length) {
-        this.displayedTitleLength += 1
-        if (this.titles[this.titleIndex][this.displayedTitleLength] === ' ') {
-          this.displayedTitleLength += 1
+      if (
+        this.typing &&
+        this.displayedTitleLength < this.titles[this.titleIndex].length
+      ) {
+        this.displayedTitleLength += 1;
+        if (this.titles[this.titleIndex][this.displayedTitleLength] === " ") {
+          this.displayedTitleLength += 1;
         }
-        setTimeout(this.updateTitle, 125)
-      } else if (this.typing && this.displayedTitleLength === this.titles[this.titleIndex].length) {
-        this.typing = false
-        setTimeout(this.updateTitle, 800)
-      } else if (!this.typing && this.displayedTitleLength > 0 && this.titleIndex !== this.titles.length - 1) {
-        this.displayedTitleLength -= 1
-        if (this.titles[this.titleIndex][this.displayedTitleLength] === ' ') {
-          this.displayedTitleLength -= 1
+        setTimeout(this.updateTitle, 125);
+      } else if (
+        this.typing &&
+        this.displayedTitleLength === this.titles[this.titleIndex].length
+      ) {
+        this.typing = false;
+        setTimeout(this.updateTitle, 800);
+      } else if (
+        !this.typing &&
+        this.displayedTitleLength > 0 &&
+        this.titleIndex !== this.titles.length - 1
+      ) {
+        this.displayedTitleLength -= 1;
+        if (this.titles[this.titleIndex][this.displayedTitleLength] === " ") {
+          this.displayedTitleLength -= 1;
         }
-        setTimeout(this.updateTitle, 170)
+        setTimeout(this.updateTitle, 170);
       } else if (!this.typing && !this.displayedTitleLength) {
-        this.titleIndex += 1
-        this.typing = true
-        setTimeout(this.updateTitle, 800)
+        this.titleIndex += 1;
+        this.typing = true;
+        setTimeout(this.updateTitle, 800);
       }
     }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
-@import '../assets/styles/global-styles.scss';
+@import "../assets/styles/global-styles.scss";
 
 .header_section {
-  background-image: url('../assets/images/mountain-and-lake.jpg');
+  background-image: url("../assets/images/mountain-and-lake.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -74,7 +87,7 @@ export default {
   position: relative;
   z-index: 2;
   .overlay {
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 0;
     left: 0;
@@ -89,7 +102,7 @@ export default {
 }
 .website_title {
   animation: blink 1s linear 0s infinite;
-  border-right: 2px solid rgba($white, .8);
+  border-right: 2px solid rgba($white, 0.8);
   display: inline;
   text-transform: uppercase;
 }

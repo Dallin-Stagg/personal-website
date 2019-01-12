@@ -1,9 +1,6 @@
 <template>
   <div id="my-website">
     <myNav></myNav>
-    <transition name="alert_slide">
-      <alert v-if="showAlert"></alert>
-    </transition>
     <div id="view" :class="{ 'menu_open': menuOpen }" @click="closeMenu()">
       <router-view/>
       <!--<myFooter></myFooter>-->
@@ -13,14 +10,12 @@
 
 <script>
 import MyNav from "../components/Nav.vue";
-import Alert from "../components/Alert.vue";
 import MyFooter from "../components/Footer.vue";
 
 export default {
   name: "Website",
   components: {
     myNav: MyNav,
-    alert: Alert,
     myFooter: MyFooter
   },
   data() {
@@ -42,9 +37,9 @@ export default {
   watch: {
     routeName() {
       // creates desired scroll behavior work around (scrolls to top on page change if using height-bound view)
-      // var viewDiv = document.getElementById("view");
+      var viewDiv = document.getElementById("view");
       this.$confetti.stop();
-      // viewDiv.scrollTop = 0;
+      viewDiv.scrollTop = 0;
     }
   },
   mounted() {
@@ -80,21 +75,27 @@ export default {
 }
 
 #my-website {
+  background-image: url(../assets/images/overlay-striped.svg),
+    linear-gradient(10deg, #434343, #333);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  perspective: 1000px;
   width: 100%;
-  @include mobile {
-    // perspective: 1000px;
-  }
 }
 #view {
-  background-color: transparent;
+  background-color: $gray;
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.4);
+  height: 100vh;
   overflow-x: hidden;
-  margin: 0 0 0 11rem;
-  width: calc(100% - 11rem);
+  width: 100%;
+  will-change: transform;
+  transition: transform 0.2s ease-out;
+  &.menu_open {
+    transform: rotateY(-10deg) scale(0.8) translateX(10rem);
+  }
   @include mobile {
-    will-change: transform;
-    // transform: translateX(11rem);
-    transition: 0.25s ease-out transform;
     &.menu_open {
       transform: rotateY(-25deg) scale(0.7) translateX(16rem);
     }

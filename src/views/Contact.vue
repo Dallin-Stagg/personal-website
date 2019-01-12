@@ -35,7 +35,7 @@
           >
             <div class="dot"></div>
           </div>
-          <p>REQUEST RESUME</p>
+          <p>REQUEST OFFICIAL RESUME</p>
         </div>
         <div class="btn_wrapper" style="text-align: center;">
           <div class="ds_btn green" :class="{ 'disabled': !inputReady }" @click="go()">Send</div>
@@ -78,7 +78,6 @@ export default {
   },
   methods: {
     go() {
-      this.toggleAlert(this.inputReady);
       if (this.inputReady) {
         // https://script.google.com/macros/s/AKfycbwS78apLRhuzlmigzzMCZH_2Y6opmpWeCqfbc1_unWqEevmsUI/exec
         /* var contact_url =
@@ -102,20 +101,6 @@ export default {
         });
         this.messageSent = true;
       }
-    },
-    toggleAlert(ready) {
-      var alertInfo = {
-        text: "",
-        type: ""
-      };
-      if (ready) {
-        alertInfo.text = "Message sent successfully!";
-        alertInfo.type = "success";
-      } else {
-        alertInfo.text = "Please fill out all fields before sending.";
-        alertInfo.type = "warning";
-      }
-      this.$store.commit("toggleAlert", alertInfo);
     }
   }
 };
@@ -124,7 +109,6 @@ export default {
 @import "../assets/styles/global-styles.scss";
 
 .contact_me {
-  background-color: $gray;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -220,7 +204,7 @@ export default {
       }
       .toggle_item {
         overflow: auto;
-        padding: 0 0 1rem 3.5rem;
+        padding: 0 0 1rem 2rem;
         .left {
           float: left;
         }

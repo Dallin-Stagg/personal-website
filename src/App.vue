@@ -136,7 +136,6 @@ html {
   top: 0.4rem;
   width: 2rem;
   z-index: 20;
-  transition: background-color 0.2s ease-out;
   &:hover {
     animation: 0.3s linear 0s 1 shake;
   }
@@ -159,18 +158,26 @@ html {
 }
 .page_header {
   animation: 1.25s ease-out 0s 1 headerSlideIn;
-  padding: 3rem 0;
+  padding: 8rem 0;
   position: relative;
   text-align: center;
+  &.background {
+    background-image: url(./assets/images/overlay-grid.svg),
+      linear-gradient(-15deg, rgba($purple-dk, 0.8), rgba($blue, 0.8));
+    background-position: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: -3rem;
+  }
   h1 {
-    color: $text-secondary;
+    color: $white;
     font-size: 3.5rem;
     font-weight: 300;
     margin: 0;
     text-shadow: 0px 2px 5px rgba(34, 77, 97, 0.5);
   }
   h2 {
-    color: rgba($text-secondary, 0.7);
+    color: rgba($white, 0.7);
     font-size: 1.4rem;
     font-weight: 300;
     margin: 0;
