@@ -7,6 +7,21 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1"
     />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-132388681-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-132388681-1");
+    </script>
+
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,600"

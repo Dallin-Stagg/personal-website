@@ -97,7 +97,7 @@ export default {
   }
   @include mobile {
     &.menu_open {
-      transform: rotateY(-25deg) scale(0.7) translateX(16rem);
+      transform: rotateY(-25deg) scale(0.7) translateX(18rem);
     }
   }
 }

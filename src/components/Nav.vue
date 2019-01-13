@@ -17,13 +17,13 @@
           :class="{ 'active': activeRoute === route }"
         >{{ route }}</div>
       </div>
-      <div class="icon_item" @click="openLink('https://www.linkedin.com/in/dallin-stagg')">
-        <div class="tooltip">LinkedIn</div>
-        <i class="fab fa-linkedin-in"></i>
-      </div>
-      <div class="icon_item" @click="openLink('https://github.com/Dallin-Stagg')">
-        <div class="tooltip">Github</div>
-        <i class="fab fa-github"></i>
+      <div class="icon_wrapper">
+        <div class="icon_item" @click="openLink('https://www.linkedin.com/in/dallin-stagg')">
+          <i class="fab fa-linkedin-in"></i>
+        </div>
+        <div class="icon_item" @click="openLink('https://github.com/Dallin-Stagg')">
+          <i class="fab fa-github"></i>
+        </div>
       </div>
     </nav>
   </div>
@@ -93,29 +93,23 @@ export default {
     18px 0 0px -8px rgba($white, 0.25), 34px 0 0px -16px rgba($white, 0.2),
     50px 0 0px -24px rgba($white, 0.15);
   box-sizing: border-box;
-  height: calc(100vh - 10rem);
-  min-height: 32rem;
   overflow-y: auto;
   padding: 1rem 0;
   position: fixed;
   left: 1rem;
   top: 6rem;
-  @include mobile {
-    min-height: none;
-    height: calc(100vh - 15rem);
-  }
   .personal_logo {
     background-image: url("../assets/images/logo-black.png");
     background-size: 190%;
     background-repeat: no-repeat;
     background-position: center;
     height: 7rem;
-    margin: 0.5rem 0;
+    margin: 0.5rem auto;
     opacity: 0.7;
     width: 11rem;
   }
   .item_wrapper {
-    padding-bottom: 3rem;
+    padding-bottom: 2rem;
     position: relative;
     .item {
       color: $text-secondary;
@@ -142,48 +136,26 @@ export default {
       }
     }
   }
-
-  .icon_item {
-    border-radius: 3rem;
-    box-shadow: 0 2px 6px 2px rgba($purple, 0.2);
-    color: $purple;
-    cursor: pointer;
-    line-height: 2.2rem;
-    margin: 0.75rem 1rem;
-    position: relative;
-    text-align: center;
-    width: 2.2rem;
-    @include mobile {
-      font-size: 1.1rem;
-      line-height: 3rem;
-      width: 3rem;
-    }
-    &:hover {
-      background-color: rgba($white, 0.1);
-      .tooltip {
-        display: block;
-        @include mobile {
-          display: none;
-        }
+  .icon_wrapper {
+    display: inline-block;
+    margin: 0 2.5rem;
+    overflow: auto;
+    .icon_item {
+      border-radius: 3rem;
+      box-shadow: 0 2px 6px 2px rgba($purple, 0.2);
+      color: $purple;
+      cursor: pointer;
+      float: left;
+      line-height: 2.5rem;
+      margin: 0.5rem 0.25rem;
+      position: relative;
+      text-align: center;
+      width: 2.5rem;
+      @include mobile {
+        font-size: 1.1rem;
+        line-height: 3rem;
+        width: 3rem;
       }
-    }
-    .tooltip {
-      background-image: linear-gradient(
-        -15deg,
-        rgba($purple-dk, 0.8),
-        rgba($blue, 0.8)
-      );
-      border-radius: 1rem;
-      color: $white;
-      display: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      line-height: 2rem;
-      position: absolute;
-      top: 0.15rem;
-      left: 2.8rem;
-      text-shadow: none;
-      width: 6rem;
     }
   }
 }

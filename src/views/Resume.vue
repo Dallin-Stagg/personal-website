@@ -37,17 +37,52 @@
         <h3>EXPERIENCE</h3>
         <div class="resume_item" v-for="(item, i) in experienceItems" :key="i">
           <h4>{{ item.title }}</h4>
-          <p>{{ item.description }}</p>
+          <h5>{{ item.position_and_time }}</h5>
+          <ul>
+            <li v-for="(text, j) in item.list" :key="j">{{ text }}</li>
+          </ul>
         </div>
         <h3>EDUCATION</h3>
-        <div class="resume_item" v-for="(item, i) in educationItems" :key="i + 50">
+        <div class="resume_item" v-for="(item, i) in educationItems" :key="i + 10">
           <!-- fix for annoying vue key system -->
           <h4>{{ item.title }}</h4>
-          <p>{{ item.description }}</p>
+          <h5>{{ item.position_and_time }}</h5>
+          <ul>
+            <li v-for="(text, j) in item.list" :key="j">{{ text }}</li>
+          </ul>
         </div>
         <h3>SKILLS</h3>
+        <div class="skills_item">
+          <ul>
+            <li v-for="(skill, i) in skills">{{ skill }}</li>
+          </ul>
+        </div>
         <h3>SERVICE</h3>
+        <div class="resume_item" v-for="(item, i) in serviceItems" :key="i + 20">
+          <!-- fix for annoying vue key system -->
+          <h4>{{ item.title }}</h4>
+          <h5>{{ item.position_and_time }}</h5>
+          <ul>
+            <li v-for="(text, j) in item.list" :key="j">{{ text }}</li>
+          </ul>
+        </div>
         <h3>PERSONAL</h3>
+        <div class="personal_item">
+          <p>{{ personalData }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="ds_info_line">
+      <div class="float_wrapper">
+        <i class="fa fa-info"></i>
+        <h4>
+          <strong>Looking for an official copy of my resume?</strong>
+          <br>Just contact me and request it!
+        </h4>
+        <div class="info_line_btn" @click="$router.push({ name: 'Contact' })">
+          Take me there
+          <i class="fa fa-long-arrow-alt-right"></i>
+        </div>
       </div>
     </div>
   </div>
@@ -62,42 +97,66 @@ export default {
         "https://onedrive.live.com/embed?cid=F2D94E544E7CA959&resid=F2D94E544E7CA959%212878&authkey=AIjBRexX3Hd4eLg&em=2",
       experienceItems: [
         {
-          image_class: "mil",
           title: "MILLENIUM AUTO NETWORK",
           position_and_time: "Software Developer, October 2017 - November 2017",
-          area: "Provo, UT",
           description:
-            "After gaining valuable experience in the industry, I was hired as a temporary developer directly in charge of optimizing the company website for mobile devices. As part of my work I overhauled the current stylesheets and implemented media queries to assist in overall visual and user experience enhancements. I assisted lead developers of their team in the optimization of load time and image rendering on a website that requires numerous pictures to be loaded quickly and effectively. Working with Millennium was an extremely valuable experience both because of the experience I gained and the opportunity to freelance and work remotely for an outside company."
+            "After gaining valuable experience in the industry, I was hired as a temporary developer directly in charge of optimizing the company website for mobile devices. As part of my work I overhauled the current stylesheets and implemented media queries to assist in overall visual and user experience enhancements. I assisted lead developers of their team in the optimization of load time and image rendering on a website that requires numerous pictures to be loaded quickly and effectively. Working with Millennium was an extremely valuable experience both because of the experience I gained and the opportunity to freelance and work remotely for an outside company.",
+          list: [
+            "Overhauled CSS stylesheets and implemented global media queries making the site accessible and usable to users of all operating systems and devices.",
+            "Assisted lead developers in the optimization of load time, image rendering and stylesheet refinement."
+          ]
         },
         {
-          image_class: "rc",
           title: "ROOM CHOICE",
           position_and_time:
             "Frontend Software Developer, March 2017 - November 2018",
-          area: "Provo, UT",
           description:
-            "At Room Choice, I progressed from having a minimal coding background, to a mastery of several high-demand programming languages. As part of a small and elite team of developers, I had a lot of responsibility placed on my shoulders and was assigned to head up projects or the creation of new functionality to suit the needs of numerous clients. Regular completion of these projects validated that quality stems from attention to detail and client-first thinking. During my time, Room Choice underwent a company rebranding, which included a redesign of the software and company website. This gave me the opportunity to test the valuable skills I had learned, as I created robust and clean stylesheets to enhance user experience, to implimenting global media queries to allow users to lease beds and sign contracts from anywhere!"
+            "At Room Choice, I progressed from having a minimal coding background, to a mastery of several high-demand programming languages. As part of a small and elite team of developers, I had a lot of responsibility placed on my shoulders and was assigned to head up projects or the creation of new functionality to suit the needs of numerous clients. Regular completion of these projects validated that quality stems from attention to detail and client-first thinking. During my time, Room Choice underwent a company rebranding, which included a redesign of the software and company website. This gave me the opportunity to test the valuable skills I had learned, as I created robust and clean stylesheets to enhance user experience, to implimenting global media queries to allow users to lease beds and sign contracts from anywhere!",
+          list: [
+            "Lead role in the rebuilding and bottom-to-top redesign of the frontend of the software system in Vue.js.",
+            "Collaborated with company executives in managing product development across 4 software services.",
+            "Designed and implemented customizable and exportable financial and operational reports accessible to managers at all clients.",
+            "Performed bank reconciliations and user ledger audits with the CFO.",
+            "Assisted in the creation and monitoring of the online payment system used by tenants from all clients.",
+            "Reported to company executives regularly to communicate goals and progress on current projects."
+          ]
         }
       ],
       educationItems: [
         {
-          image_class: "byu",
           title: "BRIGHAM YOUNG UNIVERSITY",
           position_and_time: "Accounting, August 2017 -",
-          area: "Provo, UT",
-          description:
-            "BYU presented unprecedented scale and diversity of opportunity. My professors constantly pushed me to expand and adjust the way I think in a pursuit to constantly improve who I am as a creator. My experience performming with BYU Synthesis and other top ensembles enstilled in me a passion for music and creating a unique identity. My engagement in the Tech, Private Equity and Venture Capital, and Corporate Finance clubs helped advance my learning and introduced me to a wealth of extremely intelligent peers. BYU taught me to love learning, serve without restraint, and to push my boundaries as far as they will go for the betterment of all those I come in contact with."
+          list: [
+            "3.85 Major GPA with a 4.0 in all Accounting and Finance classes.",
+            "Met with professors and Accounting staff frequently as a top prospect in recruiting efforts.",
+            "Involved in BYU's Tech Club, PEVC Club, and Corporate Finance Club.",
+            "Hand-picked to be a part of the BYU Pre-Ph.D. in Finance program."
+          ]
         }
       ],
-      hardSkills: [
+      serviceItems: [
+        {
+          title: "THE CHURCH OF JESUS CHRIST OF LATTER-DAY SAINTS",
+          position_and_time: "Volunteer Representative, 2016-2017",
+          list: [
+            "Directed volunteer efforts in Rosario and surrounding areas.",
+            "Helped monitor short-term and long-term progress of representatives in the area.",
+            "Spent over 100 hours teaching English to help others increase their marketability."
+          ]
+        }
+      ],
+      skills: [
         "Vue JS",
         "HTML",
         "CSS (SCSS)",
         "SQL",
         "Microsoft Excel",
-        "Product Management"
+        "Product Management",
+        "Spanish",
+        "Client Communication"
       ],
-      softSkills: ["Spanish", "Client Communication"],
+      personalData:
+        "Recorded and performed live with multiple Grammy award winning musicians in multiple countries on drum set. Eagle scout. Enjoy reading and playing basketball and soccer.",
       showFilter: false,
       filters: [
         {
@@ -164,7 +223,7 @@ export default {
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 2;
+  z-index: 3;
   .filter_section {
     user-select: none;
     .filter_item {
@@ -185,6 +244,9 @@ export default {
         line-height: 1.5rem;
         margin: 0;
         transition: text-indent 0.1s linear;
+        @include mobile {
+          font-size: 1rem;
+        }
       }
       .ds_toggle {
         float: right;
@@ -207,6 +269,7 @@ export default {
   position: relative;
   max-width: calc(100% - 10rem);
   width: 56rem;
+  z-index: 2;
   @include mobile {
     max-width: calc(100% - 2rem);
   }
@@ -222,6 +285,14 @@ export default {
     top: 1rem;
     text-align: center;
     width: 2rem;
+    @include mobile {
+      border-radius: 1.75rem;
+      box-shadow: 0 2px 6px 2px rgba($purple, 0.2);
+      font-size: 1rem;
+      line-height: 2.5rem;
+      margin: 0.25rem;
+      width: 3.5rem;
+    }
   }
   .content {
     background-color: $white;
@@ -234,23 +305,15 @@ export default {
       padding: 3rem 1.5rem;
     }
     h3 {
+      border-bottom: 1px solid $purple;
       color: $purple;
       font-size: 1rem;
       font-weight: 600;
       margin: 0;
       @include mobile {
+        border-bottom: 1px solid $purple;
         font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-      }
-    }
-    h4 {
-      color: $text-primary;
-      font-size: 1rem;
-      font-weight: 600;
-      margin: 0;
-      @include mobile {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
+        margin: 2.5rem 0 0.5rem;
       }
     }
     .resume_item {
@@ -263,34 +326,154 @@ export default {
         margin: 0;
         width: 100%;
       }
+      h4 {
+        color: $text-primary;
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0;
+        @include mobile {
+          font-size: 1.1rem;
+          margin-top: 1.5rem;
+        }
+      }
+      h5 {
+        color: $text-secondary;
+        font-size: 0.9rem;
+        font-style: italic;
+        font-weight: 500;
+        margin: 0.2rem 0;
+        @include mobile {
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
+        }
+      }
       p {
         color: $text-secondary;
         font-size: 0.9rem;
         font-weight: 400;
-        margin: 0.5rem 0;
+        margin: 0.3rem 0;
         text-align: justify;
         @include mobile {
           font-size: 1rem;
           text-align: left;
         }
       }
-      .justify {
-        text-align: justify;
-        word-spacing: -10px;
-      }
-      .justify:after {
-        content: "";
-        display: inline-block;
-        width: 100%;
-      }
       ul {
+        margin: 0.3rem 0;
+        padding-left: 1.5rem;
         li {
           color: $text-secondary;
-          font-size: 0.95rem;
+          font-size: 0.9rem;
+          font-weight: 400;
           @include mobile {
-            font-size: 1.1rem;
+            font-size: 1rem;
           }
         }
+      }
+    }
+    .skills_item {
+      ul {
+        column-count: 3;
+        margin: 1rem 0 1rem 6rem;
+        padding-left: 1.5rem;
+        @include mobile {
+          column-count: 1;
+          margin: 1rem 0;
+        }
+        li {
+          color: $text-secondary;
+          font-size: 0.9rem;
+          font-weight: 400;
+          @include mobile {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+    .personal_item {
+      p {
+        color: $text-secondary;
+        font-size: 0.9rem;
+        font-weight: 400;
+        margin: 1rem 0 1rem 6rem;
+        text-align: justify;
+        @include mobile {
+          font-size: 1rem;
+          margin: 1rem 0;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+.ds_info_line {
+  margin: 1.5rem 0;
+  text-align: center;
+  @include mobile {
+    margin: 3rem 0;
+  }
+  .float_wrapper {
+    display: inline-block;
+    overflow: auto;
+    text-align: center;
+    .fa-info {
+      background-color: $purple;
+      border-radius: 50%;
+      color: $white;
+      float: left;
+      font-size: 0.55rem;
+      line-height: 1.2rem;
+      text-align: center;
+      width: 1.2rem;
+      @include mobile {
+        float: none;
+        margin-bottom: 0.5rem;
+      }
+    }
+    h4 {
+      color: $text-secondary;
+      float: left;
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.2rem;
+      margin: 0;
+      text-indent: 0.5rem;
+      strong {
+        color: $text-primary;
+        margin-right: 0.2rem;
+        @include mobile {
+          margin: 0;
+        }
+      }
+      br {
+        display: none;
+        @include mobile {
+          display: inline;
+        }
+      }
+      @include mobile {
+        float: none;
+      }
+    }
+    .info_line_btn {
+      border-bottom: 1px solid $purple;
+      color: $purple;
+      cursor: pointer;
+      float: left;
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.2rem;
+      margin-left: 0.5rem;
+      @include mobile {
+        float: none;
+        display: inline-block;
+        margin: 1rem 0 0;
+      }
+      &:hover {
+        color: $purple-dk;
+      }
+      i {
+        margin-left: 0.1rem;
       }
     }
   }

@@ -147,9 +147,8 @@ html {
     right: 0.4rem;
   }
   @include mobile {
-    background-color: rgba($gray, 0.3);
     border-radius: 1.75rem;
-    box-shadow: inset 0 1px 3px 0 rgba(24, 55, 69, 0.25);
+    box-shadow: 0 2px 6px 2px rgba($purple, 0.2);
     font-size: 1.2rem;
     line-height: 2.5rem;
     margin: 0.25rem;
@@ -168,6 +167,7 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     margin-bottom: -3rem;
+    z-index: 1;
   }
   h1 {
     color: $white;

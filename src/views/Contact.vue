@@ -1,17 +1,10 @@
 <template>
   <div class="contact_me">
     <div class="outer_wrapper">
-      <svg height="20">
-        <polygon fill="white" points="0,20 320,0 320,20"></polygon>
-      </svg>
       <div class="content">
         <div class="input_item">
           <p :class="{ 'shift': name }">NAME</p>
           <input ref="autofocus" type="text" v-model="name" required>
-        </div>
-        <div class="input_item">
-          <p :class="{ 'shift': companyName }">COMPANY</p>
-          <input type="text" v-model="companyName" required>
         </div>
         <div class="input_item">
           <p :class="{ 'shift': email }">EMAIL</p>
@@ -47,9 +40,6 @@
           </div>
         </transition>
       </div>
-      <svg height="20">
-        <polygon fill="white" points="0,20 320,0 0,0"></polygon>
-      </svg>
     </div>
   </div>
 </template>
@@ -62,7 +52,6 @@ export default {
     return {
       messageSent: false,
       name: "",
-      companyName: "",
       email: "",
       message: "",
       request_resume: false
@@ -115,20 +104,16 @@ export default {
   height: 100vh;
   width: 100%;
   .outer_wrapper {
+    box-shadow: 0 1px 6px 0px rgba($gray-dk, 0.25),
+      0 -18px 0px -8px rgba($white, 0.25), 0 -34px 0px -16px rgba($white, 0.2),
+      0 -50px 0px -24px rgba($white, 0.15);
     box-sizing: border-box;
-    filter: drop-shadow(13px -10px 0px rgba($white, 0.7))
-      drop-shadow(3px -1px 10px rgba($gray-dk, 0.07));
     position: relative;
     width: 20rem;
     @include mobile {
       max-height: calc(100vh - 5rem);
       overflow: auto;
       width: calc(100% - 1rem);
-    }
-    svg {
-      display: block;
-      margin: 0 auto;
-      width: 100%;
     }
     .content {
       background-color: $white;
