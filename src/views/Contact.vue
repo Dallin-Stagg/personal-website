@@ -202,7 +202,8 @@ export default {
       }
       .toggle_item {
         overflow: auto;
-        padding: 0 0 1rem 2rem;
+        padding: 0 0 1rem calc(50% - 7rem);
+        width: 14rem;
         .left {
           float: left;
         }

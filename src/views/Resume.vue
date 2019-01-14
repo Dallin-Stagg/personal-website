@@ -288,7 +288,7 @@ export default {
     @include mobile {
       border-radius: 1.75rem;
       box-shadow: 0 2px 6px 2px rgba($purple, 0.2);
-      font-size: 1rem;
+      font-size: 0.9rem;
       line-height: 2.5rem;
       margin: 0.25rem;
       width: 3.5rem;
