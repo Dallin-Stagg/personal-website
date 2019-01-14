@@ -3,20 +3,17 @@
     <myNav></myNav>
     <div id="view" :class="{ 'menu_open': menuOpen }" @click="closeMenu()">
       <router-view/>
-      <!--<myFooter></myFooter>-->
     </div>
   </div>
 </template>
 
 <script>
 import MyNav from "../components/Nav.vue";
-import MyFooter from "../components/Footer.vue";
 
 export default {
   name: "Website",
   components: {
-    myNav: MyNav,
-    myFooter: MyFooter
+    myNav: MyNav
   },
   data() {
     return {
@@ -24,9 +21,6 @@ export default {
     };
   },
   computed: {
-    showAlert() {
-      return this.$store.state.alertInfo.show;
-    },
     menuOpen() {
       return this.$store.state.menuOpen;
     },

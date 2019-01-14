@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="my-navigation"
-    :style="{ backgroundPosition: '0px -' + this.scrollPosition / 10 + 'px' }"
-  >
+  <div class="my-navigation">
     <div class="nav_btn" @click="$store.commit('toggleMenu')">
       <i class="fa fa-bars"></i>
     </div>
@@ -34,12 +31,8 @@ export default {
   name: "Navigation",
   data() {
     return {
-      routes: ["Home", "Resume", "Portfolio", "Contact"],
-      scrollPosition: null
+      routes: ["Home", "Resume", "Portfolio", "Contact"]
     };
-  },
-  mounted() {
-    window.addEventListener("scroll", this.distanceFromTop);
   },
   computed: {
     activeRoute() {
@@ -61,9 +54,6 @@ export default {
       if (this.menuOpen) {
         this.$store.commit("toggleMenu");
       }
-    },
-    distanceFromTop() {
-      this.scrollPosition = window.scrollY;
     }
   }
 };
@@ -86,6 +76,10 @@ export default {
   top: 0;
   left: 1rem;
   z-index: 30;
+  @include mobile {
+    line-height: 3.5rem;
+    width: 3.5rem;
+  }
 }
 .sidebar {
   background-color: rgba($white, 0.9);

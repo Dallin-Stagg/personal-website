@@ -14,6 +14,19 @@
           </div>
         </div>
       </div>
+      <div class="ds_info_line">
+        <div class="float_wrapper">
+          <i class="fa fa-info"></i>
+          <h4>
+            <strong>Trying to collaborate?</strong>
+            <br>Just contact me!
+          </h4>
+          <div class="info_line_btn" @click="$router.push({ name: 'Contact' })">
+            Take me there
+            <i class="fa fa-long-arrow-alt-right"></i>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -42,7 +55,7 @@ export default {
           image_class: "rc_manager",
           title: "Room Choice - Manager Portal",
           description:
-            "The feature-rich student housing management system used for everything from controlling the leasing process to viewing and exporting customizable and powerful financial reports.",
+            "The feature-rich student housing management system used for everything from monitoring the leasing process to viewing and exporting customizable and powerful financial reports.",
           link: ""
         },
         {
@@ -112,6 +125,7 @@ export default {
       opacity: 1;
     }
     @include mobile {
+      box-shadow: 0 1px 6px 0px rgba($gray-dk, 0.25);
       transform: scale(1);
       .info_cover {
         height: 0;

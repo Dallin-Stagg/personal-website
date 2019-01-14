@@ -103,6 +103,10 @@ export default {
   justify-content: center;
   height: 100vh;
   width: 100%;
+  @include mobile {
+    display: block;
+    overflow-y: auto;
+  }
   .outer_wrapper {
     box-shadow: 0 1px 6px 0px rgba($gray-dk, 0.25),
       0 -18px 0px -8px rgba($white, 0.25), 0 -34px 0px -16px rgba($white, 0.2),
@@ -111,13 +115,12 @@ export default {
     position: relative;
     width: 20rem;
     @include mobile {
-      max-height: calc(100vh - 5rem);
-      overflow: auto;
+      margin: 6rem auto 10rem;
       width: calc(100% - 1rem);
     }
     .content {
       background-color: $white;
-      padding: 3rem 1rem 1rem;
+      padding: 2.5rem 1rem 1rem;
       .input_item {
         margin: 1rem 0;
         position: relative;
@@ -135,6 +138,9 @@ export default {
           position: absolute;
           transition: font-size 0.1s ease-out, padding 0.1s ease-out,
             top 0.1s ease-out, left 0.1s ease-out;
+          @include mobile {
+            top: 0.75rem;
+          }
           &.shift {
             font-size: 0.7rem;
             padding: 0 0.3rem;
@@ -158,6 +164,9 @@ export default {
           &:focus {
             border: 1px solid $purple;
             box-shadow: inset 0 2px 6px 0 rgba($purple, 0.25);
+          }
+          @include mobile {
+            height: 3rem;
           }
         }
         /* Change the white to any color ;) THIS REMOVES YELLOW BACKGROUND ON CHROME AUTOFILL */
@@ -184,6 +193,10 @@ export default {
           &:focus {
             border: 1px solid $purple;
             box-shadow: inset 0 2px 6px 0 rgba($purple, 0.25);
+          }
+          @include mobile {
+            height: 12rem;
+            padding: 0.9rem 0.8rem;
           }
         }
       }

@@ -155,6 +155,78 @@ html {
     width: 3.5rem;
   }
 }
+.ds_info_line {
+  margin: 1.5rem 0;
+  text-align: center;
+  @include mobile {
+    margin: 3rem 0;
+  }
+  .float_wrapper {
+    display: inline-block;
+    overflow: auto;
+    text-align: center;
+    .fa-info {
+      background-color: $purple;
+      border-radius: 50%;
+      color: $white;
+      float: left;
+      font-size: 0.55rem;
+      line-height: 1.2rem;
+      text-align: center;
+      width: 1.2rem;
+      @include mobile {
+        float: none;
+        margin-bottom: 0.5rem;
+      }
+    }
+    h4 {
+      color: $text-secondary;
+      float: left;
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.2rem;
+      margin: 0;
+      text-indent: 0.5rem;
+      strong {
+        color: $text-primary;
+        margin-right: 0.2rem;
+        @include mobile {
+          margin: 0;
+        }
+      }
+      br {
+        display: none;
+        @include mobile {
+          display: inline;
+        }
+      }
+      @include mobile {
+        float: none;
+      }
+    }
+    .info_line_btn {
+      border-bottom: 1px solid $purple;
+      color: $purple;
+      cursor: pointer;
+      float: left;
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.2rem;
+      margin-left: 0.5rem;
+      @include mobile {
+        float: none;
+        display: inline-block;
+        margin: 1rem 0 0;
+      }
+      &:hover {
+        color: $purple-dk;
+      }
+      i {
+        margin-left: 0.1rem;
+      }
+    }
+  }
+}
 .page_header {
   animation: 1.25s ease-out 0s 1 headerSlideIn;
   padding: 8rem 0;
