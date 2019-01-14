@@ -1,24 +1,26 @@
 import Vue from "vue";
 import Router from "vue-router";
-import PersonalWebsite from "./views/PersonalWebsite.vue";
-import Home from "./views/home.vue";
-import Resume from "./views/resume.vue";
-import Portfolio from "./views/portfolio.vue";
-import Contact from "./views/contact.vue";
+import Website from "@/views/website.vue";
+import Home from "@/views/home.vue";
+import Resume from "@/views/resume.vue";
+import Portfolio from "@/views/portfolio.vue";
+import Contact from "@/views/contact.vue";
 
 Vue.use(Router);
 
 export default new Router({
   mode: "history",
-  base: process.env.BASE_URL,
-  scrollBehavior: function(to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return { selector: to.hash };
+    }
     return { x: 0, y: 0 };
   },
   routes: [
     {
       path: "/",
-      name: "Personal Website",
-      component: PersonalWebsite,
+      name: "Website",
+      component: Website,
       children: [
         {
           path: "home",

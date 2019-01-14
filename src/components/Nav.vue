@@ -77,8 +77,8 @@ export default {
   left: 1rem;
   z-index: 30;
   @include mobile {
-    line-height: 3.5rem;
-    width: 3.5rem;
+    line-height: 3.2rem;
+    width: 3.2rem;
   }
 }
 .sidebar {

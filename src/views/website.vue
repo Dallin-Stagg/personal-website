@@ -15,11 +15,6 @@ export default {
   components: {
     myNav: MyNav
   },
-  data() {
-    return {
-      scrollPosition: null
-    };
-  },
   computed: {
     menuOpen() {
       return this.$store.state.menuOpen;
@@ -37,8 +32,7 @@ export default {
     }
   },
   mounted() {
-    window.addEventListener("scroll", this.distanceFromTop);
-    if (this.$route.name === "Personal Website") {
+    if (this.$route.name === "Website") {
       this.$router.push({ name: "Home" });
     }
   },
@@ -47,10 +41,6 @@ export default {
       if (this.$store.state.menuOpen) {
         this.$store.commit("toggleMenu");
       }
-    },
-    distanceFromTop() {
-      this.scrollPosition = window.scrollY;
-      // console.log(this.scrollPosition)
     }
   }
 };
