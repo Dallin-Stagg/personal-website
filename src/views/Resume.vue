@@ -33,7 +33,8 @@
     </div>
     <div class="resume_outer_wrapper">
       <i class="fa fa-filter filter_toggle" @click="showFilter = !showFilter"></i>
-      <div class="content">
+      <i class="fa fa-print filter_toggle" @click="print()"></i>
+      <div id="resume-content">
         <h3>EXPERIENCE</h3>
         <div class="resume_item" v-for="(item, i) in experienceItems" :key="i">
           <h4>{{ item.title }}</h4>
@@ -189,7 +190,22 @@ export default {
     }
   },
   methods: {
-    //
+    print() {
+      var divId = "resume-content";
+      var content = document.getElementById(divId).innerHTML;
+      var mywindow = window.open("", "Print", "height=600,width=800");
+      mywindow.document.write(
+        "<html><head><title>Dallin Stagg - dallinstagg.com</title>"
+      );
+      mywindow.document.write("</head><body >");
+      mywindow.document.write(content);
+      mywindow.document.write("</body></html>");
+      mywindow.document.close();
+      mywindow.focus();
+      mywindow.print();
+      mywindow.close();
+      return true;
+    }
   },
   mounted() {
     this.experienceItems.reverse();
@@ -232,9 +248,11 @@ export default {
       overflow: auto;
       padding: 0.5rem 1rem;
       &:hover {
-        box-shadow: 0 0 3px 0 rgba($gray-dk, 0.2);
         h4 {
-          text-indent: 0.3rem;
+          text-indent: 0.2rem;
+          @include mobile {
+            text-indent: 0;
+          }
         }
       }
       h4 {
@@ -285,6 +303,10 @@ export default {
     top: 1rem;
     text-align: center;
     width: 2rem;
+    &.fa-print {
+      font-size: 0.8rem;
+      right: 4rem;
+    }
     @include mobile {
       border-radius: 1.75rem;
       box-shadow: 0 2px 6px 2px rgba($purple, 0.2);
@@ -292,13 +314,19 @@ export default {
       line-height: 2.5rem;
       margin: 0.25rem;
       width: 3.5rem;
+      @include mobile {
+        &.fa-print {
+          font-size: 0.95rem;
+          right: 5.5rem;
+        }
+      }
     }
   }
-  .content {
+  #resume-content {
     background-color: $white;
-    box-shadow: 0 1px 6px 0px rgba($gray-dk, 0.25),
-      0 -18px 0px -8px rgba($white, 0.25), 0 -34px 0px -16px rgba($white, 0.2),
-      0 -50px 0px -24px rgba($white, 0.15);
+    box-shadow: 0 2px 5px 0 rgba($gray-dk, 0.25),
+      0 -18px 0px -8px rgba($white, 0.3), 0 -34px 0px -16px rgba($white, 0.2),
+      0 -50px 0px -24px rgba($white, 0.1);
     padding: 3rem;
     transition: box-shadow 0.3s ease-out;
     @include mobile {

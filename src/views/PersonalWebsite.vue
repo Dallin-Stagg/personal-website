@@ -32,7 +32,7 @@ export default {
     }
   },
   mounted() {
-    if (this.$route.name === "Website") {
+    if (this.$route.name === "Personal Website") {
       this.$router.push({ name: "Home" });
     }
   },

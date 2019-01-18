@@ -1,15 +1,15 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Website from "@/views/website.vue";
-import Home from "@/views/home.vue";
-import Resume from "@/views/resume.vue";
-import Portfolio from "@/views/portfolio.vue";
-import Contact from "@/views/contact.vue";
+import PersonalWebsite from "@/views/PersonalWebsite.vue";
+import Home from "@/views/Home.vue";
+import Resume from "@/views/Resume.vue";
+import Portfolio from "@/views/Portfolio.vue";
+import Contact from "@/views/Contact.vue";
 
 Vue.use(Router);
 
 export default new Router({
-  mode: "history",
+  mode: "hash",
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
       return { selector: to.hash };
@@ -19,8 +19,8 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "Website",
-      component: Website,
+      name: "Personal Website",
+      component: PersonalWebsite,
       children: [
         {
           path: "home",

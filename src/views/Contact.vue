@@ -1,5 +1,9 @@
 <template>
   <div class="contact_me">
+    <div class="page_header background">
+      <h1>Contact</h1>
+      <h2>Let's get in touch</h2>
+    </div>
     <div class="outer_wrapper">
       <div class="content">
         <div class="input_item">
@@ -98,24 +102,17 @@ export default {
 @import "../assets/styles/global-styles.scss";
 
 .contact_me {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100%;
-  @include mobile {
-    display: block;
-    overflow-y: auto;
-  }
   .outer_wrapper {
-    box-shadow: 0 1px 6px 0px rgba($gray-dk, 0.25),
-      0 -18px 0px -8px rgba($white, 0.25), 0 -34px 0px -16px rgba($white, 0.2),
-      0 -50px 0px -24px rgba($white, 0.15);
+    box-shadow: 0 2px 5px 0 rgba($gray-dk, 0.25),
+      0 -18px 0px -8px rgba($white, 0.3), 0 -34px 0px -16px rgba($white, 0.2),
+      0 -50px 0px -24px rgba($white, 0.1);
     box-sizing: border-box;
     position: relative;
+    margin: 0 auto 6rem;
     width: 20rem;
+    z-index: 2;
     @include mobile {
-      margin: 6rem auto 10rem;
+      max-width: 24rem;
       width: calc(100% - 1rem);
     }
     .content {

@@ -238,7 +238,7 @@ html {
     background-position: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    margin-bottom: -3rem;
+    margin-bottom: -4rem;
     z-index: 1;
   }
   h1 {
