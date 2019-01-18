@@ -110,7 +110,7 @@ export default {
       width: 11rem;
     }
     .item_wrapper {
-      padding-bottom: 2rem;
+      padding-bottom: 1.5rem;
       position: relative;
       .item {
         color: $text-secondary;

@@ -6,23 +6,18 @@
     </div>
     <div class="outer_wrapper">
       <div class="content">
+        <!-- v-model is not used as it causes an error on mobile devices -->
         <div class="input_item">
           <p :class="{ 'shift': name }">NAME</p>
-          <input ref="autofocus" type="text" v-model="name" required>
+          <input ref="autofocus" type="text" :value="name" @input="evt=>name=evt.target.value">
         </div>
         <div class="input_item">
           <p :class="{ 'shift': email }">EMAIL</p>
-          <input type="email" v-model="email" required>
-          <!-- FIX FOR MOBILE
-						
-						 <input type='text'
-        :value='message1'
-        @input='evt=>message1=evt.target.value'
-          >-->
+          <input type="text" :value="email" @input="evt=>email=evt.target.value">
         </div>
         <div class="input_item">
           <p :class="{ 'shift': message }">MESSAGE</p>
-          <textarea v-model="message" required></textarea>
+          <textarea :value="message" @input="evt=>message=evt.target.value"></textarea>
         </div>
         <div class="toggle_item">
           <div
@@ -108,12 +103,12 @@ export default {
       0 -50px 0px -24px rgba($white, 0.1);
     box-sizing: border-box;
     position: relative;
-    margin: 0 auto 6rem;
+    margin: 0 auto 8rem;
     width: 20rem;
     z-index: 2;
     @include mobile {
       max-width: 24rem;
-      width: calc(100% - 1rem);
+      width: calc(100% - 2rem);
     }
     .content {
       background-color: $white;

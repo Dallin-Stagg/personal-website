@@ -52,6 +52,11 @@ html {
   text-transform: uppercase;
   margin: 1rem auto;
   transition: background-color 0.2s ease-out, transform 0.2s ease-out;
+  @include mobile {
+    font-size: 0.85rem;
+    line-height: 2.5rem;
+    padding: 0 2.5rem;
+  }
   &:hover {
     transform: scale(1.02);
     &.disabled {
@@ -76,12 +81,18 @@ html {
   border-radius: 1rem;
   cursor: pointer;
   margin: 0.4rem 0.2rem;
-  padding: 0.1rem;
+  padding: 0.15rem;
   width: 1.4rem;
   transition: background-color 0.2s ease-out;
+  @include mobile {
+    width: 1.6rem;
+  }
   &.toggled {
     .dot {
-      transform: translateX(0.9rem) scale(2.1);
+      transform: translateX(0.9rem) scale(2.3);
+      @include mobile {
+        transform: translateX(1.1rem) scale(2.3);
+      }
     }
     &.blue {
       background-color: rgba($blue, 0.4);
@@ -99,11 +110,16 @@ html {
   .dot {
     background-color: $white;
     border-radius: 50%;
-    box-shadow: 0 2px 4px 1px rgba($purple, 0.2);
+    box-shadow: 0 1px 3px 1px rgba($gray-dk, 0.1),
+      0 1px 2px 0 rgba($gray-dk, 0.25);
     height: 0.5rem;
     width: 0.5rem;
     transition: transform 0.2s ease-out, background-color 0.2s ease-out;
-    transform: scale(2.1);
+    transform: scale(2.2);
+    @include mobile {
+      height: 0.6rem;
+      width: 0.6rem;
+    }
   }
 }
 @keyframes shake {
@@ -138,6 +154,9 @@ html {
   z-index: 20;
   &:hover {
     animation: 0.3s linear 0s 1 shake;
+    @include mobile {
+      animation: none;
+    }
   }
 
   &.left {
@@ -238,7 +257,7 @@ html {
     background-position: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    margin-bottom: -4rem;
+    margin-bottom: -3rem;
     z-index: 1;
   }
   h1 {

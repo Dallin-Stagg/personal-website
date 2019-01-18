@@ -75,7 +75,7 @@ export default {
   overflow-x: hidden;
   width: 100%;
   will-change: transform;
-  transition: transform 0.2s ease-out;
+  transition: transform 0.25s ease-out;
   &.menu_open {
     transform: rotateY(-10deg) scale(0.8) translateX(10rem);
   }

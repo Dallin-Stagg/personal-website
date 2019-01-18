@@ -230,7 +230,6 @@ export default {
 }
 .ds_filter {
   background-color: $white;
-  border-left: 1px solid $gray-border;
   box-shadow: 0 5px 15px 0 rgba(24, 55, 69, 0.3);
   box-sizing: border-box;
   width: 18rem;
@@ -247,6 +246,9 @@ export default {
       cursor: pointer;
       overflow: auto;
       padding: 0.5rem 1rem;
+      @include mobile {
+        padding: 0.7rem 1.3rem;
+      }
       &:hover {
         h4 {
           text-indent: 0.2rem;
@@ -264,6 +266,7 @@ export default {
         transition: text-indent 0.1s linear;
         @include mobile {
           font-size: 1rem;
+          line-height: 1.7rem;
         }
       }
       .ds_toggle {
