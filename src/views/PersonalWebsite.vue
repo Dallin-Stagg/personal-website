@@ -73,6 +73,7 @@ export default {
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.4);
   height: 100vh;
   overflow-x: hidden;
+  scroll-behavior: smooth;
   width: 100%;
   will-change: transform;
   transition: transform 0.25s ease-out;

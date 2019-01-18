@@ -33,7 +33,7 @@ export default {
   name: "Navigation",
   data() {
     return {
-      routes: ["Home", "Resume", "Portfolio", "Contact"]
+      routes: ["Home", "Resume", "Contact"]
     };
   },
   computed: {

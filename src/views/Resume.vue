@@ -32,7 +32,7 @@
       </div>-->
     </div>
     <div class="resume_outer_wrapper">
-      <i class="fa fa-filter filter_toggle" @click="showFilter = !showFilter"></i>
+      <!-- <i class="fa fa-filter filter_toggle" @click="showFilter = !showFilter"></i> -->
       <i class="fa fa-print filter_toggle" @click="print()"></i>
       <div id="resume-content">
         <h3>EXPERIENCE</h3>
@@ -73,7 +73,7 @@
         </div>
       </div>
     </div>
-    <div class="ds_info_line">
+    <div class="ds_info_line" id="test">
       <div class="float_wrapper">
         <i class="fa fa-info"></i>
         <h4>
@@ -306,10 +306,10 @@ export default {
     top: 1rem;
     text-align: center;
     width: 2rem;
-    &.fa-print {
+    /* &.fa-print {
       font-size: 0.8rem;
       right: 4rem;
-    }
+    } */
     @include mobile {
       border-radius: 1.75rem;
       box-shadow: 0 2px 6px 2px rgba($purple, 0.2);
@@ -317,12 +317,10 @@ export default {
       line-height: 2.5rem;
       margin: 0.25rem;
       width: 3.5rem;
-      @include mobile {
-        &.fa-print {
-          font-size: 0.95rem;
-          right: 5.5rem;
-        }
-      }
+      /* &.fa-print {
+        font-size: 0.95rem;
+        right: 5.5rem;
+      } */
     }
   }
   #resume-content {
