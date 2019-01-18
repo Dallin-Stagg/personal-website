@@ -54,8 +54,8 @@ html {
   transition: background-color 0.2s ease-out, transform 0.2s ease-out;
   @include mobile {
     font-size: 0.85rem;
-    line-height: 2.5rem;
-    padding: 0 2.5rem;
+    line-height: 2.7rem;
+    padding: 0 2.4rem;
   }
   &:hover {
     transform: scale(1.02);

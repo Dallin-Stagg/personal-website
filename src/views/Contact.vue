@@ -131,6 +131,7 @@ export default {
           transition: font-size 0.1s ease-out, padding 0.1s ease-out,
             top 0.1s ease-out, left 0.1s ease-out;
           @include mobile {
+            font-size: 0.85rem;
             top: 0.75rem;
           }
           &.shift {
@@ -138,6 +139,9 @@ export default {
             padding: 0 0.3rem;
             top: -0.8rem;
             left: 0.7rem;
+            @include mobile {
+              font-size: 0.8rem;
+            }
           }
         }
         input {
@@ -158,6 +162,7 @@ export default {
             box-shadow: inset 0 2px 6px 0 rgba($purple, 0.25);
           }
           @include mobile {
+            font-size: 0.9rem;
             height: 3rem;
           }
         }
