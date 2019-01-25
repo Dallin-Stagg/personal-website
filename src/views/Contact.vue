@@ -68,22 +68,22 @@ export default {
     go() {
       if (this.inputReady) {
         // https://script.google.com/macros/s/AKfycbwS78apLRhuzlmigzzMCZH_2Y6opmpWeCqfbc1_unWqEevmsUI/exec
-        /* var contact_url =
-					'https://script.google.com/macros/s/AKfycbwS78apLRhuzlmigzzMCZH_2Y6opmpWeCqfbc1_unWqEevmsUI/exec'
-				var date = new Date()
-				fetch(
-					contact_url +
-					'?name=' +
-					this.name +
-					'&email=' +
-					this.email +
-					'&message=' +
-					this.message +
-					'&date=' +
-					date +
-					'&request_resume=' +
-					this.request_resume
-				) */
+        var contact_url =
+          "https://script.google.com/macros/s/AKfycbwS78apLRhuzlmigzzMCZH_2Y6opmpWeCqfbc1_unWqEevmsUI/exec";
+        var date = new Date();
+        fetch(
+          contact_url +
+            "?name=" +
+            this.name +
+            "&email=" +
+            this.email +
+            "&message=" +
+            this.message +
+            "&date=" +
+            date +
+            "&request_resume=" +
+            this.request_resume
+        );
         this.$confetti.start({
           shape: "rect"
         });
