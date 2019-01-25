@@ -33,7 +33,7 @@
     </div>
     <div class="resume_outer_wrapper">
       <!-- <i class="fa fa-filter filter_toggle" @click="showFilter = !showFilter"></i> -->
-      <i class="fa fa-print filter_toggle" @click="print()"></i>
+      <!--<i class="fa fa-print filter_toggle" @click="print()"></i>-->
       <div id="resume-content">
         <h3>EXPERIENCE</h3>
         <div class="resume_item" v-for="(item, i) in experienceItems" :key="i">
