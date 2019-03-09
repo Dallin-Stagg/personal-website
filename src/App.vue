@@ -185,7 +185,7 @@ html {
     overflow: auto;
     text-align: center;
     .fa-info {
-      background-color: $purple;
+      background: linear-gradient(-60deg, $purple-dk, #3a66c4, $blue, $mint);
       border-radius: 50%;
       color: $white;
       float: left;
@@ -224,7 +224,10 @@ html {
       }
     }
     .info_line_btn {
-      border-bottom: 1px solid $purple;
+      background: -webkit-linear-gradient(160deg, $purple-dk, $blue);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      border-bottom: 1px solid $gray-med;
       color: $purple;
       cursor: pointer;
       float: left;
@@ -241,41 +244,44 @@ html {
         color: $purple-dk;
       }
       i {
+        -webkit-text-fill-color: $purple;
         margin-left: 0.1rem;
       }
     }
   }
 }
 .page_header {
-  animation: 1.25s ease-out 0s 1 headerSlideIn;
   padding: 8rem 0;
   position: relative;
   text-align: center;
   &.background {
     background-image: url(./assets/images/overlay-grid.svg),
-      linear-gradient(-15deg, rgba($purple-dk, 0.8), rgba($blue, 0.8));
+      linear-gradient(-60deg, $purple-dk, #3a66c4, $blue, $mint);
     background-position: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    margin-bottom: -3rem;
     z-index: 1;
   }
   h1 {
+    animation: 1.25s ease-out 0s 1 textSlideIn;
     color: $white;
     font-size: 3.5rem;
     font-weight: 300;
     margin: 0;
+    position: relative;
     text-shadow: 0px 2px 5px rgba(34, 77, 97, 0.5);
   }
   h2 {
+    animation: 1.25s ease-out 0s 1 textSlideIn;
     color: rgba($white, 0.7);
     font-size: 1.4rem;
     font-weight: 300;
     margin: 0;
+    position: relative;
     text-shadow: 0px 1px 3px rgba(34, 77, 97, 0.5);
   }
 }
-@keyframes headerSlideIn {
+@keyframes textSlideIn {
   0% {
     opacity: 0;
     bottom: 0.5rem;

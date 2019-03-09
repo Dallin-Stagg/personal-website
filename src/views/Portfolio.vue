@@ -95,7 +95,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  margin: 0 auto;
+  margin: 1rem auto;
   position: relative;
   width: 65rem;
   z-index: 2;

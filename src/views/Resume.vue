@@ -289,6 +289,7 @@ export default {
   margin: 0 auto;
   position: relative;
   max-width: calc(100% - 10rem);
+  top: -3rem;
   width: 56rem;
   z-index: 2;
   @include mobile {
@@ -331,16 +332,18 @@ export default {
     padding: 3rem;
     transition: box-shadow 0.3s ease-out;
     @include mobile {
-      padding: 3rem 1.5rem;
+      padding: 2rem 1.5rem 3rem;
     }
     h3 {
-      border-bottom: 1px solid $purple;
+      border-bottom: 1px solid $gray-med;
       color: $purple;
+      background: -webkit-linear-gradient(160deg, $purple-dk, $blue);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       font-size: 1rem;
       font-weight: 600;
       margin: 0;
       @include mobile {
-        border-bottom: 1px solid $purple;
         font-size: 1.2rem;
         margin: 2.5rem 0 0.5rem;
       }

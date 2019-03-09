@@ -9,7 +9,7 @@
         <!-- v-model is not used as it causes an error on mobile devices -->
         <div class="input_item">
           <p :class="{ 'shift': name }">NAME</p>
-          <input ref="autofocus" type="text" :value="name" @input="evt=>name=evt.target.value">
+          <input type="text" :value="name" @input="evt=>name=evt.target.value">
         </div>
         <div class="input_item">
           <p :class="{ 'shift': email }">EMAIL</p>
@@ -56,9 +56,6 @@ export default {
       request_resume: false
     };
   },
-  mounted() {
-    this.$refs.autofocus.focus();
-  },
   computed: {
     inputReady() {
       return this.name && this.email && this.message;
@@ -103,7 +100,8 @@ export default {
       0 -50px 0px -24px rgba($white, 0.1);
     box-sizing: border-box;
     position: relative;
-    margin: 0 auto 8rem;
+    margin: 0 auto 3rem;
+    top: -3rem;
     width: 20rem;
     z-index: 2;
     @include mobile {
