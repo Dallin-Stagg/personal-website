@@ -64,7 +64,7 @@ export default {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  overflow-x: hidden;
+  overflow: hidden;
   perspective: 1000px;
   width: 100%;
 }
@@ -82,7 +82,8 @@ export default {
   }
   @include mobile {
     &.menu_open {
-      transform: rotateY(-25deg) scale(0.7) translateX(18rem);
+      // transform: rotateY(-25deg) scale(0.7) translateX(18rem);
+      transform: rotateX(15deg) scale(0.6) translateY(18rem);
     }
   }
 }

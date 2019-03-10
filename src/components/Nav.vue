@@ -11,9 +11,12 @@
             class="item"
             v-for="(route, i) in routes"
             :key="i"
-            @click="go(route)"
-            :class="{ 'active': activeRoute === route }"
-          >{{ route }}</div>
+            @click="go(route.name)"
+            :class="{ 'active': activeRoute === route.name }"
+          >
+            <i :class="route.icon"></i>
+            {{ route.name }}
+          </div>
         </div>
         <div class="icon_wrapper">
           <div class="icon_item" @click="openLink('https://www.linkedin.com/in/dallin-stagg')">
@@ -33,7 +36,12 @@ export default {
   name: "Navigation",
   data() {
     return {
-      routes: ["Home", "Portfolio", "Resume", "Contact"]
+      routes: [
+        { name: "Home", icon: "fas fa-home" },
+        { name: "Portfolio", icon: "fas fa-layer-group" },
+        { name: "Resume", icon: "fa fa-file" },
+        { name: "Contact", icon: "fab fa-telegram-plane" }
+      ]
     };
   },
   computed: {
@@ -65,7 +73,7 @@ export default {
 
 .nav_content_slide-enter-active,
 .nav_content_slide-leave-active {
-  transition: opacity 0.15s, transform 0.2s;
+  transition: opacity 0.2s, transform 0.3s;
 }
 .nav_content_slide-enter,
 .nav_content_slide-leave-to {
@@ -79,6 +87,7 @@ export default {
   box-shadow: 0 2px 10px 0px rgba($gray-dk, 0.3);
   height: 3rem;
   width: 3rem;
+  overflow: hidden;
   position: fixed;
   top: 1rem;
   left: 1rem;
@@ -94,11 +103,14 @@ export default {
     box-shadow: 0 2px 10px 0px rgba($gray-dk, 0.3),
       18px 0 0px -8px rgba($white, 0.3), 34px 0 0px -16px rgba($white, 0.2),
       50px 0 0px -24px rgba($white, 0.1);
-    height: calc(100vh - 2rem);
-    overflow-y: auto;
+    height: calc(100vh - 17rem);
     width: 14rem;
     @include mobile {
-      width: 12rem;
+      box-shadow: 0 2px 5px 0 rgba($gray-dk, 0.25),
+        0 18px 0px -8px rgba($white, 0.3), 0 34px 0px -16px rgba($white, 0.2),
+        0 50px 0px -24px rgba($white, 0.1);
+      height: calc(100vh - 33rem);
+      width: calc(100% - 2rem);
     }
   }
 }
@@ -120,10 +132,9 @@ export default {
 }
 
 .content {
-  background-color: $white;
   border-top: 1px solid $gray;
   box-sizing: border-box;
-  overflow-y: auto;
+  overflow-y: hidden;
   .grad_breaker {
     background-image: linear-gradient(
       -60deg,
@@ -138,19 +149,29 @@ export default {
   .item_wrapper {
     padding: 1.5rem 0;
     position: relative;
+    @include mobile {
+      padding: 1rem 0 0.5rem;
+    }
     .item {
+      box-sizing: border-box;
       color: $text-secondary;
       cursor: pointer;
       font-size: 0.95rem;
       font-weight: 500;
       line-height: 2.4rem;
       margin: 0.2rem auto;
-      text-indent: 1rem;
+      padding-left: 1rem;
       user-select: none;
       width: 100%;
       @include mobile {
-        font-size: 1rem;
-        line-height: 2.5rem;
+        font-size: 1.1rem;
+        line-height: 3rem;
+        padding-left: 0;
+        text-align: center;
+      }
+      i {
+        padding-right: 0.5rem;
+        transition: padding 0.2s ease-out;
       }
       &.active {
         background-image: linear-gradient(
@@ -160,32 +181,56 @@ export default {
           $blue,
           $mint
         );
-        box-shadow: 0 2px 6px 2px rgba($purple, 0.2);
+        box-shadow: 0 2px 6px 2px rgba($gray-dk, 0.2);
         color: $white;
         text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
+        i {
+          padding-right: 0.8rem;
+        }
       }
     }
   }
   .icon_wrapper {
+    @include mobile {
+      display: none;
+    }
     display: inline-block;
-    display: none;
-    margin: 0 2.5rem;
-    overflow: auto;
+    margin: 1rem 1rem;
+    overflow: hidden;
     .icon_item {
       border-radius: 3rem;
-      box-shadow: 0 2px 6px 2px rgba($purple, 0.2);
-      color: $purple;
+      box-shadow: 0 2px 6px 2px rgba($gray-dk, 0.2);
+      color: $text-secondary;
       cursor: pointer;
-      float: left;
       line-height: 2.5rem;
       margin: 0.5rem 0.25rem;
       position: relative;
       text-align: center;
       width: 2.5rem;
       @include mobile {
+        background-image: linear-gradient(
+          -60deg,
+          $purple-dk,
+          #3a66c4,
+          $blue,
+          $mint
+        );
+        color: $white;
+        text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
         font-size: 1.1rem;
         line-height: 3rem;
         width: 3rem;
+      }
+      &:hover {
+        background-image: linear-gradient(
+          -60deg,
+          $purple-dk,
+          #3a66c4,
+          $blue,
+          $mint
+        );
+        color: $white;
+        text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
       }
     }
   }
