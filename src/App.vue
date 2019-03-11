@@ -262,6 +262,27 @@ html {
     background-repeat: no-repeat;
     z-index: 1;
   }
+  &.with_polygon {
+    padding: 8rem 0 10rem;
+    .wrapper {
+      z-index: 2;
+      height: calc(2rem + 3vw);
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      svg {
+        width: 100%;
+        height: 100%;
+        .light {
+          fill: $gray;
+        }
+        .med {
+          fill: $gray-med;
+        }
+      }
+    }
+  }
   h1 {
     animation: 1.25s ease-out 0s 1 textSlideIn;
     color: $white;

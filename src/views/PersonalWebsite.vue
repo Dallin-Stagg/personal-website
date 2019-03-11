@@ -83,7 +83,7 @@ export default {
   @include mobile {
     &.menu_open {
       // transform: rotateY(-25deg) scale(0.7) translateX(18rem);
-      transform: rotateX(15deg) scale(0.6) translateY(18rem);
+      transform: rotateX(15deg) scale(0.7) translateY(19rem);
     }
   }
 }

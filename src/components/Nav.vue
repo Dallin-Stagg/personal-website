@@ -109,7 +109,7 @@ export default {
       box-shadow: 0 2px 5px 0 rgba($gray-dk, 0.25),
         0 18px 0px -8px rgba($white, 0.3), 0 34px 0px -16px rgba($white, 0.2),
         0 50px 0px -24px rgba($white, 0.1);
-      height: calc(100vh - 34rem);
+      height: 17rem;
       width: calc(100% - 2rem);
     }
   }
@@ -150,7 +150,7 @@ export default {
     padding: 1.5rem 0;
     position: relative;
     @include mobile {
-      padding: 1rem 0 0.5rem;
+      padding: 0.7rem 0 0;
     }
     .item {
       box-sizing: border-box;
@@ -165,7 +165,7 @@ export default {
       width: 100%;
       @include mobile {
         font-size: 1.1rem;
-        line-height: 3rem;
+        line-height: 2.8rem;
         padding-left: 0;
         text-align: center;
       }
