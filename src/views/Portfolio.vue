@@ -4,7 +4,7 @@
       <div class="page_header background with_polygon">
         <h1>Portfolio</h1>
         <h2>Check out my latest work</h2>
-        <div class="wrapper">
+        <div class="svg_wrapper">
           <!-- 
           preserveAspectRatio: makes sure the triangle is scalable
           viewbox: points stretches from the parent
@@ -15,17 +15,27 @@
           </svg>
         </div>
       </div>
-
-      <div class="box_wrapper">
-        <div class="white_box" v-for="(item, i) in items" :key="i">
-          <div class="image" :class="item.image_class"></div>
-          <h1 class="project_title">{{ item.title }}</h1>
-          <div class="info_cover">
-            <h4>{{ item.description }}</h4>
+      <div v-for="(item, i) in items" :key="i" :class="getColor(i)" class="portfolio_item">
+        <div class="content">
+          <div class="mobile">
+            <div class="image" :class="item.image_class"></div>
+          </div>
+          <div v-if="i % 2 === 0" class="desktop">
+            <div class="image" :class="item.image_class"></div>
+          </div>
+          <div class="text_wrapper">
+            <h4 v-if="item.company">{{ item.company }}</h4>
+            <h2 class="project_title">{{ item.title }}</h2>
+            <p>{{ item.description }}</p>
+            <div class="ds_btn grad">Learn More</div>
+          </div>
+          <div v-if="i % 2 === 1" class="desktop">
+            <div class="image" :class="item.image_class"></div>
           </div>
         </div>
+        <dsBreaker :passedColor="getColor(i)"></dsBreaker>
       </div>
-      <div class="ds_info_line">
+      <div class="ds_info_line white">
         <div class="float_wrapper">
           <i class="fa fa-info"></i>
           <h4>
@@ -43,28 +53,36 @@
 </template>
 
 <script>
+import DsBreaker from "../components/Breaker.vue";
+
 export default {
   name: "Portfolio",
+  components: {
+    dsBreaker: DsBreaker
+  },
   data() {
     return {
       items: [
         {
+          company: "Room Choice",
           image_class: "rc_accounting",
-          title: "Room Choice - Accounting",
+          title: "Accounting",
           description:
             "A powerful accounting software with all the features you'd expect from scheduled journal entry creation to intelligent financial statement projections.",
           link: ""
         },
         {
+          company: "Room Choice",
           image_class: "rc_com",
-          title: "Room Choice - Company Website",
+          title: "Company Website",
           description:
             "The company website. Linked in all marketing campaigns and ads.",
           link: "roomchoice.com"
         },
         {
+          company: "Room Choice",
           image_class: "rc_manager",
-          title: "Room Choice - Manager Portal",
+          title: "Manager Portal",
           description:
             "The feature-rich student housing management system used for everything from monitoring the leasing process to viewing and exporting customizable and powerful financial reports.",
           link: ""
@@ -76,8 +94,9 @@ export default {
           link: "milleniumauto.net"
         },
         {
+          company: "Room Choice",
           image_class: "rc_student",
-          title: "Room Choice - Student Portal",
+          title: "Student Portal",
           description:
             "A portal to the tenant-side Room Choice experience. Complete with application, contract signing, schedulable payments, maintenance requests, social media functionality and much more!",
           link: ""
@@ -89,113 +108,77 @@ export default {
   methods: {
     openLink(link) {
       window.open("https://" + link, "_blank");
+    },
+    getColor(index) {
+      if (index % 2 === 0) {
+        return "light";
+      }
+      return "white";
     }
   }
 };
 </script>
 <style lang="scss" scoped>
 @import "../assets/styles/global-styles.scss";
-.portfolio {
-  overflow: hidden;
-}
-.portfolio_wrapper {
-  padding: 0 0 5rem;
-}
 
-.box_wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  margin: 1rem auto;
-  position: relative;
-  width: 65rem;
-  z-index: 2;
-  @include mobile {
-    display: block;
-    width: 100%;
+.portfolio_item {
+  &.white {
+    background-color: $white;
   }
-}
-.white_box {
-  background-color: $white;
-  border-radius: 4px;
-  box-shadow: 0 1px 6px 0px rgba($gray-dk, 0.25);
-  cursor: pointer;
-  margin: 0 auto 1.5rem;
-  padding: 1rem 0 0.1rem;
-  position: relative;
-  width: 20rem;
-  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-  @include mobile {
-    width: calc(100% - 2rem);
+  &.light {
+    background-color: $gray-lt;
   }
-  &:hover {
-    box-shadow: 0 5px 25px 0 rgba(24, 55, 69, 0.3);
-    transform: scale(1.04);
-    .info_cover {
-      height: 100%;
-      opacity: 1;
-    }
+  .content {
+    padding: 4rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    margin: 0 auto;
+    width: calc(50% + 20rem);
+    z-index: 2;
     @include mobile {
-      box-shadow: 0 1px 6px 0px rgba($gray-dk, 0.25);
-      transform: scale(1);
-      .info_cover {
-        height: 0;
-        opacity: 0;
+      display: block;
+      width: 100%;
+    }
+    .desktop {
+      @include mobile {
+        display: none;
       }
     }
-  }
-  .image {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 12rem;
-    margin: 0 auto;
-    width: 100%;
-    &.rc_accounting {
-      background-image: url("../assets/images/millenium-mobile.png");
+    .mobile {
+      display: none;
+      @include mobile {
+        display: block;
+      }
     }
-    &.rc_com {
-      background-image: url("../assets/images/millenium-mobile.png");
+    .image {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 20rem;
+      margin: 0 auto;
+      width: 100%;
+      &.rc_accounting {
+        background-image: url("../assets/images/millenium-mobile.png");
+      }
+      &.rc_com {
+        background-image: url("../assets/images/millenium-mobile.png");
+      }
+      &.rc_manager {
+        background-image: url("../assets/images/millenium-mobile.png");
+      }
+      &.rc_student {
+        background-image: url("../assets/images/student-mockup.png");
+      }
+      &.mil {
+        background-image: url("../assets/images/millenium-mobile.png");
+      }
     }
-    &.rc_manager {
-      background-image: url("../assets/images/millenium-mobile.png");
-    }
-    &.rc_student {
-      background-image: url("../assets/images/student-mockup.png");
-    }
-    &.mil {
-      background-image: url("../assets/images/millenium-mobile.png");
-    }
-  }
-  .project_title {
-    color: $text-secondary;
-    font-size: 1.1rem;
-    font-weight: 500;
-    line-height: 2rem;
-    margin: 1rem 0;
-    text-align: center;
-  }
-  .info_cover {
-    background-color: $white;
-    border-radius: 4px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 0;
-    opacity: 0.7;
-    overflow: hidden;
-    position: absolute;
-    text-align: center;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    transition: height 0.2s ease-out, opacity 0.2s ease-out;
-    h4 {
-      color: $text-secondary;
-      font-size: 1rem;
-      font-weight: 500;
-      margin: 0 1.5rem;
+    .text_wrapper {
+      padding: 0 2rem;
+      @include mobile {
+        text-align: center;
+      }
     }
   }
 }

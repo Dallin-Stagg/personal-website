@@ -92,8 +92,7 @@ export default {
   top: 1rem;
   left: 1rem;
   z-index: 30;
-  transition: border-radius linear 0.2s, height 0.25s linear, width 0.2s linear,
-    box-shadow 0.2s linear;
+  transition: border-radius linear 0.2s, height 0.25s linear, width 0.2s linear;
   @include mobile {
     height: 3.2rem;
     width: 3.2rem;
@@ -103,7 +102,7 @@ export default {
     box-shadow: 0 2px 10px 0px rgba($gray-dk, 0.3),
       18px 0 0px -8px rgba($white, 0.3), 34px 0 0px -16px rgba($white, 0.2),
       50px 0 0px -24px rgba($white, 0.1);
-    height: calc(100vh - 17rem);
+    height: 26rem;
     width: 14rem;
     @include mobile {
       box-shadow: 0 2px 5px 0 rgba($gray-dk, 0.25),

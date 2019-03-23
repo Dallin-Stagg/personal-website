@@ -49,6 +49,7 @@ html {
   line-height: 2.3rem;
   padding: 0 1.5rem;
   text-align: center;
+  text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
   text-transform: uppercase;
   margin: 1rem auto;
   transition: background-color 0.2s ease-out, transform 0.2s ease-out;
@@ -56,12 +57,6 @@ html {
     font-size: 0.85rem;
     line-height: 2.7rem;
     padding: 0 2.4rem;
-  }
-  &:hover {
-    transform: scale(1.02);
-    &.disabled {
-      transform: scale(1);
-    }
   }
   &.green {
     background-color: $green;
@@ -74,6 +69,15 @@ html {
       box-shadow: none;
       cursor: not-allowed;
     }
+  }
+  &.grad {
+    background-image: linear-gradient(
+      -60deg,
+      $purple-dk,
+      #3a66c4,
+      $blue,
+      $mint
+    );
   }
 }
 .ds_toggle {
@@ -175,10 +179,13 @@ html {
   }
 }
 .ds_info_line {
-  margin: 1.5rem 0;
+  padding: 5rem 0 8rem;
   text-align: center;
   @include mobile {
-    margin: 3rem 0;
+    padding: 3rem 0;
+  }
+  &.white {
+    background-color: $white;
   }
   .float_wrapper {
     display: inline-block;
@@ -264,7 +271,7 @@ html {
   }
   &.with_polygon {
     padding: 8rem 0 10rem;
-    .wrapper {
+    .svg_wrapper {
       z-index: 2;
       height: calc(2rem + 3vw);
       width: 100%;
@@ -275,7 +282,7 @@ html {
         width: 100%;
         height: 100%;
         .light {
-          fill: $gray;
+          fill: $gray-lt;
         }
         .med {
           fill: $gray-med;
@@ -305,11 +312,11 @@ html {
 @keyframes textSlideIn {
   0% {
     opacity: 0;
-    bottom: 0.5rem;
+    transform: translateY(-0.5rem);
   }
   100% {
     opacity: 1;
-    bottom: 0;
+    transform: translateY(0rem);
   }
 }
 </style>
