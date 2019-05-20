@@ -38,9 +38,8 @@ export default {
     return {
       routes: [
         { name: "Home", icon: "fas fa-home" },
-        { name: "Portfolio", icon: "fas fa-layer-group" },
         { name: "Resume", icon: "fa fa-file" },
-        { name: "Contact", icon: "fab fa-telegram-plane" }
+        { name: "Portfolio", icon: "fas fa-layer-group" }
       ]
     };
   },
@@ -84,7 +83,7 @@ export default {
 .my_navigation {
   background-color: $white;
   border-radius: 2rem;
-  box-shadow: 0 2px 10px 0px rgba($gray-dk, 0.3);
+  box-shadow: 0 2px 5px 1px rgba($gray-dk, 0.2);
   height: 3rem;
   width: 3rem;
   overflow: hidden;
@@ -102,13 +101,13 @@ export default {
     box-shadow: 0 2px 10px 0px rgba($gray-dk, 0.3),
       18px 0 0px -8px rgba($white, 0.3), 34px 0 0px -16px rgba($white, 0.2),
       50px 0 0px -24px rgba($white, 0.1);
-    height: 26rem;
+    height: 23rem;
     width: 14rem;
     @include mobile {
       box-shadow: 0 2px 5px 0 rgba($gray-dk, 0.25),
         0 18px 0px -8px rgba($white, 0.3), 0 34px 0px -16px rgba($white, 0.2),
         0 50px 0px -24px rgba($white, 0.1);
-      height: 17rem;
+      height: 14.25rem;
       width: calc(100% - 2rem);
     }
   }

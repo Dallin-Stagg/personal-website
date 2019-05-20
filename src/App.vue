@@ -1,13 +1,35 @@
 <template>
   <div id="app">
-    <router-view/>
+    <myNav></myNav>
+    <div id="website-container" :class="{ 'menu_open': menuOpen }">
+      <router-view></router-view>
+      <myFooter v-if="routeName !== 'Home'"></myFooter>
+    </div>
+    
   </div>
 </template>
 <script>
+import MyNav from "./components/Nav.vue";
+import MyFooter from "./components/Footer.vue";
+
 export default {
   name: "app",
-  methods: {
-    //
+  components: {
+    myNav: MyNav,
+    myFooter: MyFooter
+  },
+  mounted() {
+    if (this.$route.path === "/") {
+      this.$router.push({ name: "Home" });
+    }
+  },
+  computed: {
+    routeName() {
+      return this.$route.name
+    },
+    menuOpen() {
+      return this.$store.state.menuOpen
+    }
   }
 };
 </script>
@@ -22,10 +44,18 @@ html {
   font-size: 16px;
 }
 #app {
+  background-color: #212121;
   font-family: "Quicksand", sans-serif, system-ui;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+  #website-container {
+    transition: .25s filter ease;
+    &.menu_open {
+      filter: blur(3px);
+    }
+  }
 }
 // vue transition tag stylings
 .fade-enter-active,
@@ -39,7 +69,7 @@ html {
 // PERSONAL WEBSITE STYLES
 
 .ds_btn {
-  border-radius: 1.5rem;
+  border-radius: 4px;
   color: $white;
   cursor: pointer;
   display: inline-block;
@@ -49,7 +79,6 @@ html {
   line-height: 2.3rem;
   padding: 0 1.5rem;
   text-align: center;
-  text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
   text-transform: uppercase;
   margin: 1rem auto;
   transition: background-color 0.2s ease-out, transform 0.2s ease-out;
@@ -57,6 +86,18 @@ html {
     font-size: 0.85rem;
     line-height: 2.7rem;
     padding: 0 2.4rem;
+  }
+  &.grad {
+    background: linear-gradient(-60deg, $purple-dk, #3a66c4, $blue, $mint);
+    box-shadow: 0 2px 4px 2px rgba($gray-dk, 0.5);
+    &:hover {
+      box-shadow: 0 2px 7px 2px rgba($gray-dk, 0.9);
+    }
+    &.disabled {
+      opacity: .5;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
   }
   &.green {
     background-color: $green;
@@ -70,14 +111,26 @@ html {
       cursor: not-allowed;
     }
   }
-  &.grad {
-    background-image: linear-gradient(
-      -60deg,
-      $purple-dk,
-      #3a66c4,
-      $blue,
-      $mint
-    );
+  &.outlined, &.blue {
+    background-color: $white;
+    border: 1px solid #D3DDE5;
+    box-shadow: 0px 6px 10px rgba(34, 77, 97, 0.1);
+    border-radius: 4px;
+    color: ut-white;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 2.25rem;
+    letter-spacing: .2px;
+    padding: 0 1.5rem;
+    user-select: none;
+    color: #0073FC;
+    &:hover {
+      background-color: #fafafa;
+    }
+    &:active {
+      background-color: #D3DDE5;
+    }
   }
 }
 .ds_toggle {
@@ -90,6 +143,12 @@ html {
   transition: background-color 0.2s ease-out;
   @include mobile {
     width: 1.6rem;
+  }
+  &.dark {
+    background-color: #656565;
+    .dot {
+      background-color: $gray-med;
+    }
   }
   &.toggled {
     .dot {
@@ -179,7 +238,7 @@ html {
   }
 }
 .ds_info_line {
-  padding: 5rem 0 8rem;
+  padding: 5rem 0 5rem;
   text-align: center;
   @include mobile {
     padding: 3rem 0;
@@ -264,16 +323,17 @@ html {
   &.background {
     background-image: url(./assets/images/overlay-grid.svg),
       linear-gradient(-60deg, $purple-dk, #3a66c4, $blue, $mint);
-    background-position: fixed;
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: 1;
+    &.student {
+      background-image: linear-gradient(-60deg, rgba($gray-dk, .6), rgba($gray-dk, 1)), url(./assets/images/office-windows.jpg);
+    }
   }
   &.with_polygon {
-    padding: 8rem 0 10rem;
+    padding: 8rem 0 12rem;
     .svg_wrapper {
-      z-index: 2;
-      height: calc(2rem + 3vw);
+      height: calc(3rem + 3vw);
       width: 100%;
       position: absolute;
       bottom: 0;
@@ -281,6 +341,9 @@ html {
       svg {
         width: 100%;
         height: 100%;
+        .white {
+          fill: $white;
+        }
         .light {
           fill: $gray-lt;
         }

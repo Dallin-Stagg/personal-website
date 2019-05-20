@@ -5,6 +5,7 @@ import Home from "@/views/Home.vue";
 import Resume from "@/views/Resume.vue";
 import Portfolio from "@/views/Portfolio.vue";
 import Contact from "@/views/Contact.vue";
+import BankFeed from "@/views/BankFeed.vue";
 
 Vue.use(Router);
 
@@ -18,31 +19,29 @@ export default new Router({
   },
   routes: [
     {
-      path: "/",
-      name: "Personal Website",
-      component: PersonalWebsite,
-      children: [
-        {
-          path: "home",
-          name: "Home",
-          component: Home
-        },
-        {
-          path: "resume",
-          name: "Resume",
-          component: Resume
-        },
-        {
-          path: "portfolio",
-          name: "Portfolio",
-          component: Portfolio
-        },
-        {
-          path: "contact",
-          name: "Contact",
-          component: Contact
-        }
-      ]
+      path: "/home",
+      name: "Home",
+      component: Home
+    },
+    {
+      path: "/resume",
+      name: "Resume",
+      component: Resume
+    },
+    {
+      path: "/portfolio",
+      name: "Portfolio",
+      component: Portfolio
+    },
+    {
+      path: "/contact",
+      name: "Contact",
+      component: Contact
+    },
+    {
+      path: "/bank-feed",
+      name: "Bank Feed",
+      component: BankFeed
     }
   ]
 });

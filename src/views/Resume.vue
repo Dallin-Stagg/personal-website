@@ -1,7 +1,7 @@
 <template>
   <div class="resume">
     <!--  -->
-    <transition name="filter_slide">
+    <!--<transition name="filter_slide">
       <div class="ds_filter" v-if="showFilter">
         <i class="fa fa-long-arrow-alt-right ds_close_btn left" @click="showFilter = false"></i>
         <div class="filter_section">
@@ -18,11 +18,21 @@
           </div>
         </div>
       </div>
-    </transition>
+    </transition>-->
     <!-- -->
-    <div class="page_header background">
+    <div class="page_header background with_polygon">
       <h1>Resume</h1>
       <h2>See what I've been up to</h2>
+      <div class="svg_wrapper">
+        <!-- 
+        preserveAspectRatio: makes sure the triangle is scalable
+        viewbox: points stretches from the parent
+        -->
+        <svg preserveAspectRatio="none" viewBox="0 0 100 100">
+          <polygon class="light" points="0,0 0,100 100,100 100,0 50,90" opacity="1"></polygon>
+          <polygon class="med" points="0,7 50,97 100,7 100,10 50,100 0,10" opacity="1"></polygon>
+        </svg>
+      </div>
       <!--<div class="download_btn_wrapper">
         <a :href="downloadLink">
           <div class="ds_btn green">
@@ -70,19 +80,6 @@
         <h3>PERSONAL</h3>
         <div class="personal_item">
           <p>{{ personalData }}</p>
-        </div>
-      </div>
-    </div>
-    <div class="ds_info_line" id="test">
-      <div class="float_wrapper">
-        <i class="fa fa-info"></i>
-        <h4>
-          <strong>Looking for an official copy of my resume?</strong>
-          <br>Just contact me and request it!
-        </h4>
-        <div class="info_line_btn" @click="$router.push({ name: 'Contact' })">
-          Take me there
-          <i class="fa fa-long-arrow-alt-right"></i>
         </div>
       </div>
     </div>
@@ -226,7 +223,8 @@ export default {
 }
 
 .resume {
-  padding: 0 0 5rem;
+  background-color: $gray-lt;
+  padding: 0;
 }
 .ds_filter {
   background-color: $white;
@@ -285,13 +283,22 @@ export default {
     padding: 0 1.5rem;
   }
 }
+@keyframes resumeSlide {
+  0% {
+    transform: translateY(2rem) scale(.95);
+  }
+  100% {
+    transform: translateY(0rem) scale(1);
+  }
+}
 .resume_outer_wrapper {
-  margin: 0 auto;
+  animation: 1s ease-out 0s 1 resumeSlide;
+  background-color: $gray-lt;
+  margin: 0 auto -4rem;
   position: relative;
   max-width: calc(100% - 10rem);
-  top: -3rem;
+  top: -8rem;
   width: 56rem;
-  z-index: 2;
   @include mobile {
     max-width: calc(100% - 2rem);
   }
@@ -329,10 +336,10 @@ export default {
     box-shadow: 0 2px 5px 0 rgba($gray-dk, 0.25),
       0 -18px 0px -8px rgba($white, 0.3), 0 -34px 0px -16px rgba($white, 0.2),
       0 -50px 0px -24px rgba($white, 0.1);
-    padding: 3rem;
+    padding: 2rem 3rem 3rem;
     transition: box-shadow 0.3s ease-out;
     @include mobile {
-      padding: 2rem 1.5rem 3rem;
+      padding: .5rem 2rem 3rem;
     }
     h3 {
       border-bottom: 1px solid $gray-med;
@@ -342,18 +349,18 @@ export default {
       -webkit-text-fill-color: transparent;
       font-size: 1rem;
       font-weight: 600;
-      margin: 0;
+      margin: 2rem 0 1rem;
       @include mobile {
-        font-size: 1.2rem;
-        margin: 2.5rem 0 0.5rem;
+        font-size: 1rem;
+        margin: 2.5rem 0 0.25rem;
       }
     }
     .resume_item {
       background-color: $white;
       border-radius: 4px;
       box-sizing: border-box;
-      margin: 1rem 0 1rem 6rem;
-      width: calc(100% - 6rem);
+      margin: 1rem 0 1rem 3rem;
+      width: calc(100% - 3rem);
       @include mobile {
         margin: 0;
         width: 100%;
@@ -363,6 +370,9 @@ export default {
         font-size: 1rem;
         font-weight: 600;
         margin: 1.5rem 0 0;
+        @include mobile {
+          font-size: .9rem;
+        }
       }
       h5 {
         color: $text-secondary;
@@ -371,7 +381,7 @@ export default {
         font-weight: 500;
         margin: 0.2rem 0;
         @include mobile {
-          font-size: 1rem;
+          font-size: .9rem;
           margin-bottom: 0.5rem;
         }
       }
@@ -382,7 +392,7 @@ export default {
         margin: 0.3rem 0;
         text-align: justify;
         @include mobile {
-          font-size: 1rem;
+          font-size: .8rem;
           text-align: left;
         }
       }
@@ -394,7 +404,7 @@ export default {
           font-size: 0.9rem;
           font-weight: 400;
           @include mobile {
-            font-size: 1rem;
+            font-size: .9rem;
           }
         }
       }
@@ -413,7 +423,7 @@ export default {
           font-size: 0.9rem;
           font-weight: 400;
           @include mobile {
-            font-size: 1rem;
+            font-size: .9rem;
           }
         }
       }
@@ -426,7 +436,7 @@ export default {
         margin: 1rem 0 1rem 6rem;
         text-align: justify;
         @include mobile {
-          font-size: 1rem;
+          font-size: .9rem;
           margin: 1rem 0;
           text-align: left;
         }

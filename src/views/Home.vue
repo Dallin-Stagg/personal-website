@@ -87,10 +87,10 @@ export default {
 .prelude {
   animation: prelude_animation 4s linear 0s;
   position: absolute;
-  top: 0;
+  top: -10%;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 120%;
   z-index: 4;
 }
 @keyframes prelude_animation {

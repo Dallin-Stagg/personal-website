@@ -1,5 +1,5 @@
 <template>
-  <div class="svg_breaker" :class="colorReversal(passedColor)">
+  <div class="svg_breaker" :class="bgColor">
     <svg preserveAspectRatio="none" viewBox="0 0 100 100">
       <defs>
         <filter id="f4" x="0" y="0" width="150%" height="150%">
@@ -14,7 +14,7 @@
           <feBlend in="SourceGraphic" in2="blurOut" mode="normal"></feBlend>
         </filter>
       </defs>
-      <polygon filter="url(#f4)" :class="passedColor" points="0,0 50,90 100,0 0,0" opacity="1"></polygon>
+      <polygon filter="url(#f4)" :class="mainColor" points="0,0 50,90 100,0 0,0" opacity="1"></polygon>
     </svg>
   </div>
 </template>
@@ -22,7 +22,7 @@
 <script>
 export default {
   name: "Breaker",
-  props: ["passedColor"],
+  props: ["mainColor", 'bgColor'],
   data() {
     return {};
   },
@@ -33,6 +33,7 @@ export default {
       } else if (color === "white") {
         return "light";
       }
+      return "dark"
     }
   }
 };
@@ -49,6 +50,9 @@ export default {
   &.white {
     background-color: $white;
   }
+  &.dark {
+    background-color: $gray-dk;
+  }
   svg {
     width: 100%;
     height: 100%;
@@ -57,6 +61,9 @@ export default {
     }
     .white {
       fill: $white;
+    }
+    .dark {
+      fill: $gray-dk;
     }
   }
 }
