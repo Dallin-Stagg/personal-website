@@ -83,14 +83,13 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "../assets/styles/global-styles.scss";
-
 .prelude {
   animation: prelude_animation 4s linear 0s;
   position: absolute;
-  top: -10%;
+  top: 0%;
   left: 0;
   width: 100%;
-  height: 120%;
+  height: 100vh;
   z-index: 4;
 }
 @keyframes prelude_animation {
@@ -122,7 +121,7 @@ export default {
   top: 0;
   left: 0%;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 5;
   @include mobile {
     background-size: 30rem;
@@ -185,6 +184,9 @@ export default {
   border-right: 2px solid rgba($white, 0.8);
   display: inline;
   text-transform: uppercase;
+  @include mobile {
+    font-size: 3rem;
+  }
 }
 @keyframes blink {
   40% {

@@ -283,16 +283,7 @@ export default {
     padding: 0 1.5rem;
   }
 }
-@keyframes resumeSlide {
-  0% {
-    transform: translateY(2rem) scale(.95);
-  }
-  100% {
-    transform: translateY(0rem) scale(1);
-  }
-}
 .resume_outer_wrapper {
-  animation: 1s ease-out 0s 1 resumeSlide;
   background-color: $gray-lt;
   margin: 0 auto -4rem;
   position: relative;

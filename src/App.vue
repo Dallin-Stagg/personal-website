@@ -50,6 +50,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
   overflow-x: hidden;
+  user-select: none;
   #website-container {
     transition: .25s filter ease;
     &.menu_open {
