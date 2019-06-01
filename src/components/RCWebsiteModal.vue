@@ -37,21 +37,22 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 .demo_modal {
   animation: 0.4s ease-out 0s 1 modalLoadIn;
-  box-shadow: 0px 6px 25px rgba(34, 77, 97, 0.4);
+  box-shadow: 0px 6px 25px rgba(34, 77, 97, 0.3);
   background-color: white;
   font-family: 'Open Sans', sans-serif; 
-  width: 28rem;
+  width: 32rem;
   user-select: none;
   pointer-events: none;
   @include mobile {
-    width: 20rem;
-    max-width: 100%;
+    margin: 0 auto;
+    width: 22rem;
+    max-width: calc(100% - 2rem);
   }
   .upper_bar {
-    padding: 0.4rem;
+    padding: .3rem 0.4rem;
     text-align: right;
     @include mobile {
-      padding: .2rem;
+      padding: 0 .2rem;
     }
     i {
       color: lighten(rgb(38,38,38), 20%);
@@ -64,7 +65,7 @@ export default {
         background-color: rgba(38, 38, 50, 0.1);
       }
       @include mobile {
-        font-size: .75rem;
+        font-size: .7rem;
       }
     }
   }
@@ -84,7 +85,7 @@ export default {
       background-size: cover;
       position: relative;
       @include mobile {
-        padding: 1rem .75rem .5rem;
+        padding: 1rem 1rem .5rem;
       }
       .overlay {
         border-top-right-radius: 6px;
@@ -113,7 +114,7 @@ export default {
       .breaker {
         background-color: #23c5d6;
         border-radius: 2px;
-        margin: .75rem 0;
+        margin: .9rem 0;
         height: 3px;
         width: 4rem;
         position: relative;
@@ -175,7 +176,7 @@ export default {
     .input_section {
       input {
         border-radius: 0.2rem;
-        box-shadow: 0 0 5px 0px rgba(38, 38, 50, 0.15);
+        box-shadow: 0 0 5px 0px rgba(38, 38, 50, 0.12);
         box-sizing: border-box;
         font-size: .75rem;
         outline: none;
@@ -204,7 +205,7 @@ export default {
         border-radius: 3px;
         padding: .7rem 2rem;
         letter-spacing: 1px;
-        max-width: 8rem;
+        max-width: 10rem;
         margin: 1rem auto;
         text-align: center;
         cursor: pointer;

@@ -121,6 +121,7 @@ export default {
 @import "../assets/styles/global-styles.scss";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 .bank_feed {
+  background-color: $gray-lt;
   font-family: 'Open Sans', sans-serif; 
   padding-top: 4.5rem;
   max-width: 25rem;
@@ -141,6 +142,7 @@ export default {
       color: rgba($white, .5);
       font-size: .75rem;
       margin: .5rem;
+      padding: 0;
       text-align: left;
     }
     h2 {
@@ -280,7 +282,8 @@ h2 {
 }
 h6 {
   color: $text-secondary;
-  margin-bottom: 5rem;
+  margin-bottom: 0;
+  padding-bottom: 5rem;
   text-align: center;
 }
 

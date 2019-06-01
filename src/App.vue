@@ -1,11 +1,10 @@
 <template>
   <div id="app">
     <myNav></myNav>
-    <div id="website-container" :class="{ 'menu_open': menuOpen }">
-      <router-view></router-view>
+    <div id="website-container">
+      <router-view :scrollY="scrollPosition"></router-view>
       <myFooter v-if="routeName !== 'Home'"></myFooter>
     </div>
-    
   </div>
 </template>
 <script>
@@ -18,10 +17,16 @@ export default {
     myNav: MyNav,
     myFooter: MyFooter
   },
+  data() {
+    return {
+      scrollPosition: 0
+    }
+  },
   mounted() {
     if (this.$route.path === "/") {
       this.$router.push({ name: "Home" });
     }
+    window.addEventListener('scroll', this.distanceFromTop)
   },
   computed: {
     routeName() {
@@ -29,6 +34,11 @@ export default {
     },
     menuOpen() {
       return this.$store.state.menuOpen
+    }
+  },
+  methods: {
+    distanceFromTop() {
+      this.scrollPosition = window.scrollY
     }
   }
 };
@@ -53,9 +63,6 @@ html {
   user-select: none;
   #website-container {
     transition: .25s filter ease;
-    &.menu_open {
-      filter: blur(3px);
-    }
   }
 }
 // vue transition tag stylings

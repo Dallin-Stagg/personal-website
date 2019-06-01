@@ -1,33 +1,38 @@
 <template>
-  <div class="my_navigation" :class="{ 'open': menuOpen }">
-    <div class="nav_btn" @click="$store.commit('toggleMenu')">
-      <i class="fa fa-bars"></i>
-    </div>
-    <transition name="nav_content_slide">
-      <nav class="content" v-if="menuOpen">
-        <div class="grad_breaker"></div>
-        <div class="item_wrapper">
-          <div
-            class="item"
-            v-for="(route, i) in routes"
-            :key="i"
-            @click="go(route.name)"
-            :class="{ 'active': activeRoute === route.name }"
-          >
-            <i :class="route.icon"></i>
-            {{ route.name }}
-          </div>
-        </div>
-        <div class="icon_wrapper">
-          <div class="icon_item" @click="openLink('https://www.linkedin.com/in/dallin-stagg')">
-            <i class="fab fa-linkedin-in"></i>
-          </div>
-          <div class="icon_item" @click="openLink('https://github.com/Dallin-Stagg')">
-            <i class="fab fa-github"></i>
-          </div>
-        </div>
-      </nav>
+  <div>
+    <transition name="haze_slide">
+      <div class="haze" v-if="menuOpen" @click="$store.commit('toggleMenu')"></div>
     </transition>
+    <div class="my_navigation" :class="{ 'open': menuOpen }">
+      <div class="nav_btn" @click="$store.commit('toggleMenu')">
+        <i class="fa fa-bars"></i>
+      </div>
+      <transition name="nav_content_slide">
+        <nav class="content" v-if="menuOpen">
+          <div class="grad_breaker"></div>
+          <div class="item_wrapper">
+            <div
+              class="item"
+              v-for="(route, i) in routes"
+              :key="i"
+              @click="go(route.name)"
+              :class="{ 'active': activeRoute === route.name }"
+            >
+              <i :class="route.icon"></i>
+              {{ route.name }}
+            </div>
+          </div>
+          <div class="icon_wrapper">
+            <div class="icon_item" @click="openLink('https://www.linkedin.com/in/dallin-stagg')">
+              <i class="fab fa-linkedin-in"></i>
+            </div>
+            <div class="icon_item" @click="openLink('https://github.com/Dallin-Stagg')">
+              <i class="fab fa-github"></i>
+            </div>
+          </div>
+        </nav>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -69,6 +74,15 @@ export default {
 </script>
 <style scoped lang="scss">
 @import "../assets/styles/global-styles.scss";
+.haze_slide-enter-active,
+.haze_slide-leave-active {
+  transition: opacity 0.3s;
+}
+.haze_slide-enter,
+.haze_slide-leave-to {
+  opacity: 0;
+}
+
 
 .nav_content_slide-enter-active,
 .nav_content_slide-leave-active {
@@ -79,7 +93,15 @@ export default {
   opacity: 0;
   transform: translateY(-2rem);
 }
-
+.haze {
+  background-color: rgba($gray-dk, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -8rem;
+  z-index: 2;
+}
 .my_navigation {
   background-color: $white;
   border-radius: 2rem;
@@ -91,7 +113,7 @@ export default {
   top: 1rem;
   left: 1rem;
   z-index: 30;
-  transition: border-radius linear 0.2s, height 0.25s linear, width 0.2s linear;
+  transition: border-radius ease 0.3s, height 0.4s ease, width 0.3s ease;
   @include mobile {
     height: 3.2rem;
     width: 3.2rem;

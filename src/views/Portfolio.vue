@@ -16,7 +16,11 @@
       </div>
       </div>
       <div v-for="(item, i) in items" :key="i" class="portfolio_item">
-        <!--<rCWebsiteModal :style="{ transform: 'translateY(' + (scrollY / 300) + 'rem)' }"></rCWebsiteModal>-->
+        <div class="floater_wrapper">
+          <div v-if="item.title === 'Company Website'">
+            <rCWebsiteModal :style="{ transform: 'translateY(' + (scrollY / 280) + 'rem)' }"></rCWebsiteModal>
+          </div>
+        </div>
         <div class="text_wrapper">
           <h4 v-if="item.company">{{ item.company }}</h4>
           <h2>{{ item.title }}</h2>
@@ -32,12 +36,12 @@
 
 <script>
 import DsBreaker from "../components/Breaker.vue";
-// import RCWebsiteModal from "../components/RCWebsiteModal.vue";
+import RCWebsiteModal from "../components/RCWebsiteModal.vue";
 export default {
   name: "Portfolio",
   components: {
-    dsBreaker: DsBreaker
-    // rCWebsiteModal: RCWebsiteModal
+    dsBreaker: DsBreaker,
+    rCWebsiteModal: RCWebsiteModal
   },
   props: ['scrollY'],
   data() {
@@ -110,12 +114,28 @@ export default {
 .portfolio_item {
   background-color: $white;
   box-shadow: 0px 6px 16px rgba(34, 77, 97, 0.2);
-  padding: 4rem 0;
+  border-bottom: 1px solid $gray-lt;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "text float";
+  overflow: hidden;
+  @include mobile {
+    grid-template-columns: 1fr;
+    grid-template-areas: "float" "text";
+  }
+  .floater_wrapper {
+    grid-area: float;
+    padding: 1rem 0;
+  }
   .text_wrapper {
-    margin: 0 0 0 15%;
+    grid-area: text;
+    margin: 0 0 0 calc(45% - 8rem);
+    padding: 6rem 0;
     width: 20rem;
     @include mobile {
       margin: 0 auto;
+      padding: 4rem 0;
       width: calc(100% - 4rem);
     }
     h4 {
