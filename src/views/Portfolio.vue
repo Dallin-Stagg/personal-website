@@ -20,6 +20,9 @@
           <div v-if="item.title === 'Company Website'">
             <rCWebsiteModal :style="{ transform: 'translateY(' + (scrollY / 280) + 'rem)' }"></rCWebsiteModal>
           </div>
+          <div v-if="item.title === 'Accounting'">
+            <rCAccounting :style="{ transform: 'translateY(' + (scrollY / 280) + 'rem)' }"></rCAccounting>
+          </div>
         </div>
         <div class="text_wrapper">
           <h4 v-if="item.company">{{ item.company }}</h4>
@@ -37,11 +40,13 @@
 <script>
 import DsBreaker from "../components/Breaker.vue";
 import RCWebsiteModal from "../components/RCWebsiteModal.vue";
+import RCAccounting from "../components/RCAccountingBalanceSheet.vue";
 export default {
   name: "Portfolio",
   components: {
     dsBreaker: DsBreaker,
-    rCWebsiteModal: RCWebsiteModal
+    rCWebsiteModal: RCWebsiteModal,
+    rCAccounting: RCAccounting
   },
   props: ['scrollY'],
   data() {

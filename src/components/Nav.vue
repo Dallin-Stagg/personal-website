@@ -94,13 +94,13 @@ export default {
   transform: translateY(-2rem);
 }
 .haze {
-  background-color: rgba($gray-dk, 0.8);
+  background-color: rgba(#0c0c0c, 0.6);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: -8rem;
-  z-index: 2;
+  z-index: 5;
 }
 .my_navigation {
   background-color: $white;
