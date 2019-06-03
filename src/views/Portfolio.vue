@@ -10,18 +10,18 @@
         viewbox: points stretches from the parent
         -->
         <svg preserveAspectRatio="none" viewBox="0 0 100 100">
-          <polygon class="white" points="0,0 0,100 100,100 100,0 50,90" opacity="1"></polygon>
+          <polygon class="light" points="0,0 0,100 100,100 100,0 50,90" opacity="1"></polygon>
           <polygon class="med" points="0,7 50,97 100,7 100,10 50,100 0,10" opacity="1"></polygon>
         </svg>
       </div>
       </div>
       <div v-for="(item, i) in items" :key="i" class="portfolio_item">
         <div class="floater_wrapper">
-          <div v-if="item.title === 'Company Website'">
-            <rCWebsiteModal :style="{ transform: 'translateY(' + (scrollY / 280) + 'rem)' }"></rCWebsiteModal>
+          <div v-if="item.item_id === 'rc_accounting'">
+            <rCAccounting :style="{ transform: 'translateY(' + ((scrollY / 350) + .5) + 'rem)' }"></rCAccounting>
           </div>
-          <div v-if="item.title === 'Accounting'">
-            <rCAccounting :style="{ transform: 'translateY(' + (scrollY / 280) + 'rem)' }"></rCAccounting>
+          <div v-if="item.item_id === 'rc_com'">
+            <rCWebsiteModal :style="{ transform: 'translateY(' + ((scrollY / 300) - 1.5) + 'rem)' }"></rCWebsiteModal>
           </div>
         </div>
         <div class="text_wrapper">
@@ -52,9 +52,17 @@ export default {
   data() {
     return {
       items: [
+        /*{
+          company: "Redstone Residential",
+          item_id: "redstone",
+          title: "Utilities",
+          description:
+            "This is a placeholder description",
+          link: ""
+        },*/
         {
           company: "Room Choice",
-          image_class: "rc_accounting",
+          item_id: "rc_accounting",
           title: "Accounting",
           description:
             "I was tasked to head up frontend development on this project. Designed and largely built by myself, our powerful accounting software boasted all the features you'd expect from scheduled journal entry creation to intelligent financial statement projections.",
@@ -62,7 +70,7 @@ export default {
         },
         {
           company: "Room Choice",
-          image_class: "rc_com",
+          item_id: "rc_com",
           title: "Company Website",
           description:
             "Built from the ground up, I took a lead role on the frontend development of our company website. To many clients, this website was their first impression with us. As this site was linked in all marketing campaigns and ads, we saw a lot of traffic being pushed to the website and our conversion rate greatly increased with the newly reworked site.",
@@ -70,21 +78,22 @@ export default {
         },
         {
           company: "Room Choice",
-          image_class: "rc_manager",
+          item_id: "rc_manager",
           title: "Manager Portal",
           description:
             "As an integral part of the dev team, I brainstormed ideas with company executives until we had a clear vision of the end product. The feature-rich student housing management system is used by property management groups for everything from monitoring the leasing process to viewing and exporting customizable and insightful financial reports.",
           link: ""
         },
         {
-          image_class: "mil",
-          title: "Millenium Auto Network",
+          company: "Millenium Auto Network",
+          item_id: "mil",
+          title: "Company Website",
           description: "After gaining valuable experience in website mobile optimization, I got hired for my first remote freelance job. Using my skillset, I optimized the site for mobile users across operating systems and the site saw increased traffic and lead generation from its mobile viewers.",
           link: "milleniumauto.net"
         },
         {
           company: "Room Choice",
-          image_class: "rc_student",
+          item_id: "rc_student",
           title: "Student Portal",
           description:
             "My first project was a bottom to top rebuild of our student experience using Vue. The service offered lease application submission, contract signing, schedulable payments, maintenance requests, social media functionality and much more!",
@@ -117,7 +126,7 @@ export default {
   width: 5rem;
 }
 .portfolio_item {
-  background-color: $white;
+  background-color: $gray-lt;
   box-shadow: 0px 6px 16px rgba(34, 77, 97, 0.2);
   border-bottom: 1px solid $gray-lt;
   display: grid;
@@ -136,7 +145,7 @@ export default {
   .text_wrapper {
     grid-area: text;
     margin: 0 0 0 calc(45% - 8rem);
-    padding: 6rem 0;
+    padding: 7rem 0;
     width: 20rem;
     @include mobile {
       margin: 0 auto;

@@ -6,8 +6,6 @@ import Resume from "@/views/Resume.vue";
 import Portfolio from "@/views/Portfolio.vue";
 import Contact from "@/views/Contact.vue";
 import BankFeed from "@/views/BankFeed.vue";
-//
-import Caroline from '@/views/Caroline.vue';
 
 Vue.use(Router);
 
@@ -44,11 +42,6 @@ export default new Router({
       path: "/bank-feed",
       name: "Bank Feed",
       component: BankFeed
-    },
-    {
-      path: "/caroline",
-      name: "Caroline",
-      component: Caroline
     }
   ]
 });

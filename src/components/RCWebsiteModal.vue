@@ -37,9 +37,11 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 .demo_modal {
   animation: 0.4s ease-out 0s 1 modalLoadIn;
-  box-shadow: 0px 6px 25px rgba(34, 77, 97, 0.3);
+  // box-shadow: 0px 6px 25px rgba(34, 77, 97, 0.3);
+  box-shadow: 0px 1px 9px 1px rgba(34, 77, 97, 0.18);
   background-color: white;
   font-family: 'Open Sans', sans-serif; 
+  margin-left: 3rem;
   width: 32rem;
   user-select: none;
   pointer-events: none;
@@ -203,9 +205,9 @@ export default {
         font-weight: 700;
         text-transform: uppercase;
         border-radius: 3px;
-        padding: .7rem 2rem;
+        padding: .7rem 1rem;
         letter-spacing: 1px;
-        max-width: 10rem;
+        max-width: 12rem;
         margin: 1rem auto;
         text-align: center;
         cursor: pointer;

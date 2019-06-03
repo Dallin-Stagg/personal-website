@@ -3,7 +3,7 @@
     <myNav></myNav>
     <div id="website-container">
       <router-view :scrollY="scrollPosition"></router-view>
-      <myFooter v-if="routeName !== 'Home' && routeName !== 'Caroline'"></myFooter>
+      <myFooter v-if="routeName !== 'Home'"></myFooter>
     </div>
   </div>
 </template>
