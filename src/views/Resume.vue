@@ -346,6 +346,9 @@ export default {
         font-size: .825rem;
         font-weight: 500;
         margin: 0;
+        @include mobile {
+          font-size: .9rem;
+        }
         span {
           color: $blue;
           cursor: pointer;

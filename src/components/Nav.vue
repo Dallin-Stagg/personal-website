@@ -221,7 +221,7 @@ export default {
       margin: 0 auto;
       width: 11rem;
       @include mobile {
-        font-size: .95rem;
+        font-size: .9rem;
         width: calc(100vw - 5rem);
       }
     }
