@@ -1,50 +1,48 @@
 <template>
-  <div class="portfolio">
-    <div class="portfolio_wrapper">
-      <div class="page_header background student with_polygon">
-        <h1>Portfolio</h1>
-        <h2>Check out my latest work</h2>
-        <div class="svg_wrapper">
-        <!-- 
-        preserveAspectRatio: makes sure the triangle is scalable
-        viewbox: points stretches from the parent
-        -->
-        <svg preserveAspectRatio="none" viewBox="0 0 100 100">
-          <polygon class="light" points="0,0 0,100 100,100 100,0 50,90" opacity="1"></polygon>
-          <polygon class="med" points="0,7 50,97 100,7 100,10 50,100 0,10" opacity="1"></polygon>
-        </svg>
-      </div>
-      </div>
-      <div v-for="(item, i) in items" :key="i" class="portfolio_item">
-        <div class="floater_wrapper">
-          <div v-if="item.item_id === 'rc_accounting'">
-            <rCAccounting :style="{ transform: 'translateY(' + ((scrollY / 350) + .5) + 'rem)' }"></rCAccounting>
-          </div>
-          <div v-if="item.item_id === 'rc_com'">
-            <rCWebsiteModal :style="{ transform: 'translateY(' + ((scrollY / 300) - 1.5) + 'rem)' }"></rCWebsiteModal>
-          </div>
-        </div>
-        <div class="text_wrapper">
-          <h4 v-if="item.company">{{ item.company }}</h4>
-          <h2>{{ item.title }}</h2>
-          <div class="breaker"></div>
-          <p>{{ item.description }}</p>
-          <!--<div class="ds_btn blue outlined">Learn More</div>-->
-        </div>
-      </div>
-
+  <div class="portfolio_page">
+    <div class="page_header background portfolio with_polygon">
+      <h1>Portfolio</h1>
+      <h2>Check out my latest work</h2>
+      <div class="svg_wrapper">
+      <!-- 
+      preserveAspectRatio: makes sure the triangle is scalable
+      viewbox: points stretches from the parent
+      -->
+      <svg preserveAspectRatio="none" viewBox="0 0 100 100">
+        <polygon class="light" points="0,0 0,100 100,100 100,0 50,90" opacity="1"></polygon>
+        <polygon class="med" points="0,7 50,97 100,7 100,10 50,100 0,10" opacity="1"></polygon>
+      </svg>
     </div>
+    </div>
+    <div v-for="(item, i) in items" :key="i" class="portfolio_item">
+      <div class="floater_wrapper">
+        <div v-if="item.item_id === 'rc_accounting'">
+          <rCAccounting :style="{ transform: 'translateY(' + ((scrollY / 350) + .5) + 'rem)' }"></rCAccounting>
+        </div>
+        <div v-if="item.item_id === 'rc_com'">
+          <rCWebsiteModal :style="{ transform: 'translateY(' + ((scrollY / 300) - 1.5) + 'rem)' }"></rCWebsiteModal>
+        </div>
+      </div>
+      <div class="text_wrapper">
+        <h4 v-if="item.company">{{ item.company }}</h4>
+        <h2>{{ item.title }}</h2>
+        <div class="breaker"></div>
+        <p>{{ item.description }}</p>
+        <!--<div class="ds_btn blue outlined">Learn More</div>-->
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
-import DsBreaker from "../components/Breaker.vue";
+// import DsBreaker from "../components/Breaker.vue";
 import RCWebsiteModal from "../components/RCWebsiteModal.vue";
 import RCAccounting from "../components/RCAccountingBalanceSheet.vue";
 export default {
   name: "Portfolio",
   components: {
-    dsBreaker: DsBreaker,
+    // dsBreaker: DsBreaker,
     rCWebsiteModal: RCWebsiteModal,
     rCAccounting: RCAccounting
   },
@@ -113,7 +111,7 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/styles/global-styles.scss";
 
-.portfolio {
+.portfolio_page {
   background-color: $gray-lt;
   border-bottom: 1px solid rgba($gray, .8);
   padding: 0 0 0;

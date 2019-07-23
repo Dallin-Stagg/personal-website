@@ -22,14 +22,10 @@
               {{ route.name }}
             </div>
           </div>
-          <div class="icon_wrapper">
-            <div class="icon_item" @click="openLink('https://www.linkedin.com/in/dallin-stagg')">
-              <i class="fab fa-linkedin-in"></i>
-            </div>
-            <div class="icon_item" @click="openLink('https://github.com/Dallin-Stagg')">
-              <i class="fab fa-github"></i>
-            </div>
+          <div class="text_wrapper">
+            <p>Welcome to my website! I designed and created this website for people just like you! Whether you're a recruiter, colleague or are just interested in my work, feel free to look around and contact me with any questions!</p>
           </div>
+          <div class="contact_me_btn">Contact Me</div>
         </nav>
       </transition>
     </div>
@@ -123,13 +119,13 @@ export default {
     box-shadow: 0 2px 10px 0px rgba($gray-dk, 0.3),
       18px 0 0px -8px rgba($white, 0.3), 34px 0 0px -16px rgba($white, 0.2),
       50px 0 0px -24px rgba($white, 0.1);
-    height: 23rem;
+    height: 31rem;
     width: 14rem;
     @include mobile {
       box-shadow: 0 2px 5px 0 rgba($gray-dk, 0.25),
         0 18px 0px -8px rgba($white, 0.3), 0 34px 0px -16px rgba($white, 0.2),
         0 50px 0px -24px rgba($white, 0.1);
-      height: 14.25rem;
+      height: 32rem;
       width: calc(100% - 2rem);
     }
   }
@@ -160,19 +156,19 @@ export default {
       -60deg,
       $purple-dk,
       #3a66c4,
-      $blue,
-      $mint
+      $blue
     );
     height: 4px;
     width: 100%;
   }
   .item_wrapper {
-    padding: 1.5rem 0;
+    padding: 1.5rem 0 1rem;
     position: relative;
     @include mobile {
-      padding: 0.7rem 0 0;
+      padding: 1rem 0 0;
     }
     .item {
+      border-radius: 4px;
       box-sizing: border-box;
       color: $text-secondary;
       cursor: pointer;
@@ -182,7 +178,7 @@ export default {
       margin: 0.2rem auto;
       padding-left: 1rem;
       user-select: none;
-      width: 100%;
+      width: calc(100% - 1rem);
       @include mobile {
         font-size: 1.1rem;
         line-height: 2.8rem;
@@ -196,12 +192,10 @@ export default {
       &.active {
         background-image: linear-gradient(
           -60deg,
-          $purple-dk,
-          #3a66c4,
-          $blue,
-          $mint
+          $blue-dk,
+          $blue
         );
-        box-shadow: 0 2px 6px 2px rgba($gray-dk, 0.2);
+        box-shadow: 0 2px 6px 2px rgba($gray-dk, 0.4);
         color: $white;
         text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
         i {
@@ -210,49 +204,52 @@ export default {
       }
     }
   }
-  .icon_wrapper {
+  .text_wrapper {
+    background-color: $blue-disabled;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: .5rem;
+    padding: 1rem;
+    width: calc(100% - 1rem);
     @include mobile {
-      display: none;
+      margin: 1.5rem .5rem 2.5rem;
     }
-    display: inline-block;
-    margin: 1rem 1rem;
-    overflow: hidden;
-    .icon_item {
-      border-radius: 3rem;
-      box-shadow: 0 2px 6px 2px rgba($gray-dk, 0.2);
-      color: $text-secondary;
-      cursor: pointer;
-      line-height: 2.5rem;
-      margin: 0.5rem 0.25rem;
-      position: relative;
-      text-align: center;
-      width: 2.5rem;
+    p {
+      color: $text-primary;
+      font-size: .825rem;
+      font-weight: 500;
+      margin: 0 auto;
+      width: 11rem;
       @include mobile {
-        background-image: linear-gradient(
-          -60deg,
-          $purple-dk,
-          #3a66c4,
-          $blue,
-          $mint
-        );
-        color: $white;
-        text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
-        font-size: 1.1rem;
-        line-height: 3rem;
-        width: 3rem;
-      }
-      &:hover {
-        background-image: linear-gradient(
-          -60deg,
-          $purple-dk,
-          #3a66c4,
-          $blue,
-          $mint
-        );
-        color: $white;
-        text-shadow: 0px 2px 10px rgba(34, 77, 97, 0.7);
+        font-size: .95rem;
+        width: calc(100vw - 5rem);
       }
     }
+  }
+  .contact_me_btn {
+    border: 2px solid $blue;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: $blue;
+    cursor: pointer;
+    font-size: .9rem;
+    font-weight: 500;
+    margin: 2rem .5rem 0;
+    padding: .5rem;
+    text-align: center;
+    width: 13rem;
+    transition: background-color .1s linear;
+    &:hover {
+      background-color: rgba($blue, .15);
+    }
+    @include mobile {
+      font-size: 1rem;
+      padding: .75rem 0;
+      width: calc(100% - 1rem);
+      &:hover {
+        background-color: transparent;
+      }
+    } 
   }
 }
 </style>

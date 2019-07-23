@@ -329,17 +329,24 @@ html {
   position: relative;
   text-align: center;
   &.background {
+    // background-image: url(./assets/images/overlay-grid.svg),
+      // linear-gradient(-60deg, $purple-dk, #3a66c4, $blue, $mint);
     background-image: url(./assets/images/overlay-grid.svg),
-      linear-gradient(-60deg, $purple-dk, #3a66c4, $blue, $mint);
+      linear-gradient(0deg, $blue, $blue-dk, #003372);
+    background-attachment: fixed;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    &.student {
-      background-image: linear-gradient(-60deg, rgba($gray-dk, .6), rgba($gray-dk, 1)), url(./assets/images/office-windows.jpg);
+    &.portfolio {
+      background-image: linear-gradient(-50deg, rgba($gray-dk, .6), rgba($gray-dk, 1)), url(./assets/images/office-windows.jpg);
+    }
+    &.resume {
+      background-image: linear-gradient(-10deg, rgba($gray-dk, .2), rgba($gray-dk, .8)), url(./assets/images/weave.jpg);
     }
   }
   &.with_polygon {
-    padding: 8rem 0 12rem;
+    // padding: calc(50vh - 6rem) 0 calc(50vh - 2rem);
+    padding: 10rem 0 12rem;
     .svg_wrapper {
       height: calc(3rem + 3vw);
       width: 100%;

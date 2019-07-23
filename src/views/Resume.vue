@@ -1,5 +1,5 @@
 <template>
-  <div class="resume">
+  <div class="resume_page">
     <!--  -->
     <!--<transition name="filter_slide">
       <div class="ds_filter" v-if="showFilter">
@@ -45,42 +45,48 @@
       <!-- <i class="fa fa-filter filter_toggle" @click="showFilter = !showFilter"></i> -->
       <!--<i class="fa fa-print filter_toggle" @click="print()"></i>-->
       <div id="resume-content">
-        <h3>EXPERIENCE</h3>
-        <div class="resume_item" v-for="(item, i) in experienceItems" :key="i">
-          <h4>{{ item.title }}</h4>
-          <h5>{{ item.position_and_time }}</h5>
-          <ul>
-            <li v-for="(text, j) in item.list" :key="j">{{ text }}</li>
-          </ul>
+        <div class="contact_me_wrapper">
+          <p>If you'd like to generate a printable copy of this resume, click <span @click="print()">here</span>. If you're wishing to make a serious inquiry of my work experience, I recommend you <span>contact me</span> to get an official and current copy of my resume.</p>
         </div>
-        <h3>EDUCATION</h3>
-        <div class="resume_item" v-for="(item, i) in educationItems" :key="i + 10">
-          <!-- fix for annoying vue key system -->
-          <h4>{{ item.title }}</h4>
-          <h5>{{ item.position_and_time }}</h5>
-          <ul>
-            <li v-for="(text, j) in item.list" :key="j">{{ text }}</li>
-          </ul>
+        <div id="print">
+          <h3>EXPERIENCE</h3>
+          <div class="resume_item" v-for="(item, i) in experienceItems" :key="i">
+            <h4>{{ item.title }}</h4>
+            <h5>{{ item.position_and_time }}</h5>
+            <ul>
+              <li v-for="(text, j) in item.list" :key="j">{{ text }}</li>
+            </ul>
+          </div>
+          <h3>EDUCATION</h3>
+          <div class="resume_item" v-for="(item, i) in educationItems" :key="i + 10">
+            <!-- fix for annoying vue key system -->
+            <h4>{{ item.title }}</h4>
+            <h5>{{ item.position_and_time }}</h5>
+            <ul>
+              <li v-for="(text, j) in item.list" :key="j">{{ text }}</li>
+            </ul>
+          </div>
+          <h3>SKILLS</h3>
+          <div class="skills_item">
+            <ul>
+              <li v-for="(skill, i) in skills" :key="i">{{ skill }}</li>
+            </ul>
+          </div>
+          <h3>SERVICE</h3>
+          <div class="resume_item" v-for="(item, i) in serviceItems" :key="i + 20">
+            <!-- fix for annoying vue key system -->
+            <h4>{{ item.title }}</h4>
+            <h5>{{ item.position_and_time }}</h5>
+            <ul>
+              <li v-for="(text, j) in item.list" :key="j">{{ text }}</li>
+            </ul>
+          </div>
+          <h3>PERSONAL</h3>
+          <div class="personal_item">
+            <p>{{ personalData }}</p>
+          </div>
         </div>
-        <h3>SKILLS</h3>
-        <div class="skills_item">
-          <ul>
-            <li v-for="(skill, i) in skills" :key="i">{{ skill }}</li>
-          </ul>
-        </div>
-        <h3>SERVICE</h3>
-        <div class="resume_item" v-for="(item, i) in serviceItems" :key="i + 20">
-          <!-- fix for annoying vue key system -->
-          <h4>{{ item.title }}</h4>
-          <h5>{{ item.position_and_time }}</h5>
-          <ul>
-            <li v-for="(text, j) in item.list" :key="j">{{ text }}</li>
-          </ul>
-        </div>
-        <h3>PERSONAL</h3>
-        <div class="personal_item">
-          <p>{{ personalData }}</p>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -188,7 +194,7 @@ export default {
   },
   methods: {
     print() {
-      var divId = "resume-content";
+      var divId = "print";
       var content = document.getElementById(divId).innerHTML;
       var mywindow = window.open("", "Print", "height=600,width=800");
       mywindow.document.write(
@@ -222,7 +228,7 @@ export default {
   transform: translateX(24rem);
 }
 
-.resume {
+.resume_page {
   background-color: $gray-lt;
   padding: 0;
 }
@@ -327,17 +333,35 @@ export default {
     box-shadow: 0 2px 5px 0 rgba($gray-dk, 0.25),
       0 -18px 0px -8px rgba($white, 0.3), 0 -34px 0px -16px rgba($white, 0.2),
       0 -50px 0px -24px rgba($white, 0.1);
-    padding: 2rem 3rem 3rem;
-    transition: box-shadow 0.3s ease-out;
-    @include mobile {
-      padding: .5rem 2rem 3rem;
+      padding: 1px;
+    .contact_me_wrapper {
+      background-color: $blue-disabled;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin: 1.5rem auto;
+      padding: 1rem;
+      width: calc(100% - 3rem);
+      p {
+        color: $text-primary;
+        font-size: .825rem;
+        font-weight: 500;
+        margin: 0;
+        span {
+          color: $blue;
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+    #print {
+      padding: .1rem 3rem 3rem;
+      @include mobile {
+        padding: .1rem 2rem 3rem;
+      }
     }
     h3 {
       border-bottom: 1px solid $gray-med;
-      color: $purple;
-      background: -webkit-linear-gradient(160deg, $purple-dk, $blue);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: $blue;
       font-size: 1rem;
       font-weight: 600;
       margin: 2rem 0 1rem;
@@ -358,7 +382,7 @@ export default {
       }
       h4 {
         color: $text-primary;
-        font-size: 1rem;
+        font-size: .9rem;
         font-weight: 600;
         margin: 1.5rem 0 0;
         @include mobile {
