@@ -340,9 +340,6 @@ html {
     &.portfolio {
       background-image: linear-gradient(-50deg, rgba($gray-dk, .6), rgba($gray-dk, 1)), url(./assets/images/office-windows.jpg);
     }
-    &.resume {
-      background-image: linear-gradient(-10deg, rgba($gray-dk, .2), rgba($gray-dk, .8)), url(./assets/images/weave.jpg);
-    }
   }
   &.with_polygon {
     // padding: calc(50vh - 6rem) 0 calc(50vh - 2rem);
