@@ -22,8 +22,10 @@
               {{ route.name }}
             </div>
           </div>
-          <div class="text_wrapper">
-            <p>Welcome to my website! I designed and created this website for people just like you! Whether you're a recruiter, colleague or are just interested in my work, feel free to look around and contact me with any questions!</p>
+          <div class="center_child">
+            <div class="text_wrapper">
+              <p>Welcome to my website! I designed and created this website for people just like you! Whether you're a recruiter, colleague or are just interested in my work, feel free to look around and contact me with any questions!</p>
+            </div>
           </div>
           <div class="contact_me_btn">Contact Me</div>
         </nav>
@@ -125,7 +127,7 @@ export default {
       box-shadow: 0 2px 5px 0 rgba($gray-dk, 0.25),
         0 18px 0px -8px rgba($white, 0.3), 0 34px 0px -16px rgba($white, 0.2),
         0 50px 0px -24px rgba($white, 0.1);
-      height: 32rem;
+      height: 31rem;
       width: calc(100% - 2rem);
     }
   }
@@ -204,28 +206,35 @@ export default {
       }
     }
   }
-  .text_wrapper {
-    background-color: $blue-disabled;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin: .5rem;
-    padding: 1rem;
-    width: calc(100% - 1rem);
+  .center_child {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 12rem;
     @include mobile {
-      margin: 1.5rem .5rem 2.5rem;
+      height: 11rem;
     }
-    p {
-      color: $text-primary;
-      font-size: .825rem;
-      font-weight: 500;
-      margin: 0 auto;
-      width: 11rem;
-      @include mobile {
-        font-size: .9rem;
-        width: calc(100vw - 5rem);
+    .text_wrapper {
+      background-color: $blue-disabled;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin: 0 .5rem;
+      padding: 1rem;
+      width: calc(100% - 1rem);
+      p {
+        color: $text-primary;
+        font-size: .825rem;
+        font-weight: 500;
+        margin: 0 auto;
+        width: 11rem;
+        @include mobile {
+          font-size: .9rem;
+          width: calc(100vw - 5rem);
+        }
       }
     }
   }
+  
   .contact_me_btn {
     border: 2px solid $blue;
     border-radius: 4px;
@@ -234,7 +243,7 @@ export default {
     cursor: pointer;
     font-size: .9rem;
     font-weight: 500;
-    margin: 2rem .5rem 0;
+    margin: 1.5rem .5rem 0;
     padding: .5rem;
     text-align: center;
     width: 13rem;
