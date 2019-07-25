@@ -101,16 +101,6 @@ export default {
         "https://onedrive.live.com/embed?cid=F2D94E544E7CA959&resid=F2D94E544E7CA959%212878&authkey=AIjBRexX3Hd4eLg&em=2",
       experienceItems: [
         {
-          title: "MILLENIUM AUTO NETWORK",
-          position_and_time: "Software Developer, October 2017 - November 2017",
-          description:
-            "After gaining valuable experience in the industry, I was hired as a temporary developer directly in charge of optimizing the company website for mobile devices. As part of my work I overhauled the current stylesheets and implemented media queries to assist in overall visual and user experience enhancements. I assisted lead developers of their team in the optimization of load time and image rendering on a website that requires numerous pictures to be loaded quickly and effectively. Working with Millennium was an extremely valuable experience both because of the experience I gained and the opportunity to freelance and work remotely for an outside company.",
-          list: [
-            "Overhauled CSS stylesheets and implemented global media queries making the site accessible and usable to users of all operating systems and devices.",
-            "Assisted lead developers in the optimization of load time, image rendering and stylesheet refinement."
-          ]
-        },
-        {
           title: "ROOM CHOICE",
           position_and_time:
             "Frontend Software Developer, March 2017 - November 2018",
@@ -123,6 +113,19 @@ export default {
             "Performed bank reconciliations and user ledger audits with the CFO.",
             "Assisted in the creation and monitoring of the online payment system used by tenants from all clients.",
             "Reported to company executives regularly to communicate goals and progress on current projects."
+          ]
+        },
+        {
+          title: "FREELANCE WEB DEVELOPER/DESIGNER",
+          position_and_time: "Lead Engineer, October 2017 - Present",
+          description:
+            "After gaining valuable experience in the industry, I was hired as a temporary developer directly in charge of optimizing the company website for mobile devices. As part of my work I overhauled the current stylesheets and implemented media queries to assist in overall visual and user experience enhancements. I assisted lead developers of their team in the optimization of load time and image rendering on a website that requires numerous pictures to be loaded quickly and effectively. Working with Millennium was an extremely valuable experience both because of the experience I gained and the opportunity to freelance and work remotely for an outside company.",
+          list: [
+            "Created and redesigned company websites across industries including but not limited to utilities, automotive, and medical, thereby increasing brand perception, user interaction, and conversion rate.",
+            "Utilized global media queries to create modern and responsive website designs, optimized for all device sizes.",
+            "Applied technical skills to code form submission scripts and mobilize the access to all submitted data.",
+            "Provided further consulting services regarding lead generation, data storage, and high-level business direction."
+
           ]
         }
       ],
@@ -157,7 +160,8 @@ export default {
         "Microsoft Excel",
         "Product Management",
         "Spanish",
-        "Client Communication"
+        "Client Communication",
+        "Salesforce"
       ],
       personalData:
         "Recorded and performed live with multiple Grammy award winning musicians in multiple countries on drum set. Eagle scout. Enjoy reading and playing basketball and soccer.",
@@ -451,7 +455,7 @@ export default {
         color: $text-secondary;
         font-size: 0.9rem;
         font-weight: 400;
-        margin: 1rem 0 1rem 6rem;
+        margin: 1rem 0 1rem 3rem;
         text-align: justify;
         @include mobile {
           font-size: .9rem;
