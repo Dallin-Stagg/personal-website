@@ -1,19 +1,5 @@
 <template>
   <div class="portfolio_page">
-    <div class="page_header background portfolio with_polygon">
-      <h1>Portfolio</h1>
-      <h2>Check out my latest work</h2>
-      <div class="svg_wrapper">
-      <!-- 
-      preserveAspectRatio: makes sure the triangle is scalable
-      viewbox: points stretches from the parent
-      -->
-      <svg preserveAspectRatio="none" viewBox="0 0 100 100">
-        <polygon class="light" points="0,0 0,100 100,100 100,0 50,90" opacity="1"></polygon>
-        <polygon class="med" points="0,7 50,97 100,7 100,10 50,100 0,10" opacity="1"></polygon>
-      </svg>
-    </div>
-    </div>
     <div v-for="(item, i) in items" :key="i" class="portfolio_item">
       <div class="floater_wrapper">
         <div v-if="item.item_id === 'rc_accounting'">

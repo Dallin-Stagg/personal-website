@@ -5,7 +5,6 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    menuOpen: false
     /* alertInfo: {
       type: "",
       text: "",
@@ -13,9 +12,6 @@ export default new Vuex.Store({
     } */
   },
   mutations: {
-    toggleMenu: state => {
-      state.menuOpen = !state.menuOpen;
-    },
     /* toggleAlert: (state, info) => {
       state.alertInfo.type = info.type;
       state.alertInfo.text = info.text;

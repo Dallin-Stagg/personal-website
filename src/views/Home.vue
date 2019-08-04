@@ -1,199 +1,148 @@
 <template>
-  <div id="home">
-    <div v-if="displayIntro">
-      <div class="prelude"></div>
-      <div class="logo"></div>
-    </div>
-    <div class="wrapper">
-      <div class="page_header">
-        <h2>Hey, I'm</h2>
-        <h1 class="website_title">&#8203;{{ displayText }}</h1>
+  <div class="home_page">
+    <div id="website_header">
+      <div id="my_logo"></div>
+      <div class="svg_wrapper">
+        <!-- 
+        preserveAspectRatio: makes sure the triangle is scalable
+        viewbox: points stretches from the parent
+        -->
+        <svg preserveAspectRatio="none" viewBox="0 0 100 100">
+          <polygon class="white" points="0,0 0,100 100,100 100,0 50,90" opacity="1"></polygon>
+          <polygon class="med" points="0,7 50,97 100,7 100,10 50,100 0,10" opacity="1"></polygon>
+        </svg>
       </div>
-      <div class="overlay"></div>
+    </div>
+    <div id="website_nav" :class="{ 'scrolled': scrollY > 320 }">
+      <div class="links_wrapper">
+        <a :href="'#' + l.id" class="link active" v-for="l in links">
+          <div>{{ l.name }}</div>
+        </a>
+      </div>
+    </div>
+    <div class="section_wrapper">
+      <myWork></myWork>
     </div>
   </div>
 </template>
 
 <script>
+import MyWork from "../components/Work.vue";
 export default {
   name: "Home",
+  components: {
+    myWork: MyWork
+  },
+  props: ['scrollY'],
   data() {
     return {
-      titles: ["A student", "A developer", "A musician", "Dallin Stagg"],
-      displayedTitleLength: 0,
-      typing: true,
-      titleIndex: 0,
-      //
-      displayIntro: true
+      links: [
+        { name: "About", id: "about_section" },
+        { name: "Work", id: "work_section" },
+        { name: "Connect", id: "connect_section" }
+      ]
     };
-  },
-  computed: {
-    displayText() {
-      if (this.displayedTitleLength) {
-        return this.titles[this.titleIndex].substring(
-          0,
-          this.displayedTitleLength
-        );
-      }
-      return "";
-    }
-  },
-  mounted() {
-    setTimeout(this.terminatePrelude, 3900);
-  },
-  methods: {
-    updateTitle() {
-      if (
-        this.typing &&
-        this.displayedTitleLength < this.titles[this.titleIndex].length
-      ) {
-        this.displayedTitleLength += 1;
-        if (this.titles[this.titleIndex][this.displayedTitleLength] === " ") {
-          this.displayedTitleLength += 1;
-        }
-        setTimeout(this.updateTitle, 125);
-      } else if (
-        this.typing &&
-        this.displayedTitleLength === this.titles[this.titleIndex].length
-      ) {
-        this.typing = false;
-        setTimeout(this.updateTitle, 800);
-      } else if (
-        !this.typing &&
-        this.displayedTitleLength > 0 &&
-        this.titleIndex !== this.titles.length - 1
-      ) {
-        this.displayedTitleLength -= 1;
-        if (this.titles[this.titleIndex][this.displayedTitleLength] === " ") {
-          this.displayedTitleLength -= 1;
-        }
-        setTimeout(this.updateTitle, 170);
-      } else if (!this.typing && !this.displayedTitleLength) {
-        this.titleIndex += 1;
-        this.typing = true;
-        setTimeout(this.updateTitle, 800);
-      }
-    },
-    terminatePrelude() {
-      this.displayIntro = false;
-      setTimeout(this.updateTitle, 200);
-    }
   }
 };
 </script>
 <style lang="scss" scoped>
 @import "../assets/styles/global-styles.scss";
-.prelude {
-  animation: prelude_animation 4s linear 0s;
-  position: absolute;
-  top: 0%;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 4;
-}
-@keyframes prelude_animation {
-  0% {
-    background-color: #282828;
-    transform: translateY(0);
-  }
-  80% {
-    background-color: #282828;
-    transform: translateY(0);
-  }
-  95% {
-    background-color: transparent;
-    transform: translateY(-100%);
-  }
-  100% {
-    background-color: transparent;
-    transform: translateY(-100%);
-  }
-}
-
-.logo {
-  animation: logo_animation 4s linear 0s;
-  background-image: url("../assets/images/logo-white.png");
-  background-position: center;
-  background-size: 50rem;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 0;
-  left: 0%;
-  width: 100%;
-  height: 100vh;
-  z-index: 5;
-  @include mobile {
-    background-size: 30rem;
-  }
-}
-@keyframes logo_animation {
-  0% {
-    opacity: 0;
-    transform: translateY(-1rem);
-  }
-  20% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  70% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  85% {
-    opacity: 0.5;
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}
-
-.wrapper {
-  background-image: url("../assets/images/mountain-and-lake.jpg");
+#website_header {
+  background-image: linear-gradient(0deg, rgba(0,0,0, .2), rgba(0,0,0, .7)), url(../assets/images/Liquid-Cheese.svg);
+  background-attachment: fixed;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
+  padding: 2rem 0;
   position: relative;
-  z-index: 2;
-  .overlay {
-    background-size: 50rem;
+  #my_logo {
+    animation: 1.25s ease-out 0s 1 textSlideIn;
+    background-image: url(../assets/images/logo-white.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 0;
-    left: 0;
+    background-size: 250%;
+    height: 12rem;
+    width: 12rem;
+  }
+  .svg_wrapper {
+    height: calc(3rem + 3vw);
     width: 100%;
-    height: 100%;
-    z-index: 3;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    svg {
+      width: 100%;
+      height: 100%;
+      .white {
+        fill: $white;
+      }
+      .light {
+        fill: $gray-lt;
+      }
+      .med {
+        fill: $gray-med;
+      }
+    }
   }
 }
-.page_header {
-  position: relative;
-  user-select: none;
-  z-index: 4;
-}
-.website_title {
-  animation: blink 1s linear 0s infinite;
-  border-right: 2px solid rgba($white, 0.8);
-  display: inline;
-  text-transform: uppercase;
-  @include mobile {
-    font-size: 3rem;
+#website_nav {
+  background-color: $white;
+  border-bottom: 1px solid $gray-border;
+  padding-top: 5rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -5rem;
+  transition: box-shadow .15s linear;
+  z-index: 5;
+  &.scrolled {
+    border-bottom: none;
+    box-shadow: 0 2px 4px 0 rgba(#111, 0.2);
+    
+  }
+  .links_wrapper {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    padding: 0 .5rem;
+    width: 20rem;
+    transform: translateX(calc(50vw - 10.5rem));
+    transition: transform .2s ease-out;
+    .link {
+      border-radius: 4px;
+      color: $text-secondary;
+      font-weight: 500;
+      line-height: 3rem;
+      padding: 0 1rem;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      @include mobile {
+        line-height: 3.5rem;
+      }
+      &::after {
+        background-color: $blue;
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+        content: "";
+        display: inline-block;
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
   }
 }
-@keyframes blink {
-  40% {
-    border-color: transparent;
-  }
-  50% {
-    border-color: transparent;
-  }
+.section_wrapper {
+  margin: 0 auto;
+  width: 40rem;
 }
+
 </style>
