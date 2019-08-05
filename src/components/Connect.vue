@@ -1,35 +1,10 @@
 <template>
   <div class="footer">
-    <dsBreaker mainColor="light" bgColor="dark"></dsBreaker>
     <div class="wrapper">
       <div class="left">
-        <div class="tiles">
-          <div class="item" :class="{ 'active': activeTileIndex === 0 }"><i class="fas fa-book"></i>
-            <div class="text_wrapper">
-              <h4>Accounting</h4>
-              <p>Learning to analyze a business, making decisions based on real value, and gaining an appreciation for a meticulous attention to detail are skills that have transformed the way I operate!</p>
-            </div>
-          </div>
-          <div class="item" :class="{ 'active': activeTileIndex === 1 }"><i class="fas fa-code"></i>
-            <div class="text_wrapper">
-              <h4>Development</h4>
-              <p>I once decided my business skillset needed a taste of tech. I then taught myself to code and began to design and develop sites just like this one from the ground up! Ask me about my work!</p>
-            </div>
-          </div>
-          <div class="item" :class="{ 'active': activeTileIndex === 2 }"><i class="fas fa-paint-brush"></i>
-            <div class="text_wrapper">
-              <h4>Design</h4>
-              <p>Everyone needs a way to express themselves artistically. Being able to design something my own way from the scratch gives me the opportunity to be proud of something that only I touched.</p>
-            </div>
-          </div>
-          <div class="item" :class="{ 'active': activeTileIndex === 3 }"><i class="fas fa-music"></i>
-            <div class="text_wrapper">
-              <h4>Music</h4>
-              <p>From being honored as the All-State drummer for the state of Utah to performing with Grammy Award winning musicians internationally, music has always been a big part of who I am.</p>
-            </div>
-          </div>
-        </div>
-        
+        <i @click="open('https://www.linkedin.com/in/dallin-stagg')" class="fab fa-linkedin-in"></i>
+        <br>
+        <i @click="open('https://open.spotify.com/user/1235354586?si=3FS7oFsTRg6j5vZJ5cW7XQ')" class="fab fa-spotify"></i>
       </div>
       <div class="right">
         <div class="form">
@@ -68,8 +43,8 @@
         </div>
         <h6 class="lower_text">* Please double check the email address you entered. After receiving a submitted message, I will respond to the email provided.</h6>
       </div>
-      
     </div>
+    <h6 class="copyright" @click="confetti()">© 2019 - Dallin Stagg</h6>
   </div>
 </template>
 <script>
@@ -143,6 +118,15 @@ export default {
     stopConfetti() {
       this.messageSent = false
       this.$confetti.stop();
+    },
+    open(link) {
+      window.open(link, '_blank');
+    },
+    confetti() {
+      this.$confetti.start({
+        shape: "rect"
+      });
+      setTimeout(this.stopConfetti, 3000)
     }
   }
 };
@@ -151,7 +135,8 @@ export default {
 @import "../assets/styles/global-styles.scss";
 .footer {
   background-color: $gray-lt;
-  padding-top: 2rem;
+  border-top: 4px solid $blue-disabled;
+  position: relative;
   .wrapper {
     background-image: linear-gradient(0deg, #212121, $gray-dk,);
     display: grid;
@@ -167,107 +152,57 @@ export default {
       padding: 1rem 0 7rem;
     }
     .left {
-      .tiles {
-        position: relative;
-        // transform: rotate(-35deg) skew(20deg,5deg);
-        transform: rotate(-1deg) skew(0deg,3deg);
-        width: calc(100% - 2rem);
-        @include mobile {
-          margin: 3.5rem auto 4.5rem;
-          width: calc(100% - 3.5rem);
+      text-align: center;
+      @include mobile {
+        br {
+          display: none;
         }
-        .item {
-          background: linear-gradient(-60deg, $purple-dk, #3a66c4, $blue, $mint);
-          color: $white;
-          cursor: pointer;
-          filter: brightness(.6);
-          text-align: center;
-          height: 3.5rem;
-          width: 3.5rem;
-          line-height: 3.5rem;
+      }
+      i {
+        border-radius: 50%;
+        color: $gray-lt;
+        cursor: pointer;
+        font-size: 1.75rem;
+        line-height: 3.5rem;
+        margin: 1rem 0;
+        position: relative;
+        text-align: center;
+        width: 3.5rem;
+        @include mobile {
+          margin: 5rem 1rem 2rem;
+        }
+        &:hover::after {
+          opacity: 1;
+          transform: scale(1);
+        }
+        &.fa-linkedin-in::after {
+          background-color: #0077B5;
+        }
+        &.fa-spotify::after {
+          background-color: #1ED761;
+        }
+        &::after {
+          border-radius: 50%;
+          content: "";
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 1;
+          transform: scale(.5);
+          opacity: 0;
+          transition: transform .2s ease-out, opacity .2s ease-out;
+          @include mobile {
+            transition: none;
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        &::before {
           position: relative;
-          display: block;
-          text-decoration: none;
-          box-shadow: -1rem 1rem 7px rgba(34, 77, 97, 0.2);
-          transition: all .25s linear;
-          .text_wrapper {
-            box-sizing: border-box;
-            text-align: left;
-            padding: 0rem .5rem .5rem 1rem;
-            position: absolute;
-            left: 3.5rem;
-            top: 0;
-            width: calc(18rem - 3.5rem);
-            opacity: 0;
-            transition: opacity .25s linear;
-            @include mobile {
-              width: calc(100vw - 4rem - 3.5rem);
-            }
-            h4 {
-              color: rgba($white, .8);
-              font-size: .95rem;
-              font-weight: 400;
-              line-height: 1.75rem;
-              margin: 0;
-            }
-            p {
-              color: rgba($white, .5);
-              font-size: .75rem;
-              font-weight: 300;
-              line-height: 1.1rem;
-              margin: .2rem 0;
-            }
-          }
-          &.active {
-            transform: translate(.9em, -.9em);
-            transition: all .25s linear;
-            box-shadow: -2rem 2rem 14px rgba(34, 77, 97, 0.4);
-            filter: brightness(1);
-            .text_wrapper {
-              opacity: 1;
-            }
-            &:before, 
-            &:after { 
-              transition: all .25s linear; 
-            }
-            
-            &:before {
-              width: 1rem;
-              top: .5rem;
-              left: -1rem;
-            }
-            
-            &:after {
-              width: 1rem;
-              bottom: -2.25rem;
-              left: .75rem;
-              height: 3.5rem;
-            }
-          }
-          
-          &:before, 
-          &:after {
-            content: '';
-            position: absolute;
-            transition: all .25s linear;
-            width: .5em;
-          }
-
-          &:after {
-            background: linear-gradient(-240deg, $purple-dk, #3a66c4, $blue, $mint);
-            height: 3.5rem;
-            bottom: -2rem;
-            left: 1.25rem;
-            transform: rotate(90deg) skew(0,45deg);
-          }
-          
-          &:before {
-            background: $mint;
-            height: 3.5rem;
-            top: .25rem;
-            left: -.5rem;
-            transform: skewY(-45deg);
-          }
+          z-index: 2;
         }
       }
     }
@@ -320,8 +255,6 @@ export default {
             margin: 0;
             padding: 0 .3rem;
             pointer-events: none;
-            transition: font-size 0.1s ease-out, padding 0.1s ease-out,
-              top 0.1s ease-out, left 0.1s ease-out;
             @include mobile {
               font-size: 0.8rem;
             }
@@ -401,6 +334,17 @@ export default {
         }
       }
     }
+  }
+  .copyright {
+    color: $text-secondary;
+    font-size: .9rem;
+    font-weight: 500;
+    margin: 0;
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    right: 0;
+    text-align: center;
   }
 }
 

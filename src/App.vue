@@ -4,17 +4,12 @@
       <div class="haze" v-if="showHaze"></div>
     </transition>
     <router-view :scrollY="scrollPosition"></router-view>
-    <myFooter id="connect_section"></myFooter>
   </div>
 </template>
 <script>
-import MyFooter from "./components/Footer.vue";
 
 export default {
   name: "app",
-  components: {
-    myFooter: MyFooter
-  },
   data() {
     return {
       scrollPosition: 0

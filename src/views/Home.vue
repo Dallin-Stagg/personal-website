@@ -13,25 +13,31 @@
         </svg>
       </div>
     </div>
-    <div id="website_nav" :class="{ 'scrolled': scrollY > 320 }">
+    <div id="website_nav" :class="{ 'scrolled': scrollY > 336, 'dark': activeSection === 'connect_section' }">
       <div class="links_wrapper">
-        <a :href="'#' + l.id" class="link active" v-for="l in links">
+        <a @click="scrollTo(l.id)" class="link" :class="{ 'active': activeSection === l.id }" v-for="(l, i) in links" :key="i">
           <div>{{ l.name }}</div>
         </a>
       </div>
     </div>
     <div class="section_wrapper">
-      <myWork></myWork>
+      <myAbout @goToConnect="scrollTo('connect_section')" id="about_section"></myAbout>
+      <myWork id="work_section"></myWork>
+      <myConnect id="connect_section"></myConnect>
     </div>
   </div>
 </template>
 
 <script>
+import MyAbout from '../components/About.vue';
 import MyWork from "../components/Work.vue";
+import MyConnect from '../components/Connect.vue';
 export default {
   name: "Home",
   components: {
-    myWork: MyWork
+    myAbout: MyAbout,
+    myWork: MyWork,
+    myConnect: MyConnect
   },
   props: ['scrollY'],
   data() {
@@ -42,6 +48,33 @@ export default {
         { name: "Connect", id: "connect_section" }
       ]
     };
+  },
+  computed: {
+    activeSection() {
+      if (this.scrollY > 0) {
+        let aboutEl = document.getElementById('about_section');
+        let scrollAbout = aboutEl.offsetTop - aboutEl.scrollTop + aboutEl.clientTop - 80;
+        let workEl = document.getElementById('work_section');
+        let scrollWork = workEl.offsetTop - workEl.scrollTop + workEl.clientTop - 100;
+        let connectEl = document.getElementById('connect_section');
+        let scrollConnect = connectEl.offsetTop - connectEl.scrollTop + connectEl.clientTop - 50;
+        if (this.scrollY >= scrollConnect) {
+          return 'connect_section'
+        } else if (this.scrollY >= scrollWork) {
+          return 'work_section'
+        } else if (this.scrollY >= scrollAbout) {
+          return 'about_section'
+        }
+      }
+      
+      return ''
+    }
+  },
+  methods: {
+    scrollTo(id) {
+      var elmnt = document.getElementById(id);
+      elmnt.scrollIntoView();
+    }
   }
 };
 </script>
@@ -95,12 +128,15 @@ export default {
   position: -webkit-sticky;
   position: sticky;
   top: -5rem;
-  transition: box-shadow .15s linear;
-  z-index: 5;
+  transition: box-shadow .15s linear, background-color .25s linear;
+  z-index: 3;
   &.scrolled {
     border-bottom: none;
-    box-shadow: 0 2px 4px 0 rgba(#111, 0.2);
-    
+    box-shadow: 0 2px 5px 0 rgba(#111, 0.2);
+  }
+  &.dark {
+    background-color: #343638;
+    box-shadow: 0 2px 5px 0 rgba(#111, 0.4);
   }
   .links_wrapper {
     box-sizing: border-box;
@@ -115,12 +151,19 @@ export default {
     .link {
       border-radius: 4px;
       color: $text-secondary;
+      cursor: pointer;
       font-weight: 500;
       line-height: 3rem;
       padding: 0 1rem;
       position: relative;
       text-align: center;
       text-decoration: none;
+      &:hover {
+        color: $blue;
+      }
+      &.active::after {
+        height: 3px;
+      }
       @include mobile {
         line-height: 3.5rem;
       }
@@ -132,17 +175,17 @@ export default {
         display: inline-block;
         position: absolute;
         width: 100%;
-        height: 3px;
+        height: 0;
         bottom: 0;
         left: 0;
         right: 0;
+        transition: height .2s ease-out;
       }
     }
   }
 }
 .section_wrapper {
-  margin: 0 auto;
-  width: 40rem;
+  //
 }
 
 </style>
