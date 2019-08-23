@@ -19,7 +19,7 @@ export default {
     if (this.$route.path === "/") {
       this.$router.push({ name: "Home" });
     }
-    window.addEventListener('scroll', this.distanceFromTop)
+    // window.addEventListener('scroll', this.distanceFromTop)
   },
   computed: {
     routeName() {
@@ -53,7 +53,7 @@ html {
   scroll-behavior: smooth;
 }
 #app {
-  background-color: $gray-lt;
+  background-color: $white;
   font-family: "Quicksand", sans-serif, system-ui;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

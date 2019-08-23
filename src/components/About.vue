@@ -8,13 +8,14 @@
       <div class="ds_info_line">
         <div class="float_wrapper">
           <i class="fa fa-info"></i>
-          <h4>Have any questions for me?<br> Go ahead and <span @click="$emit('goToConnect')">contact me</span></h4>
+          <h4>Have any questions for me?<br> Go ahead and <span @click="$emit('goToContact')">contact me</span></h4>
         </div>
-        
       </div>
     </div>
     <!--<breaker mainColor="light" bgColor="dark"></breaker>-->
     <div class="tiles_wrapper">
+      <div class="triangle left"></div>
+      <div class="triangle right"></div>
       <div class="tiles">
         <div class="item" :class="{ 'active': activeTileIndex === 0 }"><i class="fas fa-book"></i>
           <div class="text_wrapper">
@@ -80,11 +81,12 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/styles/global-styles.scss";
 .about_section {
+  background-color: $white;
   .text_wrapper {
     color: $text-primary;
     font-weight: 400;
     margin: 0 auto;
-    padding: 8rem 0 5rem;
+    padding: 7rem 0 5rem;
     width: 37rem;
     text-align: justify;
     text-justify: inter-word;
@@ -94,13 +96,38 @@ export default {
     }
   }
   .tiles_wrapper {
-    background-image: linear-gradient(0deg, rgba(0,0,0, .6), rgba(0,0,0, .7)), url('../assets/images/office-windows.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-top: 4px solid $blue-disabled;
-    border-bottom: 4px solid $blue-disabled;
-    padding: 7rem 0 11rem;
+    background-color: $gray-lt;
+    border-top: 1px solid $gray-border;
+    border-bottom: 1px solid $gray-border;
+    box-shadow: inset 0 1px 2px 0 rgba(#111, 0.1);
+    padding: 7rem 0 8.5rem;
+    position: relative;
+    .triangle {
+      filter: drop-shadow(0px 1px 1px rgba(0,0,0,.1));
+      width: 0;
+      height: 0;
+      position: absolute;
+      z-index: 1;
+      &.left {
+        border-bottom: 1.2rem solid transparent;
+        border-right: 1.2rem solid transparent;
+        border-top: 1.2rem solid $white;
+        border-left: 1.2rem solid $white;
+        position: absolute;
+        top: 8px;
+        left: 8px;
+      }
+      &.right {
+        border-bottom: 1.2rem solid $white;
+        border-right: 1.2rem solid $white;
+        border-top: 1.2rem solid transparent;
+        border-left: 1.2rem solid transparent;
+        top: none;
+        left: none;
+        bottom: 8px;
+        right: 8px;
+      }
+    }
     .tiles {
       margin: 0 auto;
       position: relative;
@@ -138,16 +165,16 @@ export default {
             width: calc(100vw - 6rem - 3.5rem);
           }
           h4 {
-            color: rgba($white, .8);
+            color: rgba($text-primary, .8);
             font-size: 1rem;
             font-weight: 500;
             line-height: 1.75rem;
             margin: 0;
           }
           p {
-            color: rgba($white, .6);
+            color: rgba($text-primary, .6);
             font-size: .85rem;
-            font-weight: 400;
+            font-weight: 500;
             line-height: 1.1rem;
             margin: .2rem 0;
           }
