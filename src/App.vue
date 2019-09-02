@@ -51,6 +51,10 @@ html {
   font-size: 16px;
   line-height: 1.5;
   scroll-behavior: smooth;
+  #confetti-canvas {
+    // insures it's over all other z-index: 1 elements
+    z-index: 1;
+  }
 }
 #app {
   background-color: $white;
