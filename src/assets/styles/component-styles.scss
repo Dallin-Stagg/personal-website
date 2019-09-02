@@ -7,7 +7,7 @@
     color: $text-primary;
     padding-right: .5rem;
     position: relative;
-    z-index: 2;
+    z-index: 1;
   }
   &::before {
     background-color: $blue;

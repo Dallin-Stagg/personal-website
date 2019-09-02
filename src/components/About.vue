@@ -57,7 +57,7 @@ export default {
     return {
       aboutMeParagraphs: [
         "Hey, my name is Dallin Stagg! I live in the beautiful state of Utah where I am currently studying Accounting at the Marriott School of Business.",
-        "From a young age, I was fascinated by the world around me and how quickly technology has developed. Since I was 19 years old, I've been working in web development where I've been able to design and build powerful entreprise software systems. I've loved to see how companies adapt and innovate as they play their part in pushing technology forward. I've coupled my technical skillset with a love of business and entrepreneurship, and it is my hope to use the skills and lessons I've learned, to continue to make the world we live in a better place.",
+        "From a young age, I was fascinated by the world around me and how quickly technology has developed. Since I was 19 years old, I've been working in web development where I've been able to design and build powerful entreprise software systems. I've loved to see how companies adapt and innovate as they play their part in pushing technology forward. I've coupled my technical skillset with a love of business and entrepreneurship, and it is my hope to use the skills and lessons I've learned to continue to make the world we live in a better place.",
         "Aside from that I love playing basketball and soccer, performing on drum set, spending time outdoors, experiencing new things, and making new friends. Thanks for stopping by."
       ],
       activeTileIndex: 0

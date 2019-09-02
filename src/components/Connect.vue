@@ -13,7 +13,7 @@
             <input type="text" :value="company" @input="evt=>company=evt.target.value" placeholder="Company">
             <input type="text" :value="message" @input="evt=>message=evt.target.value" placeholder="Message">
           </div>
-          <div class="ds_btn grad">Send Message</div>
+          <div class="ds_btn grad" @click="go()">Send Message</div>
         </div>
         <div class="icon"></div>
       </div>
@@ -41,14 +41,14 @@ export default {
       name: "",
       email: "",
       message: "",
-      company: '',
+      company: "",
       request_resume: false,
       activeTileIndex: 0
     };
   },
   computed: {
     inputReady() {
-      return this.name && this.email && this.message;
+      return this.name && this.email && this.message && this.company;
     }
   },
   mounted() {
@@ -65,10 +65,9 @@ export default {
     },
     go() {
       if (this.inputReady) {
-        // https://script.google.com/macros/s/AKfycbwS78apLRhuzlmigzzMCZH_2Y6opmpWeCqfbc1_unWqEevmsUI/exec
+        // https://script.google.com/macros/s/AKfycbwFwMXn1KLc7xBvEU4JA3BaFKjY5SgXDWO-I5M2At4I2ihxcohm/exec
         var contact_url =
-          "https://script.google.com/macros/s/AKfycbwS78apLRhuzlmigzzMCZH_2Y6opmpWeCqfbc1_unWqEevmsUI/exec";
-        var date = new Date();
+          "https://script.google.com/macros/s/AKfycbwFwMXn1KLc7xBvEU4JA3BaFKjY5SgXDWO-I5M2At4I2ihxcohm/exec";
         fetch(
           contact_url +
             "?name=" +
@@ -77,8 +76,6 @@ export default {
             this.email +
             "&message=" +
             this.message +
-            "&date=" +
-            date +
             "&company=" +
             this.company +
             "&request_resume=" +
@@ -90,12 +87,15 @@ export default {
         this.messageSent = true;
         this.clearForm()
         setTimeout(this.stopConfetti, 6000)
+      } else {
+        alert("Please fill out the entire form before submitting.")
       }
     },
     clearForm() {
       this.name = ''
       this.email = ''
       this.message = ''
+      this.company = ''
     },
     stopConfetti() {
       this.messageSent = false
