@@ -28,8 +28,13 @@ export default {
         "https://onedrive.live.com/embed?cid=F2D94E544E7CA959&resid=F2D94E544E7CA959%212878&authkey=AIjBRexX3Hd4eLg&em=2",
       items: [
         {
-          company: "FREELANCE WEB DEVELOPER/DESIGNER",
-          position_and_time: "Oct 2017 - <span style='color: #FFB100;'>Now</span>",
+          company: "EXXONMOBIL",
+          position_and_time: "Financial Technology Analyst Intern, May 2020 - August 2020",
+          description: "I couldn't be more excited to apply the skills I've learned to real world problems with such an innovative company at their headquarters in Houston Texas!"
+        },
+        {
+          company: "FREELANCE WEB DEVELOPER",
+          position_and_time: "Frontend Developer, Oct 2017 - <span style='color: #FFB100;'>Now</span>",
           description: "During my time as a freelancer, I've been blessed to play a big part in creating everything from static websites to enterprise software in the automobile, medical, and utilities industries. I've loved the opportunity to exercise accountability as I've set my own hours, and it has been a joy to rub shoulders with so many amazing clients."
         },
         {
