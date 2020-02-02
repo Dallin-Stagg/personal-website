@@ -1,7 +1,7 @@
 <template>
   <div class="home_page">
-    <div id="website_header">
-      <div id="my_logo"></div>
+    <div id="website_header" :class="{ 'dark_theme': darkTheme }">
+      <div id="my_logo" @click="toggleTheme()"></div>
       <div class="svg_wrapper">
         <!-- 
         preserveAspectRatio: makes sure the triangle is scalable
@@ -61,17 +61,23 @@ export default {
       }
       
       return ''
+    },
+    darkTheme() {
+      return this.$store.state.darkTheme
     }
   },
   methods: {
     scrollTo(id) {
       var elmnt = document.getElementById(id);
       elmnt.scrollIntoView();
+    },
+    toggleTheme() {
+      this.$store.commit('toggleTheme')
     }
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../assets/styles/global-styles.scss";
 #website_header {
   background-image: linear-gradient(0deg, rgba(0,0,0, .2), rgba(0,0,0, .7)), url(../assets/images/Liquid-Cheese.svg);
@@ -84,6 +90,9 @@ export default {
   justify-items: center;
   padding: 4rem 0 6rem;
   position: relative;
+  &.dark_theme {
+    // background-image: linear-gradient(0deg, rgba(0,0,0, .1), rgba(0,0,0, .4)), url(../assets/images/Liquid-Cheese-dark.svg);
+  }
   #my_logo {
     animation: 1.25s ease-out 0s 1 textSlideIn;
     background-image: url(../assets/images/logo-white.png);
@@ -103,13 +112,13 @@ export default {
       width: 100%;
       height: 100%;
       .white {
-        fill: $white;
+        fill: var(--background-1);
       }
       .light {
-        fill: $gray-lt;
+        fill: var(--background-2);
       }
       .med {
-        fill: $gray-med;
+        fill: var(--border);
       }
     }
   }

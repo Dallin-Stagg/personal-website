@@ -81,9 +81,8 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/styles/global-styles.scss";
 .about_section {
-  background-color: $white;
   .text_wrapper {
-    color: $text-primary;
+    color: var(--text-2);
     font-weight: 400;
     margin: 0 auto;
     padding: 7rem 0 5rem;
@@ -96,12 +95,13 @@ export default {
     }
   }
   .tiles_wrapper {
-    background-color: $gray-lt;
-    border-top: 1px solid $gray-border;
-    border-bottom: 1px solid $gray-border;
-    box-shadow: inset 0 1px 2px 0 rgba(#111, 0.1);
+    background-color: var(--border);
+    border-radius: 4px;
+    // box-shadow: inset 0px 0px 4px rgba(5, 5, 10, 0.1);
+    box-shadow: 0px 4px 4px 1px  rgba(5, 5, 10, 0.3);
     padding: 7rem 0 8.5rem;
     position: relative;
+    margin: 0 1.5rem;
     .triangle {
       filter: drop-shadow(0px 1px 1px rgba(0,0,0,.1));
       width: 0;
@@ -111,15 +111,15 @@ export default {
       &.left {
         border-bottom: 1.2rem solid transparent;
         border-right: 1.2rem solid transparent;
-        border-top: 1.2rem solid $white;
-        border-left: 1.2rem solid $white;
+        border-top: 1.2rem solid var(--background-2);
+        border-left: 1.2rem solid var(--background-2);
         position: absolute;
         top: 8px;
         left: 8px;
       }
       &.right {
-        border-bottom: 1.2rem solid $white;
-        border-right: 1.2rem solid $white;
+        border-bottom: 1.2rem solid var(--background-2);
+        border-right: 1.2rem solid var(--background-2);
         border-top: 1.2rem solid transparent;
         border-left: 1.2rem solid transparent;
         top: none;
@@ -138,7 +138,7 @@ export default {
         width: calc(100% - 6rem);
       }
       .item {
-        background: linear-gradient(-60deg, $blue-dk, $blue, $blue-disabled);
+        background: linear-gradient(-60deg, var(--accent-2), var(--accent-1), $blue-disabled);
         color: $white;
         cursor: pointer;
         filter: brightness(.7);
@@ -162,18 +162,18 @@ export default {
           opacity: 0;
           transition: opacity .25s linear;
           @include mobile {
-            width: calc(100vw - 6rem - 3.5rem);
+            width: calc(100vw - 6rem - 6.5rem);
           }
           h4 {
-            color: rgba($text-primary, .8);
-            font-size: 1rem;
-            font-weight: 500;
+            color: var(--text-1);
+            font-size: 1.1rem;
+            font-weight: 600;
             line-height: 1.75rem;
             margin: 0;
           }
           p {
-            color: rgba($text-primary, .6);
-            font-size: .85rem;
+            color: var(--text-2);
+            font-size: .9rem;
             font-weight: 500;
             line-height: 1.1rem;
             margin: .2rem 0;
@@ -215,7 +215,7 @@ export default {
         }
 
         &:after {
-          background: linear-gradient(-240deg, $blue-dk, $blue, $blue-disabled);
+          background: linear-gradient(-240deg, var(--accent-2), var(--accent-1));
           height: 3.5rem;
           bottom: -2rem;
           left: 1.25rem;

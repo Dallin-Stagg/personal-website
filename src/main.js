@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App'
 import router from './router'
-import store from './store/index'
+import store from './store/index.js'
 // import "./../node_modules/bulma/css/bulma.css";
 //
 import VueParticles from 'vue-particles'

@@ -19,6 +19,7 @@ export default {
     if (this.$route.path === "/") {
       this.$router.push({ name: "Home" });
     }
+    this.toggleTheme()
     // window.addEventListener('scroll', this.distanceFromTop)
   },
   computed: {
@@ -27,6 +28,14 @@ export default {
     },
     showHaze() {
       return false
+    },
+    darkTheme() {
+      return this.$store.state.darkTheme
+    }
+  },
+  watch: {
+    darkTheme() {
+      this.toggleTheme()
     }
   },
   methods: {
@@ -35,6 +44,25 @@ export default {
     },
     openLink(link) {
       window.open(link);
+    },
+    toggleTheme() {
+      if (!this.darkTheme) {
+        document.documentElement.style.setProperty('--background-1', '#FFFFFF')
+        document.documentElement.style.setProperty('--background-2', '#F7F7F9')
+        document.documentElement.style.setProperty('--border', '#d3dde5')
+        document.documentElement.style.setProperty('--text-1', '#3a4347')
+        document.documentElement.style.setProperty('--text-2', '#6c7880')
+        document.documentElement.style.setProperty('--accent-1', '#0073FC')
+        document.documentElement.style.setProperty('--accent-2', '#0056bd')
+      } else {
+        document.documentElement.style.setProperty('--background-1', '#272728')
+        document.documentElement.style.setProperty('--background-2', '#212123')
+        document.documentElement.style.setProperty('--border', '#38383A')
+        document.documentElement.style.setProperty('--text-1', '#F1F1F1')
+        document.documentElement.style.setProperty('--text-2', '#ACACAC')
+        document.documentElement.style.setProperty('--accent-1', '#13F2DF')
+        document.documentElement.style.setProperty('--accent-2', '#008E82')
+      }
     }
   }
 };
@@ -57,7 +85,7 @@ html {
   }
 }
 #app {
-  background-color: $white;
+  background-color: var(--background-1);
   font-family: "Quicksand", sans-serif, system-ui;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

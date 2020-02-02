@@ -82,43 +82,39 @@ export default {
   }
   .ds_section_header {
     margin-bottom: 3rem;
-    span {
-      background-color: $white;
-    }
   }
   .item {
     &:not(:last-child) {
       margin-bottom: 5rem;
     }
     h5 {
-      color: $text-secondary;
+      color: var(--text-2);
       font-size: .9rem;
       font-weight: 500;
       margin: 0;
+      opacity: .7;
     }
     h4 {
-      color: $text-primary;
-      font-size: 1rem;
+      color: var(--text-1);
+      font-size: 1.1rem;
       font-weight: 700;
       margin: .75rem 0;
       position: relative;
-      @include mobile {
-        font-size: 1rem;
-      }
     }
     p {
-      color: $text-primary;
+      color: var(--text-2);
       font-weight: 400;
       margin: 0;
       text-align: justify;
       text-justify: inter-word;
     }
     .case_study {
-      color: rgba($text-secondary, .5);
+      color: var(--text-2);
       font-size: .9rem;
       font-style: italic;
       font-weight: 500;
       margin-top: 1rem;
+      opacity: .5;
     }
   }
 }

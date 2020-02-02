@@ -13,14 +13,14 @@
             <input type="text" :value="company" @input="evt=>company=evt.target.value" placeholder="Company">
             <input type="text" :value="message" @input="evt=>message=evt.target.value" placeholder="Message">
           </div>
-          <div class="ds_btn grad" @click="go()">Send Message</div>
+          <div class="ds_btn outlined" @click="go()">Send Message</div>
         </div>
-        <div class="icon"></div>
+        <div class="icon" :class="{ 'dark_theme': darkTheme }"></div>
       </div>
       <div class="section_breaker center"></div>
       <div class="lower_section">
         <h3>Created by <span @click="confetti()">Dallin Stagg</span></h3>
-        <h4>© 2019 - Dallin Stagg. All Rights Reserved</h4>
+        <h4 @click="toggleTheme()">© 2020 - Dallin Stagg. All Rights Reserved</h4>
         <div class="social_link_wrapper">
           <i @click="open('https://www.linkedin.com/in/dallin-stagg')" class="fab fa-linkedin-in"></i>
           <i @click="open('https://open.spotify.com/user/1235354586?si=3FS7oFsTRg6j5vZJ5cW7XQ')" class="fab fa-spotify"></i>
@@ -49,6 +49,9 @@ export default {
   computed: {
     inputReady() {
       return this.name && this.email && this.message && this.company;
+    },
+    darkTheme() {
+      return this.$store.state.darkTheme
     }
   },
   mounted() {
@@ -109,6 +112,9 @@ export default {
         shape: "rect"
       });
       setTimeout(this.stopConfetti, 3000)
+    },
+    toggleTheme() {
+      this.$store.commit('toggleTheme')
     }
   }
 };
@@ -116,8 +122,8 @@ export default {
 <style scoped lang="scss">
 @import "../assets/styles/global-styles.scss";
 .section_breaker {
-  border-top: 1px solid #dbdfe2;
-  border-bottom: 1px solid #dbdfe2;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   height: 5px;
   &.left {
     margin-right: 30%;
@@ -138,7 +144,7 @@ export default {
   }
 }
 .footer {
-  background-image: linear-gradient(0deg, white, $gray-lt);
+  background-color: var(--background-2);
   border-top: 1px solid rgba(#dbdfe2, 0.4);
   .contact_section {
     display: grid;
@@ -157,9 +163,9 @@ export default {
       width: calc(100% - 2rem);
     }
     .form {
-      background-color: #fff;
+      background-color: var(--background-1);
       border-radius: 3px;
-      box-shadow: 0px 2px 30px rgba(34, 77, 97, 0.1);
+      box-shadow: 0px 2px 10px 2px rgba(5, 5, 10, 0.05);
       padding: 2.5rem 3.4rem;
       position: relative;
       @include mobile {
@@ -171,8 +177,8 @@ export default {
         height: 0;
         border-bottom: 1.2rem solid transparent;
         border-right: 1.2rem solid transparent;
-        border-top: 1.2rem solid #f8f9f9;
-        border-left: 1.2rem solid #f8f9f9;
+        border-top: 1.2rem solid var(--border);
+        border-left: 1.2rem solid var(--border);
         position: absolute;
         top: 8px;
         left: 8px;
@@ -181,8 +187,9 @@ export default {
       .input_wrapper {
         padding: .5rem 0 1.5rem;
         input {
+          background-color: var(--background-1);
           border: none;
-          border-bottom: 1px solid #dbdfe2;
+          border-bottom: 1px solid var(--border);
           color: $text-secondary;
           font-size: 0.9rem;
           font-weight: 500;
@@ -194,7 +201,7 @@ export default {
           width: 100%;
           transition: 0.2s ease-out border-color;
           &::placeholder {
-            color: #7598ab;
+            color: var(--text-2);
             font-style: italic;
             font-weight: 400;
           }
@@ -205,7 +212,7 @@ export default {
       }
       input {
         border: none;
-        border-bottom: 1px solid #dbdfe2;
+        border-bottom: 1px solid var(--border);
         color: $text-secondary;
         font-size: 0.9rem;
         font-weight: 500;
@@ -217,7 +224,7 @@ export default {
         width: 100%;
         transition: 0.2s ease-out border-color;
         &::placeholder {
-          color: #7598ab;
+          color: var(--text-2);
           font-style: italic;
           font-weight: 400;
         }
@@ -252,6 +259,10 @@ export default {
         height: 10rem;
         position: relative;
         top: 2.5rem;
+        display: none;
+      }
+      &.dark_theme {
+        background-image: url('../assets/images/logo-white.png');
       }
     }
   }
@@ -266,7 +277,7 @@ export default {
       width: calc(100% - 2rem);
     }
     h3 {
-      color: #224d61;
+      color: var(--text-2);
       font-size: 0.9rem;
       font-weight: 500;
       letter-spacing: 0.2px;
@@ -278,12 +289,13 @@ export default {
       }
     }
     h4 {
-      color: #7598ab;
+      color: var(--text-2);
       font-size: 0.9rem;
       font-weight: 500;
       letter-spacing: 0.2px;
       line-height: 1.7rem;
       margin: 0;
+      opacity: .7;
     }
     .social_link_wrapper {
       position: absolute;

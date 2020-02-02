@@ -1,6 +1,6 @@
 <template>
   <div class="bank_feed">
-    <div class="card">
+    <div class="card" @click="toggleTheme()">
       <h6>Current Balance</h6>
       <h2>$26,127.36</h2>
       <h5>
@@ -107,13 +107,18 @@
         <h4 class="status">Uncategorized</h4>
       </div>
     </div>
-    <h6>Styled by Dallin Stagg</h6>
+    <h6>Designed by Dallin Stagg</h6>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {};
+  },
+  methods: {
+    toggleTheme() {
+      this.$store.commit('toggleTheme')
+    }
   }
 };
 </script>
@@ -121,7 +126,7 @@ export default {
 @import "../assets/styles/global-styles.scss";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 .bank_feed {
-  background-color: $gray-lt;
+  background-color: var(--background-2);
   font-family: 'Open Sans', sans-serif; 
   padding-top: 4.5rem;
   max-width: 25rem;
@@ -130,7 +135,7 @@ export default {
     max-width: 100%;
   }
   .card {
-    background-color: #0064fe;
+    background-color: var(--accent-2);
     border-radius: .8rem;
     box-shadow: 0px 6px 25px rgba(34, 77, 97, 0.4);
     box-sizing: border-box;
@@ -191,7 +196,7 @@ h2 {
   text-indent: 1rem;
 }
 .item {
-  background-color: white;
+  background-color: $white;
   border-radius: 4px;
   box-shadow: 0px 6px 16px rgba(34, 77, 97, 0.2);
   display: grid;

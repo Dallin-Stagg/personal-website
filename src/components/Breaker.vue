@@ -45,10 +45,10 @@ export default {
   height: calc(2rem + 3vw);
   width: 100%;
   &.light {
-    background-color: $gray-lt;
+    background-color: var(--background-2);
   }
   &.white {
-    background-color: $white;
+    background-color: var(--background-1);
   }
   &.dark {
     background-color: $gray-dk;
@@ -57,10 +57,10 @@ export default {
     width: 100%;
     height: 100%;
     .light {
-      fill: $gray-lt;
+      fill: var(--background-2);
     }
     .white {
-      fill: $white;
+      fill: var(--background-1);
     }
     .dark {
       fill: $gray-dk;

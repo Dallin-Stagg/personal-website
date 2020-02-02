@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    darkTheme: false
     /* alertInfo: {
       type: "",
       text: "",
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     }, */
     clearAlert: state => {
       state.alertInfo.show = false;
+    },
+    toggleTheme: state => {
+      state.darkTheme = !state.darkTheme;
     }
   },
   actions: {
