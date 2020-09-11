@@ -19,8 +19,8 @@ export default {
     if (this.$route.path === "/") {
       this.$router.push({ name: "Home" });
     }
-    this.toggleTheme()
-    // window.addEventListener('scroll', this.distanceFromTop)
+    this.toggleTheme(true)
+    window.addEventListener('scroll', this.distanceFromTop)
   },
   computed: {
     routeName() {
@@ -29,13 +29,13 @@ export default {
     showHaze() {
       return false
     },
-    darkTheme() {
-      return this.$store.state.darkTheme
+    theme() {
+      return this.$store.state.theme
     }
   },
   watch: {
-    darkTheme() {
-      this.toggleTheme()
+    theme() {
+      this.toggleTheme(false)
     }
   },
   methods: {
@@ -45,23 +45,36 @@ export default {
     openLink(link) {
       window.open(link);
     },
-    toggleTheme() {
-      if (!this.darkTheme) {
-        document.documentElement.style.setProperty('--background-1', '#FFFFFF')
-        document.documentElement.style.setProperty('--background-2', '#F7F7F9')
-        document.documentElement.style.setProperty('--border', '#d3dde5')
+    toggleTheme(first) {
+      if (first) {
+        // bg5: '#212123',
+        document.documentElement.style.setProperty('--bg-1', '#ffffff')
+        document.documentElement.style.setProperty('--bg-2', '#f7f7f9')
+        document.documentElement.style.setProperty('--bg-3', '#d3dde5')
+        document.documentElement.style.setProperty('--bg-4', '#272728')
+        document.documentElement.style.setProperty('--bg-5', '#212123')
         document.documentElement.style.setProperty('--text-1', '#3a4347')
         document.documentElement.style.setProperty('--text-2', '#6c7880')
-        document.documentElement.style.setProperty('--accent-1', '#0073FC')
-        document.documentElement.style.setProperty('--accent-2', '#0056bd')
+        document.documentElement.style.setProperty('--ac-1', '#0073FC')
+        document.documentElement.style.setProperty('--ac-2', '#0056bd')
+        document.documentElement.style.setProperty('--ac-3', '#FFB100')
       } else {
-        document.documentElement.style.setProperty('--background-1', '#272728')
-        document.documentElement.style.setProperty('--background-2', '#212123')
-        document.documentElement.style.setProperty('--border', '#38383A')
-        document.documentElement.style.setProperty('--text-1', '#F1F1F1')
-        document.documentElement.style.setProperty('--text-2', '#ACACAC')
-        document.documentElement.style.setProperty('--accent-1', '#13F2DF')
-        document.documentElement.style.setProperty('--accent-2', '#008E82')
+        var theme = this.$store.state.theme
+        document.documentElement.style.setProperty('--bg-1', theme.bg1)
+        document.documentElement.style.setProperty('--bg-2', theme.bg2)
+        document.documentElement.style.setProperty('--bg-3', theme.bg3)
+        document.documentElement.style.setProperty('--bg-4', theme.bg4)
+        document.documentElement.style.setProperty('--bg-5', theme.bg5)
+        document.documentElement.style.setProperty('--ac-1', theme.ac1)
+        document.documentElement.style.setProperty('--ac-2', theme.ac2)
+        document.documentElement.style.setProperty('--ac-3', theme.ac3)
+        if (theme.theme === 'light') {
+          document.documentElement.style.setProperty('--text-1', '#3a4347')
+          document.documentElement.style.setProperty('--text-2', '#6c7880')
+        } else {
+          document.documentElement.style.setProperty('--text-1', '#E8E8EA')
+          document.documentElement.style.setProperty('--text-2', '#D9D9DB')
+        }
       }
     }
   }
@@ -85,7 +98,7 @@ html {
   }
 }
 #app {
-  background-color: var(--background-1);
+  background-color: var(--bg-1);
   font-family: "Quicksand", sans-serif, system-ui;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

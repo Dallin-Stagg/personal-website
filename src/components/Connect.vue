@@ -13,14 +13,30 @@
             <input type="text" :value="company" @input="evt=>company=evt.target.value" placeholder="Company">
             <input type="text" :value="message" @input="evt=>message=evt.target.value" placeholder="Message">
           </div>
-          <div class="ds_btn outlined" @click="go()">Send Message</div>
+          <div class="ds_btn" @click="go()">
+            <div>Send Message</div>
+            <i class="fa fa-paper-plane"></i>
+          </div>
         </div>
-        <div class="icon" :class="{ 'dark_theme': darkTheme }"></div>
+        <div class="themes_wrapper">
+          <div class="tiles">
+            <div class="item" v-for="(tile, i) in themes" :key="i" :class="{ 'active': activeTileIndex === i }" @click="updateTheme(tile, i)">
+              <div class="color_wrapper">
+                <div class="swatch" :style="{ backgroundColor: tile.ac1 }"></div>
+                <div class="swatch" :style="{ backgroundColor: tile.bg1 }"></div>
+                <div class="swatch" :style="{ backgroundColor: tile.bg3 }"></div>
+                <div class="swatch" :style="{ backgroundColor: tile.ac2 }"></div>
+                <div class="swatch" :style="{ backgroundColor: tile.bg4 }"></div>
+                <div class="swatch" :style="{ backgroundColor: tile.ac3 }"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="section_breaker center"></div>
       <div class="lower_section">
         <h3>Created by <span @click="confetti()">Dallin Stagg</span></h3>
-        <h4 @click="toggleTheme()">© 2020 - Dallin Stagg. All Rights Reserved</h4>
+        <h4>© 2020 - Dallin Stagg. All Rights Reserved</h4>
         <div class="social_link_wrapper">
           <i @click="open('https://www.linkedin.com/in/dallin-stagg')" class="fab fa-linkedin-in"></i>
           <i @click="open('https://open.spotify.com/user/1235354586?si=3FS7oFsTRg6j5vZJ5cW7XQ')" class="fab fa-spotify"></i>
@@ -43,29 +59,62 @@ export default {
       message: "",
       company: "",
       request_resume: false,
-      activeTileIndex: 0
+      activeTileIndex: 0,
+      themes: [
+        {
+          bg1: '#ffffff',
+          bg2: '#f7f7f9',
+          bg3: '#d3dde5',
+          bg4: '#272728',
+          bg5: '#212123',
+          ac1: '#0073FC',
+          ac2: '#0056bd',
+          ac3: '#FFB100',
+          theme: 'light'
+        },
+        {
+          bg1: '#2A2A2D',
+          bg2: '#272728',
+          bg3: '#343438',
+          bg4: '#272728',
+          bg5: '#212123',
+          ac1: '#00AA47',
+          ac2: '#008738',
+          ac3: '#FFB100',
+          theme: 'dark'
+        },
+        {
+          bg1: '#ffffff',
+          bg2: '#f7f7f9',
+          bg3: '#c1c8e4',
+          bg4: '#8860d0',
+          bg5: '#8860d0',
+          ac1: '#5680e9',
+          ac2: '#5680e9',
+          ac3: '#FFB100'
+        },
+        {
+          bg1: '#f7f7f9',
+          bg2: '#f7f7f9',
+          bg3: '#8265A7',
+          bg4: '#2a1b3d',
+          bg5: '#2a1b3d',
+          ac1: '#d83f87',
+          ac2: '#d83f87',
+          ac3: '#FFB100'
+        }
+      ]
     };
   },
   computed: {
     inputReady() {
       return this.name && this.email && this.message && this.company;
-    },
-    darkTheme() {
-      return this.$store.state.darkTheme
     }
   },
   mounted() {
-    setTimeout(this.switchTile, 10000)
+    this.confetti()
   },
   methods: {
-    switchTile() {
-      if (this.activeTileIndex === 3) {
-        this.activeTileIndex = 0
-      } else {
-        this.activeTileIndex += 1
-      }
-      setTimeout(this.switchTile, 10000)
-    },
     go() {
       if (this.inputReady) {
         // https://script.google.com/macros/s/AKfycbwFwMXn1KLc7xBvEU4JA3BaFKjY5SgXDWO-I5M2At4I2ihxcohm/exec
@@ -89,7 +138,7 @@ export default {
         });
         this.messageSent = true;
         this.clearForm()
-        setTimeout(this.stopConfetti, 6000)
+        setTimeout(this.stopConfetti, 7000)
       } else {
         alert("Please fill out the entire form before submitting.")
       }
@@ -113,8 +162,16 @@ export default {
       });
       setTimeout(this.stopConfetti, 3000)
     },
-    toggleTheme() {
-      this.$store.commit('toggleTheme')
+    updateTheme(tile, index) {
+      if (index !== this.activeTileIndex) {
+        this.activeTileIndex = index
+        /* let alert = {
+          text: error.response.data.detail,
+          type: 'warning',
+          key: Math.round(Math.random() * 10000)
+        } */
+        this.$store.commit('updateTheme', tile)
+      }
     }
   }
 };
@@ -122,8 +179,8 @@ export default {
 <style scoped lang="scss">
 @import "../assets/styles/global-styles.scss";
 .section_breaker {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--bg-3);
+  border-bottom: 1px solid var(--bg-3);
   height: 5px;
   &.left {
     margin-right: 30%;
@@ -144,7 +201,7 @@ export default {
   }
 }
 .footer {
-  background-color: var(--background-2);
+  background-color: var(--bg-2);
   border-top: 1px solid rgba(#dbdfe2, 0.4);
   .contact_section {
     display: grid;
@@ -163,38 +220,38 @@ export default {
       width: calc(100% - 2rem);
     }
     .form {
-      background-color: var(--background-1);
+      background-color: var(--bg-1);
       border-radius: 3px;
-      box-shadow: 0px 2px 10px 2px rgba(5, 5, 10, 0.05);
+      box-shadow: 1px 4px 25px 2px rgba(0,0,0, 0.05),
+      0px 3px 4px 2px rgba(0, 0, 0, 0.05);
       padding: 2.5rem 3.4rem;
       position: relative;
       @include mobile {
         padding: 3rem 2.5rem;
       }
       .triangle {
-        filter: drop-shadow(0px 0px 1px rgba(0,0,0,.1));
         width: 0;
         height: 0;
         border-bottom: 1.2rem solid transparent;
         border-right: 1.2rem solid transparent;
-        border-top: 1.2rem solid var(--border);
-        border-left: 1.2rem solid var(--border);
+        border-top: 1.2rem solid var(--bg-3);
+        border-left: 1.2rem solid var(--bg-3);
         position: absolute;
         top: 8px;
         left: 8px;
         z-index: 1;
       }
       .input_wrapper {
-        padding: .5rem 0 1.5rem;
+        padding: .75rem 0 1.5rem;
         input {
-          background-color: var(--background-1);
+          background-color: var(--bg-1);
           border: none;
-          border-bottom: 1px solid var(--border);
-          color: $text-secondary;
+          border-bottom: 1px solid var(--bg-3);
+          color: var(--text-1);
           font-size: 0.9rem;
           font-weight: 500;
           letter-spacing: 0.2px;
-          line-height: 2rem;
+          line-height: 2.3rem;
           margin: .7rem 0;
           outline: none;
           text-indent: 0.1rem;
@@ -206,13 +263,13 @@ export default {
             font-weight: 400;
           }
           @include mobile {
-            font-size: 1rem;
+            font-size: 1.1rem;
           }
         }
       }
       input {
         border: none;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid var(--bg-2);
         color: $text-secondary;
         font-size: 0.9rem;
         font-weight: 500;
@@ -229,40 +286,44 @@ export default {
           font-weight: 400;
         }
       }
-      .send_btn {
-        border: 1px solid $blue;
-        border-radius: 2px;
-        color: $blue;
-        cursor: pointer;
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.3px;
-        line-height: 2.8rem;
-        margin: 2rem 0 1rem;
-        text-align: center;
-        width: 10rem;
-        transition: box-shadow ease-out 0.2s;
-        &:hover {
-          box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
-        }
-      }
     }
-    .icon {
-      background-image: url('../assets/images/logo-black.png');
-      background-size: 120%;
-      background-repeat: no-repeat;
-      background-position: center bottom;
-      opacity: .7;
+    .themes_wrapper {
+      display: none;
+      //display: grid;
+      align-content: center;
+      justify-content: center;
+      grid-template-columns: 1fr;
       @include mobile {
-        background-size: 120%;
-        background-position: center;
-        height: 10rem;
-        position: relative;
-        top: 2.5rem;
-        display: none;
+        margin-top: 3rem;
       }
-      &.dark_theme {
-        background-image: url('../assets/images/logo-white.png');
+      .tiles {
+        margin: 0 auto;
+        .item {
+          box-shadow: 0px 0px 1px rgba(#38383b, 0.45);
+          border-radius: 6px;
+          cursor: pointer;
+          display: inline-block;
+          overflow: hidden;
+          margin: .75rem;
+          width: 4rem;
+          height: 6rem;
+          transition: transform .3s ease-in-out, margin .3s ease-in-out;
+          &.active {
+            transform: scale(1.2);
+          }
+          .color_wrapper {
+            display: grid;
+            align-content: center;
+            justify-content: center;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            height: 100%;
+            .swatch {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
       }
     }
   }

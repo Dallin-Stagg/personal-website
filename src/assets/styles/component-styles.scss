@@ -3,14 +3,14 @@
 .ds_section_header {
   position: relative;
   span {
-    background-color: var(--background-1);
+    background-color: var(--bg-1);
     color: var(--text-1);
     padding-right: .5rem;
     position: relative;
     z-index: 1;
   }
   &::before {
-    background-color: var(--accent-1);
+    background-color: var(--ac-1);
     content: "";
     display: block;
     height: 2px;
@@ -21,65 +21,44 @@
   }
 }
 .ds_btn {
+  background-color: var(--ac-2);
   border-radius: 4px;
   color: $white;
   cursor: pointer;
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  line-height: 2.3rem;
-  padding: 0 1.5rem;
-  text-align: center;
-  text-transform: uppercase;
-  margin: 1rem auto;
-  transition: background-color 0.2s ease-out, box-shadow .2s ease-out, transform 0.2s ease-out;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 3fr 1fr;
+  font-size: 1rem;
+  font-weight: bold;
+  height: 3rem;
+  margin: 2rem 0 1rem;
+  width: 12rem;
   @include mobile {
-    font-size: 0.9rem;
-    line-height: 2.8rem;
-    padding: 0 2.25rem;
+    font-size: 1.1rem;
+    height: 3.5rem;
+    width: 13rem;
   }
-  &.accent {
-    background-color: var(--accent-1);
-    &:hover {
-      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-    }
-    &.disabled {
-      opacity: .5;
-      box-shadow: none;
-      cursor: not-allowed;
+  &.white {
+    color: $text-primary;
+    background-color: $white;
+    div {
+      background-color: $gray-border;
     }
   }
-  &.grad {
-    background-image: linear-gradient(
-          -60deg,
-          var(--accent-2),
-          var(--accent-1)
-        );
-    &:hover {
-      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-    }
-    &.disabled {
-      opacity: .5;
-      box-shadow: none;
-      cursor: not-allowed;
+  div {
+    background-color: var(--ac-1);
+    border-radius: 4px;
+    line-height: 3rem;
+    text-indent: 1rem;
+    width: 100%;
+    transition: .2s ease-in-out text-indent;
+    @include mobile {
+      line-height: 3.5rem;
     }
   }
-  &.green {
-    background-color: $green;
-    box-shadow: 0 2px 6px 2px rgba($green, 0.2);
-    &:hover {
-      background-color: $green-hover;
-    }
-    &.disabled {
-      background-color: rgba($green, 0.4);
-      box-shadow: none;
-      cursor: not-allowed;
-    }
-  }
-  &.outlined {
-    border: 2px solid var(--accent-1);
-    color: var(--accent-1);
+  &:hover div {
+    text-indent: 1.2rem;
   }
 }
 .ds_toggle {
@@ -145,7 +124,7 @@
     overflow: auto;
     text-align: center;
     .fa-info {
-      background: linear-gradient(-60deg, var(--accent-2), var(--accent-1));
+      background: linear-gradient(-60deg, var(--ac-2), var(--ac-1));
       border-radius: 50%;
       color: $white;
       float: left;

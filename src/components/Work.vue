@@ -1,19 +1,21 @@
 <template>
   <div class="work_page">
-    <h2 class="ds_section_header">
-      <span>My work.</span>
-    </h2>
-    <div class="item" v-for="(item, i) in items" :key="i">
-      <h5 v-html="item.position_and_time"></h5>
-      <h4>{{ item.company }}</h4>
-      <p v-if="item.company_description" class="company">{{ item.company_description }}</p>
-      <p>{{ item.description }}</p>
-      <div class="case_study">Case study coming soon</div>
-    </div>
-    <div class="ds_info_line no_padding">
-      <div class="float_wrapper">
-        <i class="fa fa-info"></i>
-        <h4>Would you like an official copy of my resume?<br> Go ahead and <span @click="$emit('goToContact')">contact me</span></h4>
+    <div class="text_wrapper">
+      <h2 class="ds_section_header">
+        <span>My work.</span>
+      </h2>
+      <div class="item" v-for="(item, i) in items" :key="i">
+        <h5 v-html="item.position_and_time"></h5>
+        <h4>{{ item.company }}</h4>
+        <p v-if="item.company_description" class="company">{{ item.company_description }}</p>
+        <p>{{ item.description }}</p>
+        <div class="case_study">Case study coming soon</div>
+      </div>
+      <div class="ds_info_line no_padding">
+        <div class="float_wrapper">
+          <i class="fa fa-info"></i>
+          <h4>Would you like an official copy of my resume?<br> Go ahead and <span @click="$emit('goToContact')">contact me</span></h4>
+        </div>
       </div>
     </div>
   </div>
@@ -74,48 +76,52 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/styles/global-styles.scss";
 .work_page {
-  margin: 10rem auto 7rem;
-  max-width: calc(100% - 4rem);
-  width: 40rem;
-  @include mobile {
-    margin: 8rem auto 5rem;
-  }
-  .ds_section_header {
-    margin-bottom: 3rem;
-  }
-  .item {
-    &:not(:last-child) {
-      margin-bottom: 5rem;
-    }
-    h5 {
-      color: var(--text-2);
-      font-size: .9rem;
-      font-weight: 500;
+  background-color: var(--bg-2);
+  .text_wrapper {
+    
+    padding: 10rem 0 7rem;
+    margin: 0 auto;
+    max-width: calc(100% - 4rem);
+    width: 40rem;
+    .ds_section_header {
       margin: 0;
-      opacity: .7;
+      margin-bottom: 3rem;
     }
-    h4 {
-      color: var(--text-1);
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin: .75rem 0;
-      position: relative;
-    }
-    p {
-      color: var(--text-2);
-      font-weight: 400;
-      margin: 0;
-      text-align: justify;
-      text-justify: inter-word;
-    }
-    .case_study {
-      color: var(--text-2);
-      font-size: .9rem;
-      font-style: italic;
-      font-weight: 500;
-      margin-top: 1rem;
-      opacity: .5;
+    .item {
+      &:not(:last-child) {
+        margin-bottom: 5rem;
+      }
+      h5 {
+        color: var(--text-2);
+        font-size: .9rem;
+        font-weight: 500;
+        margin: 0;
+        opacity: .7;
+      }
+      h4 {
+        color: var(--text-1);
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: .75rem 0;
+        position: relative;
+      }
+      p {
+        color: var(--text-2);
+        font-weight: 400;
+        margin: 0;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      .case_study {
+        color: var(--text-2);
+        font-size: .9rem;
+        font-style: italic;
+        font-weight: 500;
+        margin-top: 1rem;
+        opacity: .5;
+      }
     }
   }
 }
+
 </style>
